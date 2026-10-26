@@ -136,7 +136,7 @@ try {
   const paused = await page.evaluate(() => window.__reachFrames);
   await page.waitForTimeout(650);
   expect(await page.evaluate(() => window.__reachFrames)).toBe(paused);
-  for (const width of [2560, 1440, 1024, 900, 768, 390, 320]) {
+  for (const width of [2560, 1440, 1024, 900, 768, 640, 430, 390, 320]) {
     await page.setViewportSize({ width, height: width > 1100 ? 1000 : 844 });
     if (width > 900) await scrub(0.82);
     else {
@@ -168,8 +168,31 @@ try {
       offices = await section.locator(".reach-offices").boundingBox(),
       map = await section.locator(".reach-map-panel").boundingBox();
     expect(intro.y + intro.height).toBeLessThan(stage.y);
-    if (width > 600) expect(offices.x + offices.width).toBeLessThan(map.x);
+    if (width > 767) expect(offices.x + offices.width).toBeLessThan(map.x);
     else expect(map.y + map.height).toBeLessThan(offices.y);
+    await expect(section.getByRole("tablist")).toHaveAttribute(
+      "aria-orientation",
+      width <= 767 ? "horizontal" : "vertical",
+    );
+    if (width <= 767) {
+      const tabs = await section.getByRole("tab").all();
+      const first = await tabs[0].boundingBox();
+      const third = await tabs[2].boundingBox();
+      const fourth = await tabs[3].boundingBox();
+      expect(third.y).toBeCloseTo(first.y, 1);
+      expect(fourth.y).toBeGreaterThan(first.y + first.height);
+      await expect(
+        section.locator(".reach-office-selected-name"),
+      ).toBeVisible();
+      const metrics = await section.locator(".reach-metric").all();
+      for (let index = 1; index < metrics.length; index++) {
+        const previous = await metrics[index - 1].boundingBox();
+        const current = await metrics[index].boundingBox();
+        expect(current.y).toBeGreaterThanOrEqual(
+          previous.y + previous.height - 1,
+        );
+      }
+    }
     for (const button of await section.getByRole("tab").all())
       expect((await button.boundingBox()).height).toBeGreaterThanOrEqual(44);
     if (width === 390)

@@ -4,25 +4,26 @@ import { useEffect, useRef, type ReactNode } from "react";
 export function HeroEnergy({ children }: { children: ReactNode }) {
   const root = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    let disposed = false;
-    let cleanup: (() => void) | undefined;
-    const start = () => {
-      import("./hero-pulses-runtime").then(({ mount }) => {
-        if (!disposed && root.current) cleanup = mount(root.current);
-      });
+    const element = root.current;
+    if (!element) return;
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+    let visible = false;
+    const sync = () => {
+      element.dataset.active = String(
+        visible && !document.hidden && !reduced.matches,
+      );
     };
-    // Artwork and copy are already rendered. Let initial hydration finish
-    // before downloading and starting this decorative enhancement.
-    const idle =
-      typeof window.requestIdleCallback === "function"
-        ? window.requestIdleCallback(start, { timeout: 500 })
-        : window.setTimeout(start, 60);
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      sync();
+    });
+    observer.observe(element);
+    reduced.addEventListener("change", sync);
+    document.addEventListener("visibilitychange", sync);
     return () => {
-      disposed = true;
-      if (typeof window.cancelIdleCallback === "function")
-        window.cancelIdleCallback(idle);
-      else clearTimeout(idle);
-      cleanup?.();
+      observer.disconnect();
+      reduced.removeEventListener("change", sync);
+      document.removeEventListener("visibilitychange", sync);
     };
   }, []);
   return (

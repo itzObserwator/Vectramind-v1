@@ -31,13 +31,23 @@ body .button.button-primary:hover,
   color: var(--primary-cta-foreground);
   border-color: var(--primary-action-hover);
 }
+/* Keep hero and header actions consistent when inner-page CSS loads later. */
+body :is(.header, .experience-hero, .inner-hero) .button.button-primary {
+  background: var(--primary);
+  color: var(--primary-cta-foreground);
+  border-color: var(--primary);
+}
+body :is(.header, .experience-hero, .inner-hero) .button.button-primary:hover {
+  background: var(--primary-action-hover);
+  color: var(--primary-cta-foreground);
+  border-color: var(--primary-action-hover);
+}
 body
   :is(.experience-home, .inner-page, .not-found-page)
   :is(
     .hero-platform-button,
     .button-outline,
     .platform-card-cta,
-    .reach-about-link,
     .capability-explore
   ) {
   color: var(--primary-ink);
@@ -50,12 +60,17 @@ body
     .hero-platform-button,
     .button-outline,
     .platform-card-cta,
-    .reach-about-link,
     .capability-explore
   ):hover {
   color: var(--primary-ink);
   background: var(--primary-surface);
   border-color: var(--primary);
+}
+body :is(.experience-home, .inner-page) .reach-about-link,
+body :is(.experience-home, .inner-page) .reach-about-link:hover {
+  color: var(--primary-ink);
+  background: transparent;
+  border-color: var(--primary-border);
 }
 body
   :is(
@@ -88,11 +103,11 @@ body
 body :is(.label-dot, .experience-kicker > span) {
   background: var(--primary);
 }
-body .module-buttons > button[aria-selected="true"],
-body .product-landing .module-buttons > button[aria-selected="true"],
-body .support-answer-tabs button[aria-selected="true"],
-body .experience-home .platform-tabs button[aria-selected="true"] {
-  color: var(--primary-foreground);
+:root body .module-buttons > button[aria-selected="true"],
+:root body .product-landing .module-buttons > button[aria-selected="true"],
+:root body .support-answer-tabs button[aria-selected="true"],
+:root body .experience-home .platform-tabs button[aria-selected="true"] {
+  color: var(--primary-cta-foreground);
   background: var(--primary);
   border-color: var(--primary);
 }
@@ -116,6 +131,9 @@ body:has(.inner-page) .floating-contact {
   color: var(--primary-cta-foreground);
   background: var(--primary);
   border-color: var(--primary);
+}
+body .floating-contact svg {
+  color: var(--primary-cta-foreground);
 }
 body :is(.product-landing, .experience-home) .platform-category:nth-child(n) {
   color: var(--primary-ink);
@@ -155,10 +173,8 @@ body ::selection {
   background: #b8daff;
 }
 
-/* A shared pale-blue material for component illustrations and supporting cards. */
-body .post-hero-node,
-body .ecosystem-sphere,
-body .orbital-ecosystem .ecosystem-hub {
+/* Pale-blue material for the introductory illustration. */
+body .post-hero-node {
   border-color: #a5c9ed;
   background:
     radial-gradient(ellipse at 32% 14%, #fff 0%, #ffffffcc 14%, #ffffff00 47%),
@@ -187,10 +203,30 @@ body .post-hero-column .post-hero-column-shaft {
 body .post-hero-column-right {
   border-bottom-color: #91bee8;
 }
-body .post-hero-connect-line,
+body .post-hero-connect-line {
+  stroke: #a5c9ed;
+}
+/* White ecosystem surfaces; blue is reserved for signals and interaction. */
+body .ecosystem-sphere,
+body .orbital-ecosystem .ecosystem-hub {
+  border-color: #d8d8d8;
+  background:
+    radial-gradient(ellipse at 32% 14%, #fff 0%, #ffffffcc 14%, #ffffff00 47%),
+    radial-gradient(
+      circle at 38% 28%,
+      #fff 8%,
+      #fafafa 48%,
+      #e8e8e8 88%,
+      #f3f3f3 100%
+    );
+  box-shadow:
+    inset 1px 2px 3px #fff,
+    inset -3px -5px 9px #0000000d,
+    0 13px 16px -9px #0000001a;
+}
 body .ecosystem-bridge,
 body .ecosystem-halo {
-  stroke: #a5c9ed;
+  stroke: #d6d6d6;
 }
 body .post-hero-card {
   background: linear-gradient(120deg, #f6fbffed, #deedfcce);
@@ -204,8 +240,8 @@ body .ecosystem-node {
   --node-accent: var(--primary);
 }
 body .ecosystem-detail {
-  background: #f1f8ffed;
-  border-color: #b8d6f2;
+  background: #ffffffed;
+  border-color: #dedede;
 }
 body .platform-thumbnail {
   background:
@@ -291,6 +327,7 @@ body .post-hero-resolution {
   padding: 32px 24px;
   border-radius: 16px;
   background: var(--primary);
+  color: var(--primary-cta-foreground);
 }
 body .post-hero-resolution > p {
   color: #fff;
@@ -303,16 +340,19 @@ body .post-hero-resolution .button.button-primary:hover {
 }
 body :is(.product-landing-next, .talent-panel, .inner-cta) {
   background: var(--primary);
+  color: var(--primary-cta-foreground);
 }
-body
+:root
+  body
   :is(.product-landing-next, .talent-panel, .inner-cta)
   :is(h2, .brand-heading-accent) {
   color: #fff;
 }
-body
+:root
+  body
   :is(.product-landing-next, .talent-panel, .inner-cta)
   :is(p, .eyebrow, .section-label, .section-label > span) {
-  color: var(--primary-foreground);
+  color: var(--primary-cta-foreground);
 }
 body :is(.product-landing-next, .talent-panel, .inner-cta) .section-label {
   border-color: #ffffff70;

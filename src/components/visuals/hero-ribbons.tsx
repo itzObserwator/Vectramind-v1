@@ -1,7 +1,14 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import type { CSSProperties } from "react";
 import trails from "./hero-pulse-paths.json";
-import { trailPulseColors } from "./trail-pulses";
+import {
+  heroPulseColors,
+  trailPulseDelay,
+  trailPulseDuration,
+  trailPulseLength,
+  trailPulseOpacity,
+} from "./trail-pulses";
 
 // These trusted, repository-owned vectors are embedded during static export.
 // Keep their geometry out of the client bundle and avoid a hero image request.
@@ -29,22 +36,30 @@ export function HeroRibbons() {
         viewBox="0 0 1000 1000"
         fill="none"
         aria-hidden="true"
-        dangerouslySetInnerHTML={{ __html: ribbons }}
-      />
-      <div className="hero-pulse-plane">
+      >
+        <g dangerouslySetInnerHTML={{ __html: ribbons }} />
         {trails.flatMap((trail, index) =>
-          [0, 1].map((side) => (
-            <span
+          [trail.left, trail.right].map((d, side) => (
+            <path
               key={`${index}-${side}`}
               className="hero-trail-pulse"
-              style={{
-                height: `${trail.width}px`,
-                background: trailPulseColors[index % 4],
-              }}
+              d={d}
+              pathLength="1"
+              stroke={heroPulseColors[index % 4]}
+              strokeWidth={trail.width}
+              strokeLinecap="round"
+              strokeDasharray={`${trailPulseLength * 2} ${1 - trailPulseLength * 2}`}
+              opacity={trailPulseOpacity}
+              style={
+                {
+                  "--hero-pulse-duration": `${trailPulseDuration(index) / 2}s`,
+                  "--hero-pulse-delay": `${trailPulseDelay(index) - 1.6}s`,
+                } as CSSProperties
+              }
             />
           )),
         )}
-      </div>
+      </svg>
     </>
   );
 }

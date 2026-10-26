@@ -1,6 +1,6 @@
 "use client";
 import { useDeferredAnimation } from "@/components/use-deferred-animation";
-import { useRef, useState, useId } from "react";
+import { useRef, useState, useId, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { ArrowRight01Icon } from "@hugeicons/core-free-icons";
@@ -9,6 +9,18 @@ import { Arrow, SectionLabel } from "@/components/site-primitives";
 import { statistics } from "@/content/site";
 import { reachContent, reachLocations } from "@/content/global-reach";
 import { useNearViewport } from "@/components/use-near-viewport";
+const compactOfficesQuery = "(max-width: 767px)";
+function subscribeOfficeLayout(notify: () => void) {
+  const media = window.matchMedia(compactOfficesQuery);
+  media.addEventListener("change", notify);
+  return () => media.removeEventListener("change", notify);
+}
+function compactOfficeLayout() {
+  return window.matchMedia(compactOfficesQuery).matches;
+}
+function serverOfficeLayout() {
+  return false;
+}
 function MetricLaurel() {
   return (
     <img
@@ -25,6 +37,11 @@ export function GlobalReach() {
   const root = useRef<HTMLElement>(null);
   const ready = useNearViewport(root);
   const [selectedOffice, setSelectedOffice] = useState(0);
+  const compactOffices = useSyncExternalStore(
+    subscribeOfficeLayout,
+    compactOfficeLayout,
+    serverOfficeLayout,
+  );
   const officePrefix = useId();
   const office = reachLocations[selectedOffice];
   function selectOffice(index: number, focus = false) {
@@ -77,7 +94,7 @@ export function GlobalReach() {
               className="reach-office-list"
               role="tablist"
               aria-label="Explore our offices"
-              aria-orientation="vertical"
+              aria-orientation={compactOffices ? "horizontal" : "vertical"}
             >
               {reachLocations.map((location, index) => (
                 <button
@@ -125,7 +142,7 @@ export function GlobalReach() {
               tabIndex={0}
             >
               <div aria-live="polite" aria-atomic="true">
-                <h3 className="sr-only">{office.name}</h3>
+                <h3 className="reach-office-selected-name">{office.name}</h3>
                 <p>{office.country}</p>
               </div>
               <div className="reach-office-controls">

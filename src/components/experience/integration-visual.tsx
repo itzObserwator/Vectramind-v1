@@ -75,8 +75,8 @@ export function IntegrationVisual({ id }: { id: string }) {
           />
         </filter>
         <linearGradient id={`${id}-system-surface`} x1="0" y1="0" x2="1" y2="1">
-          <stop stopColor="#f7fbff" />
-          <stop offset="1" stopColor="#ddebfc" />
+          <stop stopColor="#ffffff" />
+          <stop offset="1" stopColor="#fafafa" />
         </linearGradient>
         <pattern
           id={`${id}-system-dots`}
@@ -84,7 +84,7 @@ export function IntegrationVisual({ id }: { id: string }) {
           height="20"
           patternUnits="userSpaceOnUse"
         >
-          <circle cx="1" cy="1" r=".65" fill="#8ab8e5" fillOpacity=".38" />
+          <circle cx="1" cy="1" r=".65" fill="#c7c7c7" fillOpacity=".38" />
         </pattern>
       </defs>
       <rect
@@ -185,7 +185,7 @@ export function IntegrationVisual({ id }: { id: string }) {
               height="90"
               rx="13"
               fill={`url(#${id}-system-surface)`}
-              stroke="#9fc6eb"
+              stroke="#d8d8d8"
               filter={`url(#${id}-system-shadow)`}
             />
             <g transform="translate(15 16)" color={system.color}>
@@ -218,7 +218,7 @@ export function IntegrationVisual({ id }: { id: string }) {
           height="110"
           rx="16"
           fill={`url(#${id}-system-surface)`}
-          stroke="#9fc6eb"
+          stroke="#d8d8d8"
           strokeWidth="1.2"
           filter={`url(#${id}-system-shadow)`}
         />
@@ -272,7 +272,7 @@ export function IntegrationVisual({ id }: { id: string }) {
             width="200"
             height="60"
             rx="12"
-            fill="#f6f6f6"
+            fill="#ffffff"
             stroke="#d7d7d7"
           />
           <g transform="translate(321 498)" color="#7d7d7d">

@@ -33,9 +33,7 @@ try {
   const trails = page.locator(".hero-energy .hero-ribbon-main");
   await expect(trails).toHaveCount(1);
   await expect(page.locator(".hero-energy canvas")).toHaveCount(0);
-  await expect(page.locator(".hero-pulse-plane .hero-trail-pulse")).toHaveCount(
-    16,
-  );
+  await expect(trails.locator(".hero-trail-pulse")).toHaveCount(16);
   await page.waitForTimeout(1800);
   const first = await pixels(page);
   await page.waitForTimeout(1100);
@@ -51,7 +49,7 @@ try {
   );
   expect(
     await page
-      .locator(".hero-pulse-plane")
+      .locator(".hero-ribbon-main")
       .evaluate((element) =>
         element
           .getAnimations({ subtree: true })

@@ -14,8 +14,8 @@ function Fallback() {
     >
       <defs>
         <radialGradient id="reach-fallback-fill">
-          <stop stopColor="#e8f3ff" stopOpacity=".1" />
-          <stop offset="1" stopColor="#a9cff2" stopOpacity=".25" />
+          <stop stopColor="#ffffff" stopOpacity=".1" />
+          <stop offset="1" stopColor="#e6e6e6" stopOpacity=".25" />
         </radialGradient>
       </defs>
       <g fill="none" stroke="#b5b5b5" strokeWidth=".7">

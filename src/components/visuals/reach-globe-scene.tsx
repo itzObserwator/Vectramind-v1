@@ -28,7 +28,7 @@ alpha=smoothstep(0.,.25,facing)*(.45+.55*max(0.,facing)); gl_PointSize=pixelRati
 const fragment = `varying float alpha; void main(){float d=length(gl_PointCoord-.5); if(d>.5)discard;
 gl_FragColor=vec4(.12,.14,.17,alpha*(1.-smoothstep(.32,.5,d)));}`;
 const surfaceVertex = `varying vec3 n; varying vec3 eye; void main(){vec4 p=modelViewMatrix*vec4(position,1.); n=normalize(normalMatrix*normal); eye=normalize(-p.xyz); gl_Position=projectionMatrix*p;}`;
-const surfaceFragment = `varying vec3 n; varying vec3 eye; void main(){float edge=pow(1.-max(0.,dot(normalize(n),normalize(eye))),2.); gl_FragColor=vec4(mix(vec3(.985),vec3(.84,.91,.98),edge),1.);}`;
+const surfaceFragment = `varying vec3 n; varying vec3 eye; void main(){float edge=pow(1.-max(0.,dot(normalize(n),normalize(eye))),2.); gl_FragColor=vec4(mix(vec3(1.),vec3(.95),edge),1.);}`;
 type MapProps = {
   data: number[];
   still: boolean;

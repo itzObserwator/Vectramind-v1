@@ -23,21 +23,13 @@ body::selection {
   background: #fafafaf5;
   border-color: #dedfe2;
 }
-body:has(.inner-page) .button-primary,
-body:has(.not-found-page) .button-primary {
-  background: #292b30;
-  color: #fff;
-}
-body:has(.inner-page) .button-primary:hover {
-  background: #454951;
-}
 body:has(.inner-page) .button-outline {
   background: #fff;
   border-color: #c8ced6;
 }
 body:has(.inner-page) .floating-contact {
-  color: #555a62;
-  border-color: #dedfe2;
+  color: var(--primary-cta-foreground);
+  border-color: var(--primary);
 }
 .inner-page {
   --page-gutter: clamp(24px, 5.5vw, 110px);
