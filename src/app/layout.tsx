@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import "./inner-pages.css";
 import "./experience.css";
 import "./post-hero.css";
 import "./capabilities.css";
@@ -10,11 +9,6 @@ import "./global-reach.css";
 import "./landing-palette.css";
 import "./footer.css";
 import "./clients.css";
-import "./page-theme.css";
-import "./product-landing.css";
-import "./capabilities-page.css";
-import "./about-page.css";
-import "./support-page.css";
 import "./primary-theme.css";
 import "./typography.css";
 export const metadata: Metadata = {
@@ -36,7 +30,7 @@ export default function RootLayout({
       <head>
         <link
           rel="preload"
-          href="/fonts/inter-latin.woff2"
+          href="/fonts/inter-ui.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"

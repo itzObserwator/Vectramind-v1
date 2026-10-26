@@ -105,7 +105,7 @@ try {
     await expect(page).toHaveURL(/\/firstpass\/?$/);
     await expect(menu).not.toBeVisible();
     await expect(page.locator("body")).not.toHaveCSS("overflow", "hidden");
-    await expect(page.locator("h1")).toContainText("Better journeys");
+    await expect(page.locator("h1")).toHaveText("Your care.Connected.");
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,

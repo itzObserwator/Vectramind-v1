@@ -1,5 +1,7 @@
+import "./page-styles";
 import Link from "next/link";
 import { HeroEnergy } from "@/components/visuals/hero-energy";
+import { HeroRibbons } from "@/components/visuals/hero-ribbons";
 
 export function AboutHero() {
   return (
@@ -8,7 +10,9 @@ export function AboutHero() {
       className="inner-hero experience-hero product-landing-hero about-hero"
       aria-labelledby="about-title"
     >
-      <HeroEnergy />
+      <HeroEnergy>
+        <HeroRibbons />
+      </HeroEnergy>
       <div className="product-landing-hero-content">
         <span className="eyebrow">Meet Vectramind</span>
         <h1 id="about-title" className="display">

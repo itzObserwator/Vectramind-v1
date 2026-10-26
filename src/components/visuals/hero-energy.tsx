@@ -1,48 +1,28 @@
 "use client";
-import { useEffect, useRef, type CSSProperties } from "react";
-import trails from "./hero-pulse-paths.json";
-import {
-  trailPulseColors,
-  trailPulseDelay,
-  trailPulseDuration,
-  trailPulseLength,
-  trailPulseOpacity,
-} from "./trail-pulses";
+import { useEffect, useRef, type ReactNode } from "react";
 
-function RibbonUnderlay() {
-  return (
-    <svg
-      className="hero-ribbon-underlay"
-      viewBox="0 0 1200 700"
-      preserveAspectRatio="xMidYMid slice"
-      aria-hidden="true"
-    >
-      <image
-        href="/images/hero-ribbon-underlay.svg"
-        width="1200"
-        height="700"
-      />
-    </svg>
-  );
-}
-export function HeroEnergy() {
+export function HeroEnergy({ children }: { children: ReactNode }) {
   const root = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const element = root.current;
-    if (!element) return;
-    let visible = false;
-    const sync = () => {
-      element.dataset.active = String(visible && !document.hidden);
+    let disposed = false;
+    let cleanup: (() => void) | undefined;
+    const start = () => {
+      import("./hero-pulses-runtime").then(({ mount }) => {
+        if (!disposed && root.current) cleanup = mount(root.current);
+      });
     };
-    const observer = new IntersectionObserver(([entry]) => {
-      visible = entry.isIntersecting;
-      sync();
-    });
-    observer.observe(element);
-    document.addEventListener("visibilitychange", sync);
+    // Artwork and copy are already rendered. Let initial hydration finish
+    // before downloading and starting this decorative enhancement.
+    const idle =
+      typeof window.requestIdleCallback === "function"
+        ? window.requestIdleCallback(start, { timeout: 500 })
+        : window.setTimeout(start, 60);
     return () => {
-      observer.disconnect();
-      document.removeEventListener("visibilitychange", sync);
+      disposed = true;
+      if (typeof window.cancelIdleCallback === "function")
+        window.cancelIdleCallback(idle);
+      else clearTimeout(idle);
+      cleanup?.();
     };
   }, []);
   return (
@@ -52,37 +32,7 @@ export function HeroEnergy() {
       aria-hidden="true"
       data-active="false"
     >
-      <RibbonUnderlay />
-      <svg className="hero-ribbon-main" viewBox="0 0 1000 1000" fill="none">
-        <image
-          href="/images/hero-ribbon-base.svg"
-          x="-1000"
-          y="-500"
-          width="3000"
-          height="2000"
-        />
-        {trails.flatMap((trail, index) =>
-          [trail.left, trail.right].map((d, side) => (
-            <path
-              key={`${index}-${side}`}
-              className="hero-trail-pulse"
-              d={d}
-              pathLength="1"
-              stroke={trailPulseColors[index % 4]}
-              strokeWidth={trail.width}
-              strokeLinecap="round"
-              strokeDasharray={`${trailPulseLength * 2} ${1 - trailPulseLength * 2}`}
-              opacity={trailPulseOpacity}
-              style={
-                {
-                  "--hero-pulse-duration": `${trailPulseDuration(index) / 2}s`,
-                  "--hero-pulse-delay": `${trailPulseDelay(index) - 1.6}s`,
-                } as CSSProperties
-              }
-            />
-          )),
-        )}
-      </svg>
+      {children}
     </div>
   );
 }

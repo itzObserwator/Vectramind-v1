@@ -1,5 +1,7 @@
+import "./page-styles";
 import Link from "next/link";
 import { HeroEnergy } from "@/components/visuals/hero-energy";
+import { HeroRibbons } from "@/components/visuals/hero-ribbons";
 import { products, type ProductKey } from "@/content/products";
 
 export function ProductLandingHero({ product }: { product: ProductKey }) {
@@ -12,7 +14,9 @@ export function ProductLandingHero({ product }: { product: ProductKey }) {
       className="inner-hero experience-hero product-landing-hero"
       aria-labelledby={`${product}-title`}
     >
-      <HeroEnergy />
+      <HeroEnergy>
+        <HeroRibbons />
+      </HeroEnergy>
       <div className="product-landing-hero-content">
         <img
           className={`product-landing-brand ${product}-brand`}

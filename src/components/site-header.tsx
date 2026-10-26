@@ -106,7 +106,12 @@ export function Header() {
       ref={header}
       className={`header ${scrolled ? "header-scrolled" : ""} ${pathname !== "/" ? "header-inner" : "header-home"}`}
     >
-      <Link href="/" aria-label="Vectramind home" className="logo">
+      <Link
+        href="/"
+        aria-label="Vectramind home"
+        className="logo"
+        prefetch={pathname === "/" ? false : null}
+      >
         <img
           src="/images/vectramind-logo.svg"
           alt="Vectramind"

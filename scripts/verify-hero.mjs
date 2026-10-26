@@ -33,7 +33,9 @@ try {
   const trails = page.locator(".hero-energy .hero-ribbon-main");
   await expect(trails).toHaveCount(1);
   await expect(page.locator(".hero-energy canvas")).toHaveCount(0);
-  await expect(trails.locator(".hero-trail-pulse")).toHaveCount(16);
+  await expect(page.locator(".hero-pulse-plane .hero-trail-pulse")).toHaveCount(
+    16,
+  );
   await page.waitForTimeout(1800);
   const first = await pixels(page);
   await page.waitForTimeout(1100);
@@ -42,6 +44,26 @@ try {
     difference(first, second),
     "Faster logo-color pulses should move visibly",
   ).toBeGreaterThan(0.001);
+  await page.evaluate(() => scrollTo(0, 1500));
+  await expect(page.locator(".hero-energy")).toHaveAttribute(
+    "data-active",
+    "false",
+  );
+  expect(
+    await page
+      .locator(".hero-pulse-plane")
+      .evaluate((element) =>
+        element
+          .getAnimations({ subtree: true })
+          .every((animation) => animation.playState === "paused"),
+      ),
+    "Hero pulses must stop consuming animation work outside the viewport",
+  ).toBe(true);
+  await page.evaluate(() => scrollTo(0, 0));
+  await expect(page.locator(".hero-energy")).toHaveAttribute(
+    "data-active",
+    "true",
+  );
   await page.getByRole("button", { name: "Let’s build what’s next" }).click();
   await expect(page.getByRole("dialog")).toBeVisible();
   await page.keyboard.press("Escape");
@@ -70,6 +92,10 @@ try {
     ).toBe(true);
   }
   await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect(page.locator(".hero-energy")).toHaveAttribute(
+    "data-active",
+    "false",
+  );
   await page.waitForTimeout(800);
   const frozen = await pixels(page);
   await page.waitForTimeout(600);

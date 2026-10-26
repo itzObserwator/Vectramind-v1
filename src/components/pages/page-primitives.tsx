@@ -1,3 +1,4 @@
+import "./page-styles";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { Arrow, SectionLabel } from "@/components/site-primitives";

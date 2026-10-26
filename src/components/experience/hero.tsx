@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { ContactButton } from "@/components/site-primitives";
 import { HeroEnergy } from "@/components/visuals/hero-energy";
+import { HeroRibbons } from "@/components/visuals/hero-ribbons";
 import { experience } from "@/content/experience";
 
 export function ExperienceHero() {
@@ -10,7 +10,9 @@ export function ExperienceHero() {
       className="experience-hero"
       aria-label="Vectramind introduction"
     >
-      <HeroEnergy />
+      <HeroEnergy>
+        <HeroRibbons />
+      </HeroEnergy>
       <div className="experience-hero-content">
         <p className="experience-kicker">
           <span />
@@ -35,9 +37,9 @@ export function ExperienceHero() {
           <ContactButton showArrow={false}>
             Let’s build what’s next
           </ContactButton>
-          <Link href="#products" className="button hero-platform-button">
+          <a href="#products" className="button hero-platform-button">
             Explore our platforms
-          </Link>
+          </a>
         </div>
       </div>
       <div className="experience-hero-foot">

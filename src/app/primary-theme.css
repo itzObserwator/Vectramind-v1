@@ -2,6 +2,9 @@
 :root {
   --primary: #007bff;
   --primary-hover: #1687ff;
+  /* The brand blue stays #007BFF; small white action labels need a darker fill. */
+  --primary-action: #006bdf;
+  --primary-action-hover: #005fc7;
   --primary-foreground: #05111f;
   --primary-cta-foreground: #fff;
   --primary-ink: #005fcc;
@@ -18,15 +21,15 @@ body:has(.experience-home),
 }
 body .button.button-primary,
 .footer-join form button {
-  background: var(--primary);
+  background: var(--primary-action);
   color: var(--primary-cta-foreground);
-  border-color: var(--primary);
+  border-color: var(--primary-action);
 }
 body .button.button-primary:hover,
 .footer-join form button:hover {
-  background: var(--primary-hover);
+  background: var(--primary-action-hover);
   color: var(--primary-cta-foreground);
-  border-color: var(--primary-hover);
+  border-color: var(--primary-action-hover);
 }
 body
   :is(.experience-home, .inner-page, .not-found-page)

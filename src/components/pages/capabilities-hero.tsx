@@ -1,5 +1,7 @@
+import "./page-styles";
 import Link from "next/link";
 import { HeroEnergy } from "@/components/visuals/hero-energy";
+import { HeroRibbons } from "@/components/visuals/hero-ribbons";
 
 export function CapabilitiesHero() {
   return (
@@ -8,7 +10,9 @@ export function CapabilitiesHero() {
       className="inner-hero experience-hero product-landing-hero capabilities-hero"
       aria-labelledby="capabilities-title"
     >
-      <HeroEnergy />
+      <HeroEnergy>
+        <HeroRibbons />
+      </HeroEnergy>
       <div className="product-landing-hero-content">
         <span className="eyebrow">Our capabilities</span>
         <h1 id="capabilities-title" className="display">
