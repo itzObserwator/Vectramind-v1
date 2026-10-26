@@ -1,11 +1,12 @@
 import { useId } from "react";
+import { PRIMARY_SIGNALS } from "@/lib/primary-theme";
 import { IntegrationVisual } from "./integration-visual";
 import {
   INTELLIGENCE_PANEL_COUNT,
   intelligencePanelPose,
 } from "./intelligence-ribbon";
 import { capabilityPath } from "./capability-geometry";
-const colors = ["#2873b9", "#318a3e", "#f2bb0b", "#e22526"];
+const colors = PRIMARY_SIGNALS;
 
 /** Source-owned vector faces; projected coordinates are updated by the scroll timeline. */
 export function CapabilityVisual({ active }: { active: number }) {
@@ -174,9 +175,9 @@ export function CapabilityVisual({ active }: { active: number }) {
           x2="100%"
           y2="85%"
         >
-          <stop stopColor="#fff" stopOpacity=".96" />
-          <stop offset=".4" stopColor="#e0e0e0" stopOpacity=".72" />
-          <stop offset="1" stopColor="#adadad" stopOpacity=".42" />
+          <stop stopColor="#f2f8ff" stopOpacity=".96" />
+          <stop offset=".4" stopColor="#c9e3ff" stopOpacity=".72" />
+          <stop offset="1" stopColor="#8cbbea" stopOpacity=".42" />
         </linearGradient>
         <linearGradient
           id={`${id}-layer-edge`}
@@ -186,8 +187,8 @@ export function CapabilityVisual({ active }: { active: number }) {
           y2="100%"
         >
           <stop stopColor="#fff" stopOpacity=".9" />
-          <stop offset=".35" stopColor="#aeaeae" stopOpacity=".55" />
-          <stop offset="1" stopColor="#7d7d7d" stopOpacity=".36" />
+          <stop offset=".35" stopColor="#9ac4eb" stopOpacity=".55" />
+          <stop offset="1" stopColor="#76a7d8" stopOpacity=".36" />
         </linearGradient>
         <linearGradient
           id={`${id}-integration-metal`}
@@ -197,9 +198,9 @@ export function CapabilityVisual({ active }: { active: number }) {
           y2="45%"
         >
           <stop stopColor="#fff" stopOpacity=".96" />
-          <stop offset=".38" stopColor="#c9c9c9" stopOpacity=".94" />
-          <stop offset=".65" stopColor="#999999" stopOpacity=".86" />
-          <stop offset="1" stopColor="#e1e1e1" stopOpacity=".8" />
+          <stop offset=".38" stopColor="#bfdcfa" stopOpacity=".94" />
+          <stop offset=".65" stopColor="#81b0df" stopOpacity=".86" />
+          <stop offset="1" stopColor="#d7eaff" stopOpacity=".8" />
         </linearGradient>
         <linearGradient
           id={`${id}-ribbon-rear`}
@@ -208,10 +209,10 @@ export function CapabilityVisual({ active }: { active: number }) {
           x2="100%"
           y2="35%"
         >
-          <stop stopColor="#ffffff" stopOpacity=".98" />
-          <stop offset=".24" stopColor="#dbdbdb" stopOpacity=".94" />
-          <stop offset=".8" stopColor="#a4a4a4" stopOpacity=".63" />
-          <stop offset="1" stopColor="#e8e8e8" stopOpacity=".72" />
+          <stop stopColor="#f2f8ff" stopOpacity=".98" />
+          <stop offset=".24" stopColor="#c9e3ff" stopOpacity=".94" />
+          <stop offset=".8" stopColor="#8cbbea" stopOpacity=".63" />
+          <stop offset="1" stopColor="#dfedfc" stopOpacity=".72" />
         </linearGradient>
         <linearGradient
           id={`${id}-ribbon-front`}
@@ -220,17 +221,17 @@ export function CapabilityVisual({ active }: { active: number }) {
           x2="100%"
           y2="60%"
         >
-          <stop stopColor="#fbfbfd" stopOpacity=".96" />
-          <stop offset=".4" stopColor="#c2c2c2" stopOpacity=".87" />
-          <stop offset="1" stopColor="#a3a3a3" stopOpacity=".48" />
+          <stop stopColor="#f0f7ff" stopOpacity=".96" />
+          <stop offset=".4" stopColor="#b2d5f7" stopOpacity=".87" />
+          <stop offset="1" stopColor="#82b4e6" stopOpacity=".48" />
         </linearGradient>
         <linearGradient id={`${id}-edge`}>
-          <stop stopColor="#aaaaaa" stopOpacity=".45" />
+          <stop stopColor="#93bce5" stopOpacity=".45" />
           <stop offset=".45" stopColor="#fff" />
-          <stop offset="1" stopColor="#ababab" stopOpacity=".6" />
+          <stop offset="1" stopColor="#9fc6eb" stopOpacity=".6" />
         </linearGradient>
         <radialGradient id={`${id}-halo`}>
-          <stop stopColor="#e4e4e4" stopOpacity=".68" />
+          <stop stopColor="#e5f1ff" stopOpacity=".68" />
           <stop offset="1" stopColor="#fafafa" stopOpacity="0" />
         </radialGradient>
       </defs>
@@ -263,7 +264,7 @@ export function CapabilityVisual({ active }: { active: number }) {
                 />
                 <path
                   {...shape("fin-edge", i, 0)}
-                  fill="#a9a9a9"
+                  fill="#89b5df"
                   fillOpacity=".58"
                 />
                 <path

@@ -28,7 +28,7 @@ function SignalFallback({ mode }: { mode: "flow" | "architecture" | "globe" }) {
               key={i}
               d={`M -100 ${-80 + i * 9} C 250 ${50 + i * 8}, 400 ${640 - i * 6}, 600 390 S 1000 ${120 + i * 5}, 1300 ${i * 10 - 30}`}
               fill="none"
-              stroke={i % 4 === 0 ? "#28a9cf" : "#235bf0"}
+              stroke={i % 4 === 0 ? "#28a9cf" : "#007BFF"}
               strokeOpacity=".14"
               strokeWidth={i % 4 === 0 ? 2 : 1}
             />
@@ -40,7 +40,7 @@ function SignalFallback({ mode }: { mode: "flow" | "architecture" | "globe" }) {
               width="12"
               height={270 + Math.cos(i * 0.25) * 60}
               rx="4"
-              fill={i % 7 < 2 ? "#235bf0" : "#d9e4ee"}
+              fill={i % 7 < 2 ? "#007BFF" : "#d9e4ee"}
               transform={`rotate(-12 ${220 + i * 30} 350)`}
             />
           ),

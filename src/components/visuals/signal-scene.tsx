@@ -42,7 +42,7 @@ function LightTrails({ still }: { still: boolean }) {
             args={[curve, 100, i % 5 === 0 ? 0.017 : 0.007, 4, false]}
           />
           <meshBasicMaterial
-            color={i % 5 === 0 ? "#20a9da" : "#235bf0"}
+            color={i % 5 === 0 ? "#20a9da" : "#007BFF"}
             transparent
             opacity={i % 5 === 0 ? 0.55 : 0.18}
             depthWrite={false}
@@ -113,7 +113,7 @@ function Slat({
     >
       <boxGeometry args={[0.1, 1, 1.2]} />
       <meshStandardMaterial
-        color={index % 7 < 2 ? "#235bf0" : "#cbd8e6"}
+        color={index % 7 < 2 ? "#007BFF" : "#cbd8e6"}
         metalness={0.5}
         roughness={0.28}
       />
@@ -218,12 +218,12 @@ function Globe({ still }: { still: boolean }) {
         <group key={i} position={pin}>
           <mesh>
             <sphereGeometry args={[0.04, 16, 12]} />
-            <meshBasicMaterial color="#235bf0" />
+            <meshBasicMaterial color="#007BFF" />
           </mesh>
           <mesh>
             <sphereGeometry args={[0.085, 16, 12]} />
             <meshBasicMaterial
-              color="#235bf0"
+              color="#007BFF"
               transparent
               opacity={0.14}
               depthWrite={false}

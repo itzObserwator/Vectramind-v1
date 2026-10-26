@@ -33,9 +33,9 @@ function Form({
         // patches share one radius, keeping the silhouette and seams smooth.
         <group ref={orb} rotation={[0.3, 0, 0.45]}>
           {[
-            { start: 0, length: 1.23, color: "#d6d9dd" },
-            { start: 1.23, length: Math.PI - 2.46, color: "#235bf0" },
-            { start: Math.PI - 1.23, length: 1.23, color: "#d6d9dd" },
+            { start: 0, length: 1.23, color: "#c9e3ff" },
+            { start: 1.23, length: Math.PI - 2.46, color: "#007BFF" },
+            { start: Math.PI - 1.23, length: 1.23, color: "#c9e3ff" },
           ].map(({ start, length, color }, index) => (
             <mesh key={index}>
               <sphereGeometry
@@ -60,7 +60,7 @@ function Form({
           >
             <sphereGeometry args={[1, 64, 48]} />
             <meshStandardMaterial
-              color={i === 1 ? "#235bf0" : "#d6d9dd"}
+              color={i === 1 ? "#007BFF" : "#c9e3ff"}
               roughness={0.28}
               metalness={0.66}
             />
@@ -78,7 +78,7 @@ function Form({
           >
             <sphereGeometry args={[0.8, 40, 40]} />
             <meshStandardMaterial
-              color={i === 2 ? "#235bf0" : "#d9dce0"}
+              color={i === 2 ? "#007BFF" : "#b2d5f7"}
               metalness={0.7}
               roughness={0.22}
             />

@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useViewportPresence } from "@/components/use-viewport-presence";
 import { reachLocations } from "@/content/global-reach";
+import { PRIMARY_COLOR } from "@/lib/primary-theme";
 const Scene = dynamic(() => import("./reach-globe-scene"), { ssr: false });
 function Fallback() {
   return (
@@ -13,8 +14,8 @@ function Fallback() {
     >
       <defs>
         <radialGradient id="reach-fallback-fill">
-          <stop stopColor="#ebebeb" stopOpacity=".1" />
-          <stop offset="1" stopColor="#c5c5c5" stopOpacity=".25" />
+          <stop stopColor="#e8f3ff" stopOpacity=".1" />
+          <stop offset="1" stopColor="#a9cff2" stopOpacity=".25" />
         </radialGradient>
       </defs>
       <g fill="none" stroke="#b5b5b5" strokeWidth=".7">
@@ -87,12 +88,7 @@ export function ReachGlobe({ selectedOffice }: { selectedOffice: number }) {
           <g key={location.name} data-location={location.name} opacity="0">
             <path fill="none" stroke="#838994" strokeWidth=".8" />
             <circle r="5" fill="white" />
-            <circle
-              r="3"
-              fill={
-                ["#2873b9", "#318a3e", "#e22526", "#b28c15", "#2873b9"][index]
-              }
-            />
+            <circle r="3" fill={PRIMARY_COLOR} />
             <g className="reach-location-label">
               <rect
                 width={location.name.length * 6.3 + 18}

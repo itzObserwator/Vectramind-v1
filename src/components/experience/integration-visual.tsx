@@ -1,4 +1,5 @@
 import { HugeiconsIcon } from "@hugeicons/react";
+import { PRIMARY_COLOR, PRIMARY_SIGNALS } from "@/lib/primary-theme";
 import {
   Calendar03Icon,
   Message01Icon,
@@ -14,7 +15,7 @@ const systems = [
     detail: "Customer context",
     x: 70,
     y: 120,
-    color: "#2873b9",
+    color: PRIMARY_COLOR,
     icon: ChartLineData01Icon,
   },
   {
@@ -22,7 +23,7 @@ const systems = [
     detail: "Clinical records",
     x: 70,
     y: 350,
-    color: "#318a3e",
+    color: PRIMARY_COLOR,
     icon: Calendar03Icon,
   },
   {
@@ -30,7 +31,7 @@ const systems = [
     detail: "Customer engagement",
     x: 560,
     y: 120,
-    color: "#e22526",
+    color: PRIMARY_COLOR,
     icon: Message01Icon,
   },
   {
@@ -38,7 +39,7 @@ const systems = [
     detail: "Patient experience",
     x: 560,
     y: 350,
-    color: "#b28c15",
+    color: PRIMARY_COLOR,
     icon: Calendar03Icon,
   },
 ];
@@ -49,7 +50,7 @@ const routes = [
   "M500 312H527Q540 312 540 325V382Q540 395 553 395H560",
   "M405 345V480",
 ];
-const packetColors = ["#2873b9", "#318a3e", "#e22526", "#b28c15", "#318a3e"];
+const packetColors = [...PRIMARY_SIGNALS, PRIMARY_COLOR];
 
 export function IntegrationVisual({ id }: { id: string }) {
   return (
@@ -74,8 +75,8 @@ export function IntegrationVisual({ id }: { id: string }) {
           />
         </filter>
         <linearGradient id={`${id}-system-surface`} x1="0" y1="0" x2="1" y2="1">
-          <stop stopColor="#fff" />
-          <stop offset="1" stopColor="#f2f2f2" />
+          <stop stopColor="#f7fbff" />
+          <stop offset="1" stopColor="#ddebfc" />
         </linearGradient>
         <pattern
           id={`${id}-system-dots`}
@@ -83,7 +84,7 @@ export function IntegrationVisual({ id }: { id: string }) {
           height="20"
           patternUnits="userSpaceOnUse"
         >
-          <circle cx="1" cy="1" r=".65" fill="#c4c4c4" fillOpacity=".38" />
+          <circle cx="1" cy="1" r=".65" fill="#8ab8e5" fillOpacity=".38" />
         </pattern>
       </defs>
       <rect
@@ -184,7 +185,7 @@ export function IntegrationVisual({ id }: { id: string }) {
               height="90"
               rx="13"
               fill={`url(#${id}-system-surface)`}
-              stroke="#d5d5d5"
+              stroke="#9fc6eb"
               filter={`url(#${id}-system-shadow)`}
             />
             <g transform="translate(15 16)" color={system.color}>
@@ -217,7 +218,7 @@ export function IntegrationVisual({ id }: { id: string }) {
           height="110"
           rx="16"
           fill={`url(#${id}-system-surface)`}
-          stroke="#b4b4b4"
+          stroke="#9fc6eb"
           strokeWidth="1.2"
           filter={`url(#${id}-system-shadow)`}
         />

@@ -1,0 +1,231 @@
+/* Primary UI colour. Logo artwork and photographs retain their original colours. */
+:root {
+  --primary: #007bff;
+  --primary-hover: #1687ff;
+  --primary-foreground: #05111f;
+  --primary-cta-foreground: #fff;
+  --primary-ink: #005fcc;
+  --primary-surface: #e8f3ff;
+  --primary-border: #99caff;
+}
+body,
+body:has(.experience-home),
+.experience-home .experience-hero {
+  /* Legacy text accents use an accessible shade of the primary blue. */
+  --blue: var(--primary-ink);
+  --landing-accent: var(--primary);
+  --brand-blue: var(--primary);
+}
+body .button.button-primary,
+.footer-join form button {
+  background: var(--primary);
+  color: var(--primary-cta-foreground);
+  border-color: var(--primary);
+}
+body .button.button-primary:hover,
+.footer-join form button:hover {
+  background: var(--primary-hover);
+  color: var(--primary-cta-foreground);
+  border-color: var(--primary-hover);
+}
+body
+  :is(.experience-home, .inner-page, .not-found-page)
+  :is(
+    .hero-platform-button,
+    .button-outline,
+    .platform-card-cta,
+    .reach-about-link,
+    .capability-explore
+  ) {
+  color: var(--primary-ink);
+  background: #fff;
+  border-color: var(--primary-border);
+}
+body
+  :is(.experience-home, .inner-page, .not-found-page)
+  :is(
+    .hero-platform-button,
+    .button-outline,
+    .platform-card-cta,
+    .reach-about-link,
+    .capability-explore
+  ):hover {
+  color: var(--primary-ink);
+  background: var(--primary-surface);
+  border-color: var(--primary);
+}
+body
+  :is(
+    .text-link,
+    .contact-email,
+    .contact-side-links a,
+    .article-back,
+    .article-body a,
+    .legal-layout aside a,
+    .article-layout aside a
+  ) {
+  color: var(--primary-ink);
+}
+body
+  :is(
+    .footer-reference-legal a,
+    .footer-reference-nav a,
+    .desktop-nav a,
+    .mobile-nav a
+  ):hover {
+  color: var(--primary-ink);
+}
+.desktop-nav a[aria-current="page"],
+.mobile-nav a[aria-current="page"] {
+  color: var(--primary-ink);
+}
+.desktop-nav a[aria-current="page"]:after {
+  background: var(--primary);
+}
+body :is(.label-dot, .experience-kicker > span) {
+  background: var(--primary);
+}
+body .module-buttons > button[aria-selected="true"],
+body .product-landing .module-buttons > button[aria-selected="true"],
+body .support-answer-tabs button[aria-selected="true"],
+body .experience-home .platform-tabs button[aria-selected="true"] {
+  color: var(--primary-foreground);
+  background: var(--primary);
+  border-color: var(--primary);
+}
+body .reach-office-list button[aria-selected="true"] {
+  background: var(--primary-surface);
+  border-color: var(--primary);
+  color: var(--primary-ink);
+}
+body .reach-office-list button[aria-selected="true"] .reach-office-number {
+  color: var(--primary-ink);
+}
+body :is(.capability-navigation, .slider-controls) button:not(:disabled):hover,
+body .capabilities-jump a:hover {
+  color: var(--primary-ink);
+  background: var(--primary-surface);
+  border-color: var(--primary);
+}
+body .floating-contact,
+body:has(.experience-home) .floating-contact,
+body:has(.inner-page) .floating-contact {
+  color: var(--primary-cta-foreground);
+  background: var(--primary);
+  border-color: var(--primary);
+}
+body :is(.product-landing, .experience-home) .platform-category:nth-child(n) {
+  color: var(--primary-ink);
+  background: #f2f8ff;
+  border-color: var(--primary-border);
+}
+body .about-office:nth-child(n) i,
+body .synapse-message-dot,
+body .synapse-send {
+  background: var(--primary);
+}
+body .about-office:hover {
+  background: var(--primary-surface);
+  border-color: var(--primary);
+}
+body .platform-thumbnail .platform-art-line-accent {
+  stroke: var(--primary);
+}
+body .experience-home .experience-pillars > span:nth-child(n) i {
+  border-color: var(--primary);
+}
+body .form-consent input {
+  accent-color: var(--primary-ink);
+}
+body :is(input, select, textarea):focus {
+  outline-color: var(--primary);
+  border-color: var(--primary);
+}
+body :is(a, button, input, select, textarea, [tabindex]):focus-visible,
+.footer-reference-legal a:focus-visible,
+.client-directory-caption button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+body ::selection {
+  color: var(--primary-foreground);
+  background: #b8daff;
+}
+
+/* A shared pale-blue material for component illustrations and supporting cards. */
+body .post-hero-node,
+body .ecosystem-sphere,
+body .orbital-ecosystem .ecosystem-hub {
+  border-color: #a5c9ed;
+  background:
+    radial-gradient(ellipse at 32% 14%, #fff 0%, #ffffffcc 14%, #ffffff00 47%),
+    radial-gradient(
+      circle at 38% 28%,
+      #f2f8ff 8%,
+      #c9e3ff 48%,
+      #8cbbea 88%,
+      #b2d5f7 100%
+    );
+  box-shadow:
+    inset 1px 2px 3px #fff,
+    inset -3px -5px 9px #347fc326,
+    0 13px 16px -9px #3c7dbd40;
+}
+body .post-hero-column .post-hero-column-shaft {
+  border-inline-color: #91bee847;
+  background: linear-gradient(
+    90deg,
+    #a4d0f72b,
+    #f2f8ffb3 38%,
+    #8cbbea55 85%,
+    #6c9fcc33
+  );
+}
+body .post-hero-column-right {
+  border-bottom-color: #91bee8;
+}
+body .post-hero-connect-line,
+body .ecosystem-bridge,
+body .ecosystem-halo {
+  stroke: #a5c9ed;
+}
+body .post-hero-card {
+  background: linear-gradient(120deg, #f6fbffed, #deedfcce);
+  border-color: #c1dcf5;
+}
+body .post-hero-card .post-hero-card-icon {
+  background: #e1efff;
+  color: var(--primary-ink);
+}
+body .ecosystem-node {
+  --node-accent: var(--primary);
+}
+body .ecosystem-detail {
+  background: #f1f8ffed;
+  border-color: #b8d6f2;
+}
+body .platform-thumbnail {
+  background:
+    radial-gradient(ellipse at 50% 92%, #c9e3ff 0, transparent 62%), #f2f8ff;
+}
+body .product-landing .module-panel {
+  background:
+    radial-gradient(ellipse at 100% 0, #c9e3ff, transparent 70%), #f3f9ff;
+  border-color: #bdd7f0;
+}
+body .support-help-grid article,
+body .about-office {
+  background: #f3f9ff;
+  border-color: #bdd7f0;
+}
+body .firstpass-appointment-summary,
+body .synapse-message-incoming {
+  background: #e8f3ff;
+  border-color: #c9e1f7;
+}
+body .page-connection-art {
+  background: radial-gradient(ellipse, #e0efff, transparent 72%);
+}
+body .page-connection-art svg > path {
+  stroke: #a5c9ed;
+}

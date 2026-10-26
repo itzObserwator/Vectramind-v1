@@ -27,14 +27,14 @@ export function EcosystemOrbits() {
       <defs>
         <radialGradient id="ecosystem-base">
           <stop offset="0" stopColor="#ffffff" stopOpacity=".12" />
-          <stop offset=".7" stopColor="#dcdde1" stopOpacity=".18" />
-          <stop offset="1" stopColor="#bfc1c7" stopOpacity=".1" />
+          <stop offset=".7" stopColor="#c9e3ff" stopOpacity=".18" />
+          <stop offset="1" stopColor="#8cbbea" stopOpacity=".1" />
         </radialGradient>
         <linearGradient id="ecosystem-ring" x1="0" y1="0" x2="1" y2="1">
-          <stop stopColor="#d0d2d7" stopOpacity=".45" />
-          <stop offset=".45" stopColor="#92969e" />
-          <stop offset=".72" stopColor="#f8f8fa" />
-          <stop offset="1" stopColor="#b0b3bc" />
+          <stop stopColor="#c9e3ff" stopOpacity=".45" />
+          <stop offset=".45" stopColor="#82b4e6" />
+          <stop offset=".72" stopColor="#f2f8ff" />
+          <stop offset="1" stopColor="#a5cbf0" />
         </linearGradient>
       </defs>
       {[0, 1].map((ring) => (

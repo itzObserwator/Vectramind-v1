@@ -15,6 +15,7 @@ import "./product-landing.css";
 import "./capabilities-page.css";
 import "./about-page.css";
 import "./support-page.css";
+import "./primary-theme.css";
 export const metadata: Metadata = {
   icons: { icon: "/images/vectramind-mark.svg" },
   title: "Vectramind — Transforming Human Experiences",
