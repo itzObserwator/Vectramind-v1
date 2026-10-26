@@ -6,6 +6,7 @@ import { Arrow, Mark } from "@/components/site-primitives";
 import { ecosystemNodes, experience } from "@/content/experience";
 import { EcosystemOrbits, orbitPosition } from "./ecosystem-orbits";
 import { EcosystemAtmosphere } from "./ecosystem-atmosphere";
+import { BrandAccentText } from "@/components/brand-accent-text";
 
 import { useNearViewport } from "@/components/use-near-viewport";
 
@@ -39,7 +40,9 @@ export function ConnectedEcosystem() {
         <header className="ecosystem-heading">
           <span className="ecosystem-eyebrow">Connected by design</span>
           <h2 id="ecosystem-title">
-            {experience.network.title.replace("\n", " ")}
+            <BrandAccentText
+              text={experience.network.title.replace("\n", " ")}
+            />
           </h2>
         </header>
         <div

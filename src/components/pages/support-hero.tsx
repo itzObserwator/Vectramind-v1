@@ -14,7 +14,7 @@ export function SupportHero() {
         <h1 id="support-title" className="display">
           Here to help.
           <br />
-          With you.
+          <span className="brand-heading-accent">With you.</span>
         </h1>
         <p>
           Find answers, explore your platform and connect with the people who

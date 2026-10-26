@@ -29,7 +29,7 @@ export function ProductLandingHero({ product }: { product: ProductKey }) {
         <h1 id={`${product}-title`} className="display">
           {title[0]}
           <br />
-          {title[1]}
+          <span className="brand-heading-accent">{title[1]}</span>
         </h1>
         <p>{data.description}</p>
         <div className="product-landing-actions">

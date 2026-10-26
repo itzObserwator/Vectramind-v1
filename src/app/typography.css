@@ -1,0 +1,246 @@
+/* Shared editorial sizes stay readable at every breakpoint. Illustration and
+   product mockup lettering keep their own scale inside their artwork. */
+:root {
+  --text-label: 0.75rem;
+  --text-small: 0.875rem;
+  --text-body: 1rem;
+}
+
+:root
+  body
+  :is(
+    .eyebrow,
+    .section-label,
+    .section-label > span,
+    .experience-kicker,
+    .inner-eyebrow,
+    .post-hero-eyebrow,
+    .ecosystem-eyebrow,
+    .reach-eyebrow,
+    .platform-card-topline,
+    .platforms-section-label,
+    .ecosystem-sphere > span,
+    .support-page .faq-search > span,
+    .support-page .form-heading > span,
+    .about-founder-layout h2
+  ) {
+  font-size: var(--text-label);
+  line-height: 1.6;
+}
+
+:root
+  body
+  :is(
+    .button,
+    .text-link,
+    .experience-quiet-link,
+    .inner-breadcrumb,
+    .inner-hero-bottom,
+    .product-landing-hero-caption,
+    .product-landing-proof,
+    .product-landing-workspace-caption,
+    .platform-category,
+    .platform-card-cta,
+    .product-preview-label,
+    .product-hero-preview > p,
+    .page-hero-photo figcaption,
+    .page-connection-art > span,
+    .post-hero-client-strip > p,
+    .post-hero-card,
+    .post-hero-graphic-caption,
+    .post-hero-outcome > p,
+    .post-hero-outcome > a,
+    .capability-navigation > span,
+    .capability-explore,
+    .ecosystem-detail > span,
+    .ecosystem-detail p,
+    .reach-about-link,
+    .reach-office-number,
+    .reach-office-name small,
+    .reach-office-detail p,
+    .reach-office-controls > span,
+    .reach-highlight > span,
+    .reach-metric > span,
+    .product-landing-metrics span,
+    .product-metrics span,
+    .module-buttons > button,
+    .capabilities-jump a,
+    .capabilities-jump a > span,
+    .capabilities-service li > span:first-child,
+    .client-directory-caption p,
+    .client-directory-controls button,
+    .case-counter,
+    .about-team-photo figcaption,
+    .about-founder-credit,
+    .about-office-index,
+    .about-office > span:last-child,
+    .people-slider figcaption span,
+    .office-chips > a,
+    .locations-grid > a > span:last-child,
+    .support-answer-tabs button,
+    .support-request-steps li > span,
+    .faq-result-count,
+    .form-fields label,
+    .form-consent,
+    .form-note,
+    .email-draft > p,
+    .email-draft pre,
+    .insights-count,
+    .insights-filters button,
+    .article-back,
+    .article-byline,
+    .article-layout > aside > a,
+    .legal-layout > aside > a,
+    .desktop-nav > a
+  ) {
+  font-size: var(--text-small);
+  line-height: 1.6;
+}
+
+:root
+  body
+  :is(
+    .experience-hero-description,
+    .post-hero-description,
+    .experience-capability-text,
+    .ecosystem-caption p,
+    .platform-card-description,
+    .reach-copy > p,
+    .client-editorial-heading > p,
+    .client-principles p,
+    .product-landing-hero-content > p,
+    .product-landing-section-heading > p,
+    .inner-hero-grid > div > p,
+    .inner-feature-grid p,
+    .section-description,
+    .module-panel p,
+    .capabilities-service-content > p,
+    .capabilities-service li,
+    .about-purpose-grid p,
+    .about-founder-note,
+    .support-help-grid p,
+    .support-request-steps p,
+    .faq-list summary,
+    .faq-list details > p,
+    .empty-results,
+    .contact-layout > aside > p,
+    .contact-side-links > a,
+    .support-quick-links p,
+    .insight-copy p,
+    .prose-document,
+    .not-found-page > p
+  ) {
+  font-size: var(--text-body);
+  line-height: 1.75;
+}
+
+/* Prevent mobile browsers from zooming into undersized form controls. */
+:root
+  body
+  :is(.form-fields, .faq-search, .footer-join)
+  :is(input, select, textarea) {
+  font-size: var(--text-body);
+  line-height: 1.5;
+}
+
+/* Equal sizes for the footer navigation, legal links and supporting copy. */
+:root body .reference-footer {
+  --footer-small-text: var(--text-small);
+}
+:root
+  body
+  :is(
+    .footer-contact-heading > p,
+    .footer-contact > p,
+    .footer-contact > a,
+    .footer-reference-brand nav,
+    .footer-reference-legal,
+    .footer-join-note,
+    .footer-join-result
+  ) {
+  font-size: var(--text-small);
+  line-height: 1.7;
+}
+
+:root body .experience-pillars {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px clamp(24px, 4vw, 56px);
+  font-size: var(--text-body);
+  line-height: 1.5;
+}
+:root body .experience-pillars > span {
+  gap: 12px;
+}
+:root body .experience-pillars i {
+  flex: 0 0 6px;
+  width: 6px;
+  height: 6px;
+}
+:root body .experience-hero-foot > p {
+  font-size: var(--text-small);
+  line-height: 1.6;
+  text-align: center;
+}
+:root body .ecosystem-sphere > span {
+  /* Labels must not stretch the circular nodes as their type gets larger. */
+  position: absolute;
+  max-width: none;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+:root body .form-note {
+  /* Supersedes the old mobile-only 9px !important declaration. */
+  font-size: var(--text-small) !important;
+}
+
+/* Give the illustration's result its own space once its canvas gets narrow. */
+@media (max-width: 900px) {
+  :root body .post-hero-graphic {
+    margin-bottom: 160px;
+  }
+  :root body .post-hero-outcome {
+    top: calc(100% + 20px);
+    left: 0;
+    width: 100%;
+    max-width: none;
+    text-align: center;
+  }
+  :root body .post-hero-outcome-value {
+    justify-content: center;
+  }
+  :root body .post-hero-outcome-track {
+    max-width: 160px;
+    margin-inline: auto;
+  }
+  :root body .post-hero-graphic-caption {
+    bottom: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  :root body .orbital-ecosystem .ecosystem-diagram {
+    width: 140%;
+    margin-inline: -20%;
+  }
+  :root body .experience-pillars {
+    font-size: var(--text-small);
+    gap: 10px 20px;
+  }
+  :root body .experience-hero-foot {
+    gap: 20px;
+  }
+  :root body .experience-pillars > span {
+    gap: 8px;
+  }
+  :root body .product-landing-hero-caption,
+  :root body .inner-hero-bottom,
+  :root body .product-landing-proof {
+    flex-wrap: wrap;
+    gap: 12px 20px;
+  }
+  :root body .section-label {
+    flex-wrap: wrap;
+    gap: 8px 20px;
+  }
+}

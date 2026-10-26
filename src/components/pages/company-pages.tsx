@@ -54,7 +54,8 @@ export function CareersPage() {
           <span className="eyebrow">Collaborate & work as one</span>
           <h2 className="display" data-reveal>
             A global outlook.
-            <br />A human culture.
+            <br />
+            <span className="brand-heading-accent">A human culture.</span>
           </h2>
           <p>
             We’re an equal rights employer that encourages diversity while
@@ -72,7 +73,7 @@ export function CareersPage() {
         <h2 className="display" data-reveal>
           Your next move
           <br />
-          could start here.
+          <span className="brand-heading-accent">could start here.</span>
         </h2>
         <p>
           Tell us what you love building and where you want to grow. Connect

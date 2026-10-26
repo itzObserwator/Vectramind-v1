@@ -67,7 +67,7 @@ export function People({
         <h2 className="display" data-reveal>
           Great minds.
           <br />
-          Human at heart.
+          <span className="brand-heading-accent">Human at heart.</span>
         </h2>
         <div className="slider-controls">
           <button

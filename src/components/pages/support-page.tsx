@@ -19,7 +19,7 @@ export function SupportPage() {
           <h2 id="support-start-title" className="display" data-reveal>
             The right help.
             <br />
-            For your platform.
+            <span className="brand-heading-accent">For your platform.</span>
           </h2>
           <p>
             Explore what your platform can do, find an answer to your question
@@ -93,7 +93,7 @@ export function SupportPage() {
             <h2 id="support-request-title" className="display" data-reveal>
               Tell us what’s
               <br />
-              happening.
+              <span className="brand-heading-accent">happening.</span>
             </h2>
             <p>
               Help our team understand your question so we can point you in the
@@ -151,7 +151,7 @@ export function SupportPage() {
             <h2 id="support-faq-title" className="display" data-reveal>
               Answers that
               <br />
-              move you forward.
+              <span className="brand-heading-accent">move you forward.</span>
             </h2>
             <p>
               Start with a product or search for what you need. If you’re still

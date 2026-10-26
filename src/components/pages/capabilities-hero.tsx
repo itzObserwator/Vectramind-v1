@@ -14,7 +14,7 @@ export function CapabilitiesHero() {
         <h1 id="capabilities-title" className="display">
           Intelligence.
           <br />
-          In motion.
+          <span className="brand-heading-accent">In motion.</span>
         </h1>
         <p>
           Bring intelligence, thoughtful design and connected systems together.

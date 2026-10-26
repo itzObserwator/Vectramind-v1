@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { Arrow, SectionLabel } from "@/components/site-primitives";
 import { Button } from "@/components/ui/button";
+import { BrandAccentText } from "@/components/brand-accent-text";
 
 export function PageHero({
   eyebrow,
@@ -124,7 +125,7 @@ export function IntroSection({
       <SectionLabel>{label}</SectionLabel>
       <div className="inner-intro">
         <h2 className="display" data-reveal>
-          {title}
+          <BrandAccentText text={title} />
         </h2>
         <div>
           <p data-reveal>{text}</p>
@@ -147,7 +148,7 @@ export function FeatureGrid({
     <section className="inner-section inner-panel page-padding">
       <SectionLabel>{label}</SectionLabel>
       <h2 className="display inner-section-title" data-reveal>
-        {title}
+        <BrandAccentText text={title} />
       </h2>
       <div className="inner-feature-grid">
         {items.map(([name, text], i) => (

@@ -71,7 +71,9 @@ export function Footer() {
       <FooterFlow />
       <div className="footer-reference-content">
         <header className="footer-contact-heading">
-          <h2 id="footer-contact-title">Get in touch.</h2>
+          <h2 id="footer-contact-title">
+            Get in <span className="brand-heading-accent">touch.</span>
+          </h2>
           <p>We're here for your questions, ideas and what comes next.</p>
         </header>
         <div className="footer-contacts">

@@ -15,7 +15,7 @@ export function ClientsAndStats() {
           <h2 id="clients-title" data-reveal>
             Great companies.
             <br />
-            Lasting connections.
+            <span className="brand-heading-accent">Lasting connections.</span>
           </h2>
           <p>
             Our customized solutions respond to the diverse needs of more than

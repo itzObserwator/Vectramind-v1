@@ -36,7 +36,7 @@ export function AboutPage() {
           <h2 id="about-story-title" className="display" data-reveal>
             Many minds.
             <br />
-            One shared purpose.
+            <span className="brand-heading-accent">One shared purpose.</span>
           </h2>
           <p>{reachContent.description}</p>
         </div>
@@ -77,7 +77,10 @@ export function AboutPage() {
         <div className="product-landing-section-heading">
           <h2 id="about-purpose-title" className="display" data-reveal>
             A world in motion.
-            <br />A purpose that stays human.
+            <br />
+            <span className="brand-heading-accent">
+              A purpose that stays human.
+            </span>
           </h2>
           <p>
             We solve problems with carefully measured magnitude and precisely
@@ -169,7 +172,7 @@ export function AboutPage() {
           <h2 id="about-locations-title" className="display" data-reveal>
             Many places.
             <br />
-            One direction.
+            <span className="brand-heading-accent">One direction.</span>
           </h2>
           <p>
             {reachContent.statement} Our team connects perspectives across five
@@ -204,7 +207,7 @@ export function AboutPage() {
           <h2 id="about-careers-title" className="display" data-reveal>
             Your next chapter.
             <br />
-            Our shared future.
+            <span className="brand-heading-accent">Our shared future.</span>
           </h2>
           <p>
             Join curious minds who are turning big ideas into better human

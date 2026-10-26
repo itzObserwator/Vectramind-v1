@@ -57,7 +57,7 @@ export function GlobalReach() {
             <h2 id="reach-title">
               Global reach.
               <br />
-              Human touch.
+              <span className="brand-heading-accent">Human touch.</span>
             </h2>
             <p>{reachContent.description}</p>
             <Link href="/about" className="reach-about-link">

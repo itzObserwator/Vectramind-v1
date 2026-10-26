@@ -53,7 +53,7 @@ export function ExperienceCapabilities({
         <h2 id="capability-heading" className="capability-main-title">
           Transform. Connect.
           <br />
-          Evolve.
+          <span className="brand-heading-accent">Evolve.</span>
         </h2>
         <div className="experience-capability-scene">
           <div className="experience-capability-copy capability-copy">

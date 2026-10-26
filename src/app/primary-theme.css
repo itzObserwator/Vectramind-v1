@@ -229,3 +229,144 @@ body .page-connection-art {
 body .page-connection-art svg > path {
   stroke: #a5c9ed;
 }
+
+/* Editorial colour rhythm: blue phrases, paper sections and stronger feature bands. */
+:root {
+  --brand-ink: #10243f;
+  --brand-paper: #f3f8ff;
+}
+body .brand-heading-accent,
+body .reference-capabilities .capability-main-title .brand-heading-accent,
+body .experience-home .experience-title-mask:last-child .hero-title-enter,
+body .inner-page .inner-title-mask:last-child > span,
+body .post-hero-question-mask:last-child .post-hero-question-line {
+  color: var(--primary);
+}
+body
+  :is(.experience-home, .inner-page)
+  :is(
+    .eyebrow,
+    .section-label,
+    .section-label > span,
+    .post-hero-eyebrow,
+    .ecosystem-eyebrow,
+    .reach-eyebrow,
+    .platforms-section-label,
+    .platforms-section-label h2
+  ) {
+  color: var(--primary-ink);
+}
+body .product-landing .product-landing-hero-content > .eyebrow,
+body .experience-home .experience-hero .experience-kicker {
+  color: var(--primary-ink);
+}
+body .product-landing-metrics strong,
+body .reach-highlight strong,
+body .about-purpose-grid h3 {
+  color: var(--primary);
+}
+body :is(.about-purpose, .about-locations, .support-request),
+body .product-landing-channel-section .inner-section {
+  background: var(--brand-paper);
+}
+body .support-page .request-form-wrap {
+  background: #fff;
+  border-color: var(--primary-border);
+}
+body .support-faq {
+  background: #fff;
+}
+body .reference-footer {
+  background: #eef6ff;
+}
+body .footer-contact-icon {
+  color: var(--primary-ink);
+  border-color: var(--primary-border);
+}
+body .post-hero-resolution {
+  margin-top: 35px;
+  padding: 32px 24px;
+  border-radius: 16px;
+  background: var(--primary);
+}
+body .post-hero-resolution > p {
+  color: #fff;
+}
+body .post-hero-resolution .button.button-primary,
+body .post-hero-resolution .button.button-primary:hover {
+  background: #fff;
+  color: var(--primary-ink);
+  border-color: #fff;
+}
+body :is(.product-landing-next, .talent-panel, .inner-cta) {
+  background: var(--primary);
+}
+body
+  :is(.product-landing-next, .talent-panel, .inner-cta)
+  :is(h2, .brand-heading-accent) {
+  color: #fff;
+}
+body
+  :is(.product-landing-next, .talent-panel, .inner-cta)
+  :is(p, .eyebrow, .section-label, .section-label > span) {
+  color: var(--primary-foreground);
+}
+body :is(.product-landing-next, .talent-panel, .inner-cta) .section-label {
+  border-color: #ffffff70;
+}
+body :is(.talent-panel, .inner-cta) .button.button-primary {
+  background: #fff;
+  color: var(--primary-ink);
+  border-color: #fff;
+}
+body
+  :is(.post-hero-resolution, .product-landing-next, .talent-panel, .inner-cta)
+  :is(a, button):focus-visible {
+  outline-color: #fff;
+}
+body .capabilities-services,
+body .experience-home .clients-editorial {
+  background: var(--brand-ink);
+}
+body .capabilities-services :is(h2, h3),
+body .experience-home .clients-editorial :is(h2, h3) {
+  color: #fff;
+}
+body
+  .capabilities-services
+  :is(
+    p,
+    li,
+    .eyebrow,
+    .section-label,
+    .section-label > span,
+    .capabilities-service-content li > span
+  ),
+body
+  .experience-home
+  .clients-editorial
+  :is(
+    p,
+    .section-label,
+    .section-label > span,
+    .client-directory-caption > span
+  ) {
+  color: #d2e3f6;
+}
+body .capabilities-services .brand-heading-accent,
+body .experience-home .clients-editorial .brand-heading-accent {
+  color: #7dbaff;
+}
+body
+  .capabilities-services
+  :is(.section-label, .capabilities-service, .capabilities-service li),
+body .experience-home .clients-editorial .client-principles > div {
+  border-color: #49617d;
+}
+@media (max-width: 600px) {
+  body .post-hero-resolution {
+    margin-top: 25px;
+    padding: 28px 20px;
+    border-radius: 12px;
+  }
+}

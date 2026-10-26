@@ -24,7 +24,7 @@ export function FirstpassPage() {
           <h2 id="firstpass-overview-title" className="display" data-reveal>
             A simpler journey.
             <br />
-            At every step.
+            <span className="brand-heading-accent">At every step.</span>
           </h2>
           <p>{data.introText}</p>
         </div>
@@ -87,7 +87,7 @@ export function FirstpassPage() {
             >
               Care, connected.
               <br />
-              Questions, answered.
+              <span className="brand-heading-accent">Questions, answered.</span>
             </h2>
             <p>
               Find the right starting point for your patients and your care
@@ -105,7 +105,10 @@ export function FirstpassPage() {
         <div>
           <h2 id="firstpass-next-title" className="display" data-reveal>
             Every conversation.
-            <br />A meaningful connection.
+            <br />
+            <span className="brand-heading-accent">
+              A meaningful connection.
+            </span>
           </h2>
           <p>
             Bring your customer conversations together with Synapse, our

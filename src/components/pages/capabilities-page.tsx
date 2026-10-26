@@ -39,7 +39,7 @@ export function CapabilitiesPage() {
           <h2 id="capabilities-services-title" className="display" data-reveal>
             Three disciplines.
             <br />
-            One shared direction.
+            <span className="brand-heading-accent">One shared direction.</span>
           </h2>
           <p>
             Start with your business, your people and the challenge ahead. We

@@ -25,7 +25,7 @@ export function SynapsePage() {
           <h2 id="synapse-overview-title" className="display" data-reveal>
             Every channel.
             <br />
-            One conversation.
+            <span className="brand-heading-accent">One conversation.</span>
           </h2>
           <p>{data.introText}</p>
         </div>
@@ -85,7 +85,7 @@ export function SynapsePage() {
             >
               A clearer view.
               <br />
-              Before we begin.
+              <span className="brand-heading-accent">Before we begin.</span>
             </h2>
             <p>Find your starting point. We’ll help you connect the rest.</p>
           </div>
@@ -101,7 +101,7 @@ export function SynapsePage() {
           <h2 id="synapse-next-title" className="display">
             Better journeys.
             <br />
-            Healthier experiences.
+            <span className="brand-heading-accent">Healthier experiences.</span>
           </h2>
           <p>
             Bring that same connected thinking to healthcare. Discover

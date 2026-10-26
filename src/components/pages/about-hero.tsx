@@ -14,7 +14,7 @@ export function AboutHero() {
         <h1 id="about-title" className="display">
           With you
           <br />
-          in mind.
+          <span className="brand-heading-accent">in mind.</span>
         </h1>
         <p>
           Where magnitude meets direction. We bring intelligence, innovation and
