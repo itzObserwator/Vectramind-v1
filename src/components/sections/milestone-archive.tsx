@@ -24,6 +24,21 @@ export function MilestoneArchive() {
         <br />
         <span className="brand-heading-accent">Part of our story.</span>
       </h2>
+      <label className="milestone-picker">
+        <span className="sr-only">Filter milestone photos</span>
+        <select
+          value={event}
+          onChange={(event) => {
+            setEvent(event.target.value);
+            setLimit(6);
+          }}
+          aria-controls="milestone-photos"
+        >
+          {events.map((name) => (
+            <option key={name}>{name}</option>
+          ))}
+        </select>
+      </label>
       <div
         className="milestone-filters"
         role="group"
@@ -43,7 +58,7 @@ export function MilestoneArchive() {
           </button>
         ))}
       </div>
-      <div className="milestone-grid">
+      <div className="milestone-grid" id="milestone-photos">
         {filtered.slice(0, limit).map((photo, index) => (
           <figure key={photo.src}>
             <a

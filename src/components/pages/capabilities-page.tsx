@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SynapseCopy as ResponsiveCopy } from "./synapse-copy";
 import { CapabilitiesHero } from "./capabilities-hero";
 import { ExperienceCapabilities } from "@/components/experience/capabilities";
 import { OurPlatforms } from "@/components/experience/our-platforms";
@@ -19,7 +20,9 @@ export function CapabilitiesPage() {
         {expertise.map((item, index) => (
           <Link key={item.id} href={`#${item.id}`}>
             <span>0{index + 1}</span>
-            {capabilities[index].label}
+            <ResponsiveCopy compact={item.mobileLabel}>
+              {capabilities[index].label}
+            </ResponsiveCopy>
           </Link>
         ))}
       </nav>
@@ -37,14 +40,20 @@ export function CapabilitiesPage() {
         </SectionLabel>
         <div className="product-landing-section-heading">
           <h2 id="capabilities-services-title" className="display" data-reveal>
-            Three disciplines.
-            <br />
-            <span className="brand-heading-accent">One shared direction.</span>
+            <ResponsiveCopy compact="Expertise that connects.">
+              Three disciplines.
+              <br />
+              <span className="brand-heading-accent">
+                One shared direction.
+              </span>
+            </ResponsiveCopy>
           </h2>
           <p>
-            Start with your business, your people and the challenge ahead. We
-            bring the right expertise together to turn possibility into
-            practical progress.
+            <ResponsiveCopy compact="Three disciplines, working together to move your business forward.">
+              Start with your business, your people and the challenge ahead. We
+              bring the right expertise together to turn possibility into
+              practical progress.
+            </ResponsiveCopy>
           </p>
         </div>
         <div className="capabilities-service-list">
@@ -59,18 +68,29 @@ export function CapabilitiesPage() {
                   0{index + 1} / {item.title}
                 </span>
                 <h3 className="display" data-reveal>
-                  {item.lead}
+                  <ResponsiveCopy compact={item.mobileLead}>
+                    {item.lead}
+                  </ResponsiveCopy>
                 </h3>
                 <Link
                   href={`/contact?topic=${item.id}`}
                   className="button hero-platform-button"
                 >
-                  Let’s explore your challenge
+                  <ResponsiveCopy compact="Let’s talk">
+                    Let’s explore your challenge
+                  </ResponsiveCopy>
                 </Link>
               </div>
               <div className="capabilities-service-content">
-                <p>{item.text}</p>
-                <ul aria-label={`${item.title} expertise`}>
+                <p>
+                  <ResponsiveCopy compact={item.mobileText}>
+                    {item.text}
+                  </ResponsiveCopy>
+                </p>
+                <ul
+                  className="capabilities-expertise-desktop"
+                  aria-label={`${item.title} expertise`}
+                >
                   {item.items.map((name, itemIndex) => (
                     <li key={name} data-reveal>
                       <span aria-hidden="true">0{itemIndex + 1}</span>
@@ -78,6 +98,23 @@ export function CapabilitiesPage() {
                     </li>
                   ))}
                 </ul>
+                <details className="capabilities-expertise-mobile">
+                  <summary>
+                    Explore expertise<span aria-hidden="true">+</span>
+                  </summary>
+                  <p>{item.text}</p>
+                  <ul aria-label={`${item.title} expertise`}>
+                    {item.items.map((text) => {
+                      const separator = text.indexOf(":");
+                      return (
+                        <li key={text}>
+                          <strong>{text.slice(0, separator)}</strong>
+                          <p>{text.slice(separator + 1).trim()}</p>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </details>
               </div>
             </article>
           ))}

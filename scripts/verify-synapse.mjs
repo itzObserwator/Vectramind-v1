@@ -64,11 +64,14 @@ try {
         () => document.documentElement.scrollWidth <= innerWidth,
       ),
     ).toBe(true);
-    const title = await page.locator("h1").boundingBox();
-    const line = await page
-      .locator("h1")
-      .evaluate((element) => parseFloat(getComputedStyle(element).lineHeight));
-    expect(title.height).toBeLessThanOrEqual(line * 2 + 2);
+    await expect
+      .poll(() =>
+        page.locator("h1").evaluate((element) => {
+          const line = parseFloat(getComputedStyle(element).lineHeight);
+          return element.getBoundingClientRect().height <= line * 2 + 2;
+        }),
+      )
+      .toBe(true);
     await page.screenshot({
       path: `${output}/synapse-${width}.png`,
       fullPage: true,
@@ -129,12 +132,16 @@ try {
   );
   expect(milliseconds).toBeLessThan(750);
   await expect(mobile).toHaveURL(/\/synapse\/?$/);
-  await expect(mobile.locator(".product-landing-loading-content")).toBeVisible();
+  await expect(
+    mobile.locator(".product-landing-loading-content"),
+  ).toBeVisible();
   await expect(mobile.locator("#synapse-overview-title")).toHaveCount(0);
   expect(blocked.length).toBeGreaterThan(0);
   release();
   await expect(mobile.locator("#synapse-overview-title")).toHaveCount(1);
-  await expect(mobile.locator(".product-landing-loading-content")).toHaveCount(0);
+  await expect(mobile.locator(".product-landing-loading-content")).toHaveCount(
+    0,
+  );
   const overview = mobile.locator("#synapse-overview-title");
   await overview.scrollIntoViewIfNeeded();
   await expect(overview).toHaveAttribute("data-scroll-reveal", "complete");

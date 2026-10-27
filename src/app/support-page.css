@@ -1,4 +1,7 @@
 /* Shared landing components, with clear paths into product help and enquiry. */
+.support-preparation {
+  display: none;
+}
 .support-page .support-hero {
   min-height: 650px;
 }
@@ -347,5 +350,226 @@
   }
   .support-page .draft-actions {
     flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 767px) {
+  .support-page .synapse-copy-full,
+  .support-page .product-landing-hero-caption,
+  .support-page .section-label > span:last-child,
+  .support-page .support-steps-desktop,
+  .support-page .form-heading,
+  .support-page .faq-list summary > .eyebrow {
+    display: none;
+  }
+  .support-page .synapse-copy-compact {
+    display: inline;
+  }
+  .support-page .support-hero {
+    min-height: 0;
+    padding-block: 128px 72px;
+  }
+  .support-page .support-hero h1 {
+    font-size: clamp(36px, 10vw, 52px);
+    margin-block: 24px 22px;
+  }
+  .support-page .product-landing-hero-content > p {
+    max-width: 29ch;
+  }
+  .support-page .product-landing-actions {
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 10px;
+    margin-top: 24px;
+  }
+  .support-page .product-landing-actions .button {
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+    min-height: 48px;
+    padding: 12px 8px;
+    white-space: normal;
+    line-height: 1.4;
+  }
+  .support-page :is(.support-start, .support-request, .support-faq) {
+    padding-block: 44px;
+  }
+  .support-page .product-landing-section-heading {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-block: 24px;
+  }
+  .support-page .support-help-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .support-page .support-help-grid article {
+    padding: 20px;
+  }
+  .support-page .support-help-grid article > img {
+    max-width: 130px;
+    height: 28px;
+  }
+  .support-page .support-team-brand {
+    height: 28px;
+    font-size: 20px;
+  }
+  .support-page .support-help-grid h3 {
+    margin: 20px 0 12px;
+  }
+  .support-page .support-help-grid p {
+    margin-bottom: 16px;
+  }
+  :root body .support-page .support-help-grid .button {
+    padding: 0;
+    min-height: 44px;
+    border: 0;
+    border-bottom: 1px solid #a9c8ed;
+    border-radius: 0;
+    background: transparent;
+  }
+  .support-page :is(.support-request-layout, .support-faq-layout) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 24px;
+  }
+  :root
+    body
+    .support-page
+    :is(.support-faq-intro, .support-request aside)
+    > h2 {
+    font-size: var(--text-section-title);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .support-page :is(.support-faq-intro, .support-request aside) > p {
+    margin-bottom: 16px;
+  }
+  .support-page .contact-email {
+    font-size: var(--text-body);
+    margin-bottom: 12px;
+    overflow-wrap: anywhere;
+  }
+  .support-page .support-preparation {
+    display: block;
+    border-block: 1px solid #c7d5e6;
+  }
+  .support-preparation summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-block: 12px;
+    min-height: 52px;
+    list-style: none;
+    cursor: pointer;
+    font-size: var(--text-body);
+  }
+  .support-preparation summary::-webkit-details-marker {
+    display: none;
+  }
+  .support-preparation summary > span {
+    color: var(--primary-ink);
+  }
+  .support-preparation[open] summary > span {
+    transform: rotate(45deg);
+  }
+  .support-page .support-request-steps {
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin: 0;
+  }
+  .support-page .support-request-steps li {
+    grid-template-columns: 20px minmax(0, 1fr);
+    gap: 12px;
+    padding-block: 16px;
+  }
+  .support-page .support-request-steps h3 {
+    font-size: var(--text-body);
+    margin-bottom: 8px;
+  }
+  .support-page .request-form-wrap {
+    padding: 20px 16px;
+  }
+  .support-page .form-fields {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .support-page .form-fields :is(input, select, textarea) {
+    font-size: var(--text-body);
+  }
+  .support-page .enquiry-types label {
+    min-height: 44px;
+    align-items: center;
+    align-content: center;
+  }
+  .support-page .enquiry-types input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    min-height: 18px;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+  }
+  .support-page .form-submit {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .support-page .form-note {
+    font-size: var(--text-small) !important;
+    line-height: 1.6 !important;
+  }
+  .support-page .draft-actions {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .support-page .email-draft h3 {
+    font-size: var(--text-card-title);
+    margin-bottom: 16px;
+  }
+  .support-page .email-draft pre {
+    padding: 16px;
+    max-width: 100%;
+  }
+  .support-page .draft-edit {
+    min-height: 44px;
+  }
+  .support-page .support-answer-tabs {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+  :root body .support-page .support-answer-tabs button {
+    min-height: 48px;
+    padding: 10px 4px;
+    font-size: var(--text-small);
+    line-height: 1.5;
+  }
+  :root body .support-page .support-answer-tabs button[aria-selected="true"] {
+    background: var(--primary-action);
+    border-color: var(--primary-action);
+    color: #fff;
+  }
+  .support-page .faq-search input {
+    min-height: 48px;
+    padding: 12px;
+  }
+  .support-page .faq-result-count {
+    margin-bottom: 16px;
+  }
+  .support-page .faq-list summary {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    padding-block: 16px;
+  }
+  .support-page .faq-list details > p {
+    padding-left: 0;
+    margin-bottom: 20px;
+  }
+  .support-page summary:focus-visible {
+    outline: 2px solid var(--primary-ink);
+    outline-offset: 4px;
   }
 }

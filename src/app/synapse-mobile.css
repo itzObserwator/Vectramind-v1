@@ -1,0 +1,322 @@
+/* Product landing pages keep desktop copy; mobile reveals detail on demand. */
+.synapse-copy-compact,
+.synapse-feature-mobile,
+.synapse-channel-picker,
+.synapse-integration-list,
+.synapse-case-heading,
+.synapse-case-detail {
+  display: none;
+}
+.synapse-feature-desktop {
+  display: block;
+}
+
+@media (max-width: 767px) {
+  :is(.synapse-page, .firstpass-overview) .synapse-copy-full {
+    display: none;
+  }
+  :is(.synapse-page, .firstpass-overview) .synapse-copy-compact {
+    display: inline;
+  }
+  :is(.synapse-page, .firstpass-overview) .synapse-feature-mobile,
+  :is(.synapse-page, .firstpass-overview) .synapse-channel-picker,
+  :is(.synapse-page, .firstpass-overview) .synapse-case-detail {
+    display: block;
+  }
+  :is(.synapse-page, .firstpass-overview) .synapse-feature-desktop,
+  :is(.synapse-page, .firstpass-overview) .section-label > span:last-child,
+  :is(.synapse-page, .firstpass-overview)
+    .product-landing-hero-content
+    > .eyebrow,
+  :is(.synapse-page, .firstpass-overview) .product-landing-hero-caption,
+  :is(.synapse-page, .firstpass-overview) .product-landing-workspace-caption {
+    display: none;
+  }
+  :is(.synapse-page, .firstpass-overview) .product-landing-hero {
+    min-height: 0;
+    padding-block: 128px 72px;
+  }
+  :is(.synapse-page, .firstpass-overview) .product-landing-brand {
+    width: 145px;
+    margin-bottom: 24px;
+  }
+  :is(.synapse-page, .firstpass-overview) .product-landing-hero h1 {
+    font-size: clamp(36px, 10vw, 52px);
+    margin: 0 0 22px;
+  }
+  :is(.synapse-page, .firstpass-overview) .product-landing-hero-content > p {
+    max-width: 29ch;
+  }
+  :is(.synapse-page, .firstpass-overview) .product-landing-actions {
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 10px;
+    margin-top: 24px;
+  }
+  :is(.synapse-page, .firstpass-overview) .product-landing-actions .button {
+    flex: 1 1 0;
+    width: auto;
+    min-width: 0;
+    min-height: 48px;
+    padding: 12px 8px;
+    white-space: normal;
+    line-height: 1.4;
+  }
+  :is(.synapse-page, .firstpass-overview) .product-landing-overview,
+  :is(.synapse-page, .firstpass-overview) .inner-section,
+  :is(.synapse-page, .firstpass-overview) .case-studies,
+  :is(.synapse-page, .firstpass-overview) .product-landing-next {
+    padding-block: 44px;
+  }
+  :is(.synapse-page, .firstpass-overview) .product-landing-section-heading {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-block: 24px;
+  }
+  :is(.synapse-page, .firstpass-overview) .product-landing-workspace {
+    height: auto;
+    aspect-ratio: 1.38;
+  }
+  :is(.synapse-page, .firstpass-overview) .product-landing-metrics {
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 20px;
+  }
+  :is(.synapse-page, .firstpass-overview) .product-landing-metrics > div + div {
+    padding-left: 12px;
+  }
+  :is(.synapse-page, .firstpass-overview) .product-landing-metrics strong {
+    font-size: clamp(28px, 8vw, 36px);
+  }
+  :root
+    body
+    :is(.synapse-page, .firstpass-overview)
+    .product-landing-metrics
+    span {
+    font-size: var(--text-label);
+    line-height: 1.5;
+  }
+  :is(.synapse-page, .firstpass-overview) .module-layout {
+    grid-template-columns: 1fr;
+    padding-top: 24px;
+    gap: 20px;
+  }
+  :is(.synapse-page, .firstpass-overview) .module-layout .section-description {
+    margin-block: 0 20px;
+  }
+  :is(.synapse-page, .firstpass-overview) .module-buttons,
+  :is(.synapse-page, .firstpass-overview) .module-numeral,
+  :is(.synapse-page, .firstpass-overview) .module-panel > .brand-mark,
+  :is(.synapse-page, .firstpass-overview)
+    .module-panel
+    > .text-link[href^="/contact"] {
+    display: none;
+  }
+  .firstpass-overview .module-panel > .text-link {
+    min-height: 44px;
+    margin-top: 16px;
+  }
+  .synapse-channel-picker select {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px;
+    border: 1px solid #a9c8ed;
+    border-radius: 10px;
+    background: #fff;
+    color: #292b30;
+    font: inherit;
+    font-size: var(--text-body);
+  }
+  .synapse-channel-picker select:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+  }
+  :is(.synapse-page, .firstpass-overview) .module-panel {
+    min-height: 0;
+    padding: 20px;
+    background: #fff;
+  }
+  :root
+    body
+    :is(.synapse-page, .firstpass-overview)
+    :is(.module-panel h3, .case-story h3) {
+    font-size: var(--text-card-title);
+    line-height: 1.25;
+    margin: 0 0 12px;
+  }
+  :is(.synapse-page, .firstpass-overview) .module-panel p {
+    max-width: none;
+    margin: 0;
+  }
+  :root
+    body
+    :is(.synapse-page, .firstpass-overview)
+    :is(
+      .synapse-feature-mobile h2,
+      .published-integrations h2,
+      .product-landing-next h2,
+      .synapse-case-heading
+    ) {
+    font-size: var(--text-section-title);
+    line-height: 1.15;
+    margin: 0 0 16px;
+  }
+  :is(.synapse-page, .firstpass-overview)
+    .synapse-feature-mobile
+    .section-description {
+    margin: 0 0 24px;
+  }
+  .synapse-feature-list details {
+    border-top: 1px solid #d8dde4;
+  }
+  .synapse-feature-list details:last-child {
+    border-bottom: 1px solid #d8dde4;
+  }
+  .synapse-feature-list summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 56px;
+    padding-block: 14px;
+    font-size: var(--text-body);
+    line-height: 1.5;
+    list-style: none;
+    cursor: pointer;
+  }
+  .synapse-feature-list summary::-webkit-details-marker {
+    display: none;
+  }
+  .synapse-feature-list summary > span {
+    flex-shrink: 0;
+    color: var(--primary-ink);
+    transition: transform 0.2s;
+  }
+  .synapse-feature-list details[open] summary > span {
+    transform: rotate(45deg);
+  }
+  .synapse-feature-list details p {
+    margin: 0 0 20px;
+    font-size: var(--text-body);
+    line-height: 1.75;
+    color: #62656b;
+  }
+  :is(.synapse-page, .firstpass-overview) .published-integrations img {
+    display: none;
+  }
+  :is(.synapse-page, .firstpass-overview)
+    .published-integrations
+    .section-label {
+    margin-bottom: 24px;
+  }
+  :is(.synapse-page, .firstpass-overview) .synapse-integration-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 16px;
+    margin: 24px 0 0;
+    padding: 20px 0;
+    border-block: 1px solid #d8dde4;
+    list-style: none;
+    color: #62656b;
+    font-size: var(--text-small);
+  }
+  :is(.synapse-page, .firstpass-overview) .synapse-case-heading {
+    display: block;
+  }
+  :is(.synapse-page, .firstpass-overview) .case-studies > .section-label {
+    display: none;
+  }
+  :is(.synapse-page, .firstpass-overview) .case-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-top: 8px;
+  }
+  :is(.synapse-page, .firstpass-overview) .case-summary {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    column-gap: 16px;
+  }
+  :is(.synapse-page, .firstpass-overview) .case-summary > .eyebrow {
+    grid-column: 1;
+  }
+  :is(.synapse-page, .firstpass-overview) .case-summary > strong {
+    grid-column: 1;
+    font-size: 52px;
+    margin: 12px 0 8px;
+  }
+  :is(.synapse-page, .firstpass-overview) .case-summary > p {
+    grid-column: 1;
+    margin: 0;
+    max-width: 25ch;
+    font-size: var(--text-small);
+    line-height: 1.6;
+  }
+  :is(.synapse-page, .firstpass-overview) .case-summary .slider-controls {
+    grid-column: 2;
+    grid-row: 1 / 4;
+    margin: 0;
+  }
+  :is(.synapse-page, .firstpass-overview) .slider-controls button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  :is(.synapse-page, .firstpass-overview) .case-counter {
+    display: none;
+  }
+  :root body :is(.synapse-page, .firstpass-overview) .case-story p {
+    font-size: var(--text-body);
+    line-height: 1.75;
+  }
+  .synapse-case-detail summary {
+    min-height: 44px;
+    padding-block: 12px;
+    cursor: pointer;
+    font-size: var(--text-small);
+    color: var(--primary-ink);
+  }
+  :is(.synapse-page, .firstpass-overview) .case-story .text-link {
+    min-height: 44px;
+    margin-top: 4px;
+  }
+  :is(.synapse-page, .firstpass-overview) .faq-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-top: 0;
+  }
+  :is(.synapse-page, .firstpass-overview) .product-landing-faq h2 {
+    margin: 24px 0 0;
+  }
+  :is(.synapse-page, .firstpass-overview) .faq-layout > div > p,
+  :is(.synapse-page, .firstpass-overview) .faq-list summary > .eyebrow {
+    display: none;
+  }
+  :is(.synapse-page, .firstpass-overview) .faq-list summary {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    padding-block: 16px;
+  }
+  :is(.synapse-page, .firstpass-overview) .faq-list details > p {
+    padding-left: 0;
+    margin: 0 0 20px;
+  }
+  :is(.synapse-page, .firstpass-overview)
+    .product-landing-next
+    > div:last-child {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 24px;
+  }
+  :is(.synapse-page, .firstpass-overview) .product-landing-next h2 {
+    grid-row: auto;
+    margin: 0;
+  }
+  :is(.synapse-page, .firstpass-overview) .product-landing-next p {
+    margin: 0;
+    font-size: var(--text-body);
+    line-height: 1.75;
+  }
+  :is(.synapse-page, .firstpass-overview) .product-landing-next .button {
+    min-height: 44px;
+  }
+}

@@ -19,7 +19,10 @@ export function FooterJoin() {
   }
   return (
     <div className="footer-join">
-      <h3>Join the conversation.</h3>
+      <h3>
+        <span className="footer-join-copy-full">Join the conversation.</span>
+        <span className="footer-join-copy-compact">Stay connected.</span>
+      </h3>
       {draft ? (
         <div className="footer-join-result" role="status">
           <p>Your email request is ready to review.</p>
@@ -50,8 +53,13 @@ export function FooterJoin() {
         </form>
       )}
       <p id={`${emailId}-note`} className="footer-join-note">
-        Request updates by email. Review and send your request from your email
-        app. <Link href="/privacy-policy">Privacy policy</Link>.
+        <span className="footer-join-copy-full">
+          Request updates by email. Review and send your request from your email
+          app. <Link href="/privacy-policy">Privacy policy</Link>.
+        </span>
+        <span className="footer-join-copy-compact">
+          Review and send in your email app.
+        </span>
       </p>
     </div>
   );

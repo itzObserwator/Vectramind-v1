@@ -1,5 +1,6 @@
 "use client";
 import { useId, useState } from "react";
+import { SynapseCopy as ResponsiveCopy } from "./synapse-copy";
 import { FaqList } from "./faq-list";
 import { supportGroups } from "@/content/support";
 
@@ -45,7 +46,11 @@ export function SupportAnswers() {
                 ?.focus();
             }}
           >
-            {item.label}
+            {index === 0 ? (
+              <ResponsiveCopy compact="All">{item.label}</ResponsiveCopy>
+            ) : (
+              item.label
+            )}
           </button>
         ))}
       </div>

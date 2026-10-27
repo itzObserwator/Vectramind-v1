@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SynapseCopy as ResponsiveCopy } from "./synapse-copy";
 import { AboutHero } from "./about-hero";
 import { SectionLabel } from "@/components/site-primitives";
 import { FeatureGrid, IntroSection } from "./page-primitives";
@@ -10,6 +11,10 @@ import {
   officeMapLinks,
 } from "@/content/global-reach";
 
+const founderNote =
+  "For over 18 years, Vectramind has helped organizations keep pace with change through AI-driven insights and connected systems. Our work spans automotive, aviation, banking, insurance, retail and healthcare. From Synapse to Firstpass, evolution continues to shape the experiences we build.";
+const cultureText =
+  "Work, life and play meet in a culture shaped by curiosity, consistency and an anything-is-possible outlook. We draw on over 50 years of industry expertise to develop transformative solutions, with a focus on delivering on time and within budget. Experimentation and a shared pursuit of excellence help us keep improving.";
 const values = [
   [
     "Intelligence",
@@ -43,7 +48,11 @@ export function AboutPage() {
             <br />
             <span className="brand-heading-accent">One shared purpose.</span>
           </h2>
-          <p>{reachContent.description}</p>
+          <p>
+            <ResponsiveCopy compact="170+ minds, connecting intelligence, innovation and human experiences.">
+              {reachContent.description}
+            </ResponsiveCopy>
+          </p>
         </div>
         <figure className="about-team-photo">
           <div className="inner-hero-art about-team-image" data-reveal>
@@ -67,10 +76,23 @@ export function AboutPage() {
             ["170+", "curious minds"],
             ["800+", "clients worldwide"],
             ["5", "locations, one global outlook"],
-          ].map(([value, label]) => (
+          ].map(([value, label], index) => (
             <div key={label}>
               <strong className="display">{value}</strong>
-              <span>{label}</span>
+              <span>
+                <ResponsiveCopy
+                  compact={
+                    [
+                      "Years of experience",
+                      "Curious minds",
+                      "Clients worldwide",
+                      "Global locations",
+                    ][index]
+                  }
+                >
+                  {label}
+                </ResponsiveCopy>
+              </span>
             </div>
           ))}
         </div>
@@ -82,16 +104,20 @@ export function AboutPage() {
         <SectionLabel right="02 / Our perspective">What moves us</SectionLabel>
         <div className="product-landing-section-heading">
           <h2 id="about-purpose-title" className="display" data-reveal>
-            A world in motion.
-            <br />
-            <span className="brand-heading-accent">
-              A purpose that stays human.
-            </span>
+            <ResponsiveCopy compact="Human at heart.">
+              A world in motion.
+              <br />
+              <span className="brand-heading-accent">
+                A purpose that stays human.
+              </span>
+            </ResponsiveCopy>
           </h2>
           <p>
-            We solve problems with carefully measured magnitude and precisely
-            dialed direction, creating impact through intelligent platforms and
-            connected experiences.
+            <ResponsiveCopy compact="We adapt and evolve to create better human experiences.">
+              We solve problems with carefully measured magnitude and precisely
+              dialed direction, creating impact through intelligent platforms
+              and connected experiences.
+            </ResponsiveCopy>
           </p>
         </div>
         <div className="about-purpose-grid">
@@ -152,20 +178,39 @@ export function AboutPage() {
               </div>
             </blockquote>
             <p className="about-founder-note">
-              For over 18 years, Vectramind has helped organizations keep pace
-              with change through AI-driven insights and connected systems. Our
-              work spans automotive, aviation, banking, insurance, retail and
-              healthcare. From Synapse to Firstpass, evolution continues to
-              shape the experiences we build.
+              <ResponsiveCopy compact="Helping organizations evolve through AI-driven insights and connected systems for over 18 years.">
+                {founderNote}
+              </ResponsiveCopy>
             </p>
+            <details className="about-mobile-detail">
+              <summary>
+                Read the full message<span aria-hidden="true">+</span>
+              </summary>
+              <p>{founderNote}</p>
+            </details>
           </div>
         </div>
       </section>
-      <IntroSection
-        label="Culture / Curious and consistent"
-        title="Room to explore. The focus to deliver."
-        text="Work, life and play meet in a culture shaped by curiosity, consistency and an anything-is-possible outlook. We draw on over 50 years of industry expertise to develop transformative solutions, with a focus on delivering on time and within budget. Experimentation and a shared pursuit of excellence help us keep improving."
-      />
+      <div className="about-culture">
+        <IntroSection
+          label="Culture / Curious and consistent"
+          title="Room to explore. The focus to deliver."
+          text={cultureText}
+        >
+          <div className="about-culture-mobile">
+            <p>
+              Curiosity, experimentation and shared purpose shape the way we
+              work.
+            </p>
+            <details className="about-mobile-detail">
+              <summary>
+                Explore our culture<span aria-hidden="true">+</span>
+              </summary>
+              <p>{cultureText}</p>
+            </details>
+          </div>
+        </IntroSection>
+      </div>
       <div className="product-landing-feature-section about-values">
         <FeatureGrid
           label="04 / The way we work"
@@ -182,13 +227,17 @@ export function AboutPage() {
         </SectionLabel>
         <div className="product-landing-section-heading">
           <h2 id="about-locations-title" className="display" data-reveal>
-            Many places.
-            <br />
-            <span className="brand-heading-accent">One direction.</span>
+            <ResponsiveCopy compact="Connected worldwide.">
+              Many places.
+              <br />
+              <span className="brand-heading-accent">One direction.</span>
+            </ResponsiveCopy>
           </h2>
           <p>
-            {reachContent.statement} Our team connects perspectives across five
-            key locations.
+            <ResponsiveCopy compact="Five offices. Four countries. One shared direction.">
+              {reachContent.statement} Our team connects perspectives across
+              five key locations.
+            </ResponsiveCopy>
           </p>
         </div>
         <div className="about-office-grid">
@@ -214,14 +263,18 @@ export function AboutPage() {
       <section className="inner-section page-padding published-partners">
         <SectionLabel>Our global partners</SectionLabel>
         <h2 className="display inner-section-title" data-reveal>
-          Shared expertise.
-          <br />
-          <span className="brand-heading-accent">Greater possibilities.</span>
+          <ResponsiveCopy compact="Stronger together.">
+            Shared expertise.
+            <br />
+            <span className="brand-heading-accent">Greater possibilities.</span>
+          </ResponsiveCopy>
         </h2>
         <p className="section-description">
-          Our partners help enable the platforms and connections our clients
-          depend on. As technology and business needs evolve, we keep building
-          on those relationships to support what comes next.
+          <ResponsiveCopy compact="Our partners help power the platforms and connections our clients depend on.">
+            Our partners help enable the platforms and connections our clients
+            depend on. As technology and business needs evolve, we keep building
+            on those relationships to support what comes next.
+          </ResponsiveCopy>
         </p>
         <img
           src="/images/global-partners.webp"
@@ -236,6 +289,19 @@ export function AboutPage() {
           Crown Commercial Service · du · e&amp; · IBM · Meta · Microsoft ·
           Oracle Health
         </p>
+        <ul className="about-partner-list" aria-label="Global partners">
+          {[
+            "Crown Commercial Service",
+            "du",
+            "e&",
+            "IBM",
+            "Meta",
+            "Microsoft",
+            "Oracle Health",
+          ].map((name) => (
+            <li key={name}>{name}</li>
+          ))}
+        </ul>
       </section>
       <People includeFounder={false} sectionIndex="05" />
       <MilestoneArchive />

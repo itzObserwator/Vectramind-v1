@@ -1,5 +1,6 @@
 import "./page-styles";
 import Link from "next/link";
+import { SynapseCopy as ResponsiveCopy } from "./synapse-copy";
 import { HeroEnergy } from "@/components/visuals/hero-energy";
 import { HeroRibbons } from "@/components/visuals/hero-ribbons";
 
@@ -21,8 +22,10 @@ export function SupportHero() {
           <span className="brand-heading-accent">With you.</span>
         </h1>
         <p>
-          Find answers, explore your platform and connect with the people who
-          can help you move forward.
+          <ResponsiveCopy compact="Find an answer or connect with our support team.">
+            Find answers, explore your platform and connect with the people who
+            can help you move forward.
+          </ResponsiveCopy>
         </p>
         <div className="product-landing-actions">
           <Link href="#support-answers" className="button button-primary">

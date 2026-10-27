@@ -12,6 +12,11 @@ export function People({
 }: { includeFounder?: boolean; sectionIndex?: string } = {}) {
   const [slide, setSlide] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
+  const drag = useRef<{
+    pointerId: number;
+    startX: number;
+    startLeft: number;
+  } | null>(null);
   const images = [
     {
       src: "ceo_about.webp",
@@ -58,6 +63,35 @@ export function People({
         : "smooth",
     });
   }
+  function finishDrag(slider: HTMLDivElement, pointerId: number) {
+    if (drag.current?.pointerId !== pointerId) return;
+    drag.current = null;
+    const maximum = slider.scrollWidth - slider.clientWidth;
+    const left = slider.getBoundingClientRect().left;
+    const targets = Array.from(slider.children).map((photo) =>
+      Math.max(
+        0,
+        Math.min(
+          maximum,
+          slider.scrollLeft + photo.getBoundingClientRect().left - left,
+        ),
+      ),
+    );
+    const nearest = targets.reduce((best, target) =>
+      Math.abs(target - slider.scrollLeft) < Math.abs(best - slider.scrollLeft)
+        ? target
+        : best,
+    );
+    slider.removeAttribute("data-dragging");
+    if (slider.hasPointerCapture(pointerId))
+      slider.releasePointerCapture(pointerId);
+    slider.scrollTo({
+      left: nearest,
+      behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "instant"
+        : "smooth",
+    });
+  }
   return (
     <section className="people page-padding section-space">
       <SectionLabel right={`${sectionIndex} / The minds behind the momentum`}>
@@ -96,6 +130,42 @@ export function People({
         role="region"
         aria-label="Vectramind team photos"
         tabIndex={0}
+        onPointerDown={(event) => {
+          // Touch keeps the browser's native swipe, momentum and vertical scroll.
+          if (
+            event.pointerType === "touch" ||
+            event.button !== 0 ||
+            !event.isPrimary
+          )
+            return;
+          const slider = event.currentTarget;
+          event.preventDefault();
+          slider.focus({ preventScroll: true });
+          slider.scrollTo({ left: slider.scrollLeft, behavior: "instant" });
+          drag.current = {
+            pointerId: event.pointerId,
+            startX: event.clientX,
+            startLeft: slider.scrollLeft,
+          };
+          slider.setAttribute("data-dragging", "true");
+          slider.setPointerCapture(event.pointerId);
+        }}
+        onPointerMove={(event) => {
+          const current = drag.current;
+          if (!current || current.pointerId !== event.pointerId) return;
+          event.currentTarget.scrollLeft =
+            current.startLeft + current.startX - event.clientX;
+        }}
+        onPointerUp={(event) =>
+          finishDrag(event.currentTarget, event.pointerId)
+        }
+        onPointerCancel={(event) =>
+          finishDrag(event.currentTarget, event.pointerId)
+        }
+        onLostPointerCapture={(event) =>
+          finishDrag(event.currentTarget, event.pointerId)
+        }
+        onDragStart={(event) => event.preventDefault()}
         onScroll={(event) => {
           const slider = event.currentTarget;
           if (
@@ -140,6 +210,7 @@ export function People({
                 src={`/images/${item.src}`}
                 alt={item.alt || item.label}
                 loading="lazy"
+                draggable={false}
               />
             </div>
             <figcaption>

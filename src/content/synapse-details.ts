@@ -4,6 +4,9 @@ export const synapseDetailSections = [
     id: "customer-personalization",
     label: "A relationship in every conversation",
     title: "More relevant. In both directions.",
+    compactTitle: "Make it personal.",
+    summary:
+      "Use customer context and feedback to make every interaction more relevant.",
     items: [
       [
         "Two-way customer conversations",
@@ -23,6 +26,8 @@ export const synapseDetailSections = [
     id: "alert-manager",
     label: "Alert Manager",
     title: "The right message. The right trigger.",
+    compactTitle: "Automate your alerts.",
+    summary: "Trigger the right message from your existing workflows.",
     items: [
       [
         "Priority messaging",
@@ -54,6 +59,9 @@ export const synapseDetailSections = [
     id: "synapse-interface",
     label: "Clarity and control",
     title: "One interface. A clearer picture.",
+    compactTitle: "Stay in control.",
+    summary:
+      "Manage activity, delivery reports and applications from one place.",
     items: [
       [
         "Responsive, bilingual access",

@@ -3,6 +3,10 @@ export const expertise = [
   {
     id: "artificial-intelligence",
     title: "Artificial intelligence",
+    mobileLabel: "AI",
+    mobileLead: "Put intelligence to work.",
+    mobileText:
+      "Turn complex data into clearer decisions and more relevant experiences.",
     lead: "Turn intelligence into action.",
     text: "Use AI-powered platforms to turn complex information into qualitative insights, more informed decisions and practical opportunities. Vectramind helps organizations build new capabilities and improve the time between identifying an opportunity and acting on it.",
     items: [
@@ -15,6 +19,10 @@ export const expertise = [
   {
     id: "solution-design",
     title: "Solution design & development",
+    mobileLabel: "Design",
+    mobileLead: "Design around your people.",
+    mobileText:
+      "Build adaptable digital tools around the way your business works.",
     lead: "Agility starts with the right design.",
     text: "Build tools and products around the needs of your business as the technology landscape changes. Vectramind combines adaptable technology, professional services and customized development to solve specific problems and create new experience pathways.",
     items: [
@@ -27,6 +35,10 @@ export const expertise = [
   {
     id: "integration-services",
     title: "Integration services",
+    mobileLabel: "Integration",
+    mobileLead: "Connect your systems.",
+    mobileText:
+      "Bring systems and information together for a more connected organization.",
     lead: "Where data flows, value follows.",
     text: "Remove the gaps that hold information and product development back. Vectramind connects EMRs, pharmacy systems, laboratories, databases and applications so information can support decisions throughout the organization.",
     items: [

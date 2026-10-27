@@ -111,6 +111,9 @@
   max-width: 440px;
   justify-self: end;
 }
+.footer-join-copy-compact {
+  display: none;
+}
 .footer-join h3 {
   font:
     400 30px/1.1 Space,
@@ -397,16 +400,68 @@
     gap: 15px 23px;
     margin-top: 25px;
   }
-  .footer-join h3 {
-    font-size: 28px;
+  :root body .footer-join h3 {
+    font-size: var(--text-card-title);
+    line-height: 1.25;
+    margin-bottom: 16px;
+  }
+  .footer-join-copy-full {
+    display: none;
+  }
+  .footer-join-copy-compact {
+    display: inline;
+  }
+  .footer-join form {
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    border: 1px solid #bec5d0;
+    border-radius: 999px;
+    background: #ffffff8c;
+  }
+  .footer-join input {
+    height: 44px;
+    padding-inline: 12px;
+    border: 0;
+    background: transparent;
+  }
+  .footer-join form button {
+    min-height: 44px;
+    min-width: 68px;
+    padding: 10px 16px;
+    border: 0;
+  }
+  .footer-join form button svg {
+    display: none;
+  }
+  .footer-join .footer-join-note {
+    margin-top: 8px;
   }
   .footer-reference-legal {
     grid-template-columns: 1fr;
-    gap: 18px;
-    margin-top: 35px;
+    gap: 8px;
+    margin-top: 24px;
+    padding-top: 16px;
   }
   .footer-reference-legal > span {
+    grid-row: 3;
     text-align: left;
+  }
+  .footer-reference-legal > div {
+    gap: 4px 20px;
+  }
+  .footer-reference-legal a {
+    min-height: 44px;
+  }
+  .footer-reference-legal > div:last-child {
+    align-items: center;
+    gap: 4px;
+  }
+  .footer-reference-legal .footer-social-link {
+    min-width: 44px;
+  }
+  .footer-reference-legal > div:last-child > a:last-child {
+    margin-left: auto;
   }
   .footer-flow {
     --footer-flow-opacity: 0.22;

@@ -1,5 +1,6 @@
 import "./page-styles";
 import Link from "next/link";
+import { SynapseCopy as ResponsiveCopy } from "./synapse-copy";
 import { HeroEnergy } from "@/components/visuals/hero-energy";
 import { HeroRibbons } from "@/components/visuals/hero-ribbons";
 
@@ -21,15 +22,21 @@ export function AboutHero() {
           <span className="brand-heading-accent">in mind.</span>
         </h1>
         <p>
-          Where magnitude meets direction. We bring intelligence, innovation and
-          technology together to transform human experiences.
+          <ResponsiveCopy compact="Intelligence and innovation, built around people.">
+            Where magnitude meets direction. We bring intelligence, innovation
+            and technology together to transform human experiences.
+          </ResponsiveCopy>
         </p>
         <div className="product-landing-actions">
           <Link href="#our-story" className="button button-primary">
-            Discover our story
+            <ResponsiveCopy compact="Our story">
+              Discover our story
+            </ResponsiveCopy>
           </Link>
           <Link href="/capabilities" className="button hero-platform-button">
-            Meet our capabilities
+            <ResponsiveCopy compact="Our capabilities">
+              Meet our capabilities
+            </ResponsiveCopy>
           </Link>
         </div>
       </div>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { HeroEnergy } from "@/components/visuals/hero-energy";
 import { HeroRibbons } from "@/components/visuals/hero-ribbons";
 import { products, type ProductKey } from "@/content/products";
+import { SynapseCopy } from "./synapse-copy";
 
 export function ProductLandingHero({ product }: { product: ProductKey }) {
   const data = products[product];
@@ -35,19 +36,45 @@ export function ProductLandingHero({ product }: { product: ProductKey }) {
           <br />
           <span className="brand-heading-accent">{title[1]}</span>
         </h1>
-        <p>{data.description}</p>
+        <p>
+          {firstpass ? (
+            <SynapseCopy compact="Connect appointments, patient flow and care teams.">
+              {data.description}
+            </SynapseCopy>
+          ) : (
+            <SynapseCopy compact="Connect customer conversations across every channel.">
+              {data.description}
+            </SynapseCopy>
+          )}
+        </p>
         <div className="product-landing-actions">
           <Link
             href={`/contact?topic=${product}`}
             className="button button-primary"
           >
-            Request a {data.name} demo
+            {firstpass ? (
+              <SynapseCopy compact="Request a demo">
+                Request a {data.name} demo
+              </SynapseCopy>
+            ) : (
+              <SynapseCopy compact="Request a demo">
+                Request a Synapse demo
+              </SynapseCopy>
+            )}
           </Link>
           <Link
             href={firstpass ? "#firstpass-modules" : "#synapse-channels"}
             className="button hero-platform-button"
           >
-            {firstpass ? "Explore the platform" : "Explore the channels"}
+            {firstpass ? (
+              <SynapseCopy compact="Explore modules">
+                Explore the platform
+              </SynapseCopy>
+            ) : (
+              <SynapseCopy compact="Explore channels">
+                Explore the channels
+              </SynapseCopy>
+            )}
           </Link>
         </div>
       </div>

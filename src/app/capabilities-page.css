@@ -1,4 +1,7 @@
 /* The capabilities route shares the landing page's components and surfaces. */
+.capabilities-expertise-mobile {
+  display: none;
+}
 .capabilities-page .capabilities-hero {
   min-height: 690px;
 }
@@ -196,5 +199,187 @@
   }
   .capabilities-page .platform-card h3 {
     font-size: 27px;
+  }
+}
+
+@media (max-width: 767px) {
+  .capabilities-page .synapse-copy-full,
+  .capabilities-page .capabilities-expertise-desktop,
+  .capabilities-page .product-landing-hero-caption,
+  .capabilities-page .capabilities-jump a > span:first-child,
+  .capabilities-page .section-label > span:last-child,
+  .capabilities-page .platforms-section-label > span {
+    display: none;
+  }
+  .capabilities-page .synapse-copy-compact {
+    display: inline;
+  }
+  .capabilities-page .capabilities-hero {
+    min-height: 0;
+    padding-block: 128px 72px;
+  }
+  .capabilities-page .capabilities-hero h1 {
+    font-size: clamp(36px, 10vw, 52px);
+    margin-block: 24px 22px;
+  }
+  .capabilities-page .product-landing-hero-content > p {
+    max-width: 29ch;
+  }
+  .capabilities-page .product-landing-actions {
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 10px;
+    margin-top: 24px;
+  }
+  .capabilities-page .product-landing-actions .button {
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+    min-height: 48px;
+    padding: 12px 8px;
+    white-space: normal;
+    line-height: 1.4;
+  }
+  .capabilities-page .capabilities-jump {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    padding-block: 20px;
+  }
+  .capabilities-page .capabilities-jump a {
+    justify-content: center;
+    padding: 10px 6px;
+    font-size: var(--text-small);
+    line-height: 1.5;
+  }
+  .capabilities-page .capabilities-services {
+    padding-block: 44px;
+  }
+  .capabilities-page .product-landing-section-heading {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-block: 24px;
+  }
+  .capabilities-page .capabilities-service-list {
+    margin-top: 32px;
+  }
+  .capabilities-page .capabilities-service {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-block: 28px 32px;
+  }
+  .capabilities-page .capabilities-service-heading {
+    display: contents;
+  }
+  .capabilities-page .capabilities-service h3 {
+    margin: 12px 0 16px;
+  }
+  :root body .capabilities-page .capabilities-service h3,
+  :root body .capabilities-page .platform-card h3 {
+    font-size: var(--text-card-title);
+    line-height: 1.25;
+  }
+  .capabilities-page .capabilities-service-heading > .button {
+    order: 1;
+    align-self: flex-start;
+    margin-top: 20px;
+    min-height: 44px;
+    padding-inline: 0;
+    border: 0;
+    border-bottom: 1px solid #a9c8ed;
+    border-radius: 0;
+    background: transparent;
+  }
+  :root body .capabilities-page .capabilities-service .button {
+    color: #fff;
+    border-color: #7dbaff;
+  }
+  .capabilities-page .capabilities-service :focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 4px;
+  }
+  :root body .capabilities-page .capabilities-service-content > p,
+  :root body .capabilities-page .capabilities-expertise-mobile p,
+  :root body .capabilities-page .platform-card-description {
+    font-size: var(--text-body);
+    line-height: 1.75;
+  }
+  .capabilities-page .capabilities-service-content > p {
+    margin: 0 0 16px;
+  }
+  .capabilities-page .capabilities-expertise-mobile {
+    display: block;
+    border-block: 1px solid #49617d;
+  }
+  .capabilities-expertise-mobile summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 52px;
+    padding-block: 12px;
+    font-size: var(--text-body);
+    color: #fff;
+    cursor: pointer;
+    list-style: none;
+  }
+  .capabilities-expertise-mobile summary::-webkit-details-marker {
+    display: none;
+  }
+  .capabilities-expertise-mobile summary > span {
+    color: #7dbaff;
+  }
+  .capabilities-expertise-mobile[open] summary > span {
+    transform: rotate(45deg);
+  }
+  .capabilities-expertise-mobile p {
+    margin: 0 0 20px;
+    color: #62656b;
+  }
+  .capabilities-page .capabilities-expertise-mobile li {
+    display: block;
+    padding-block: 16px 0;
+    font-size: var(--text-body);
+    line-height: 1.5;
+  }
+  .capabilities-expertise-mobile li strong {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .capabilities-page .platforms-flow .platforms-sticky {
+    padding-block: 44px;
+  }
+  .capabilities-page .platforms-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-top: 24px;
+  }
+  .capabilities-page .platform-copy-full,
+  .capabilities-page .platform-category:nth-child(n + 2) {
+    display: none;
+  }
+  .capabilities-page .platform-copy-compact {
+    display: inline;
+  }
+  :root body .capabilities-page .platform-category {
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font-size: var(--text-label);
+  }
+  .capabilities-page .platform-card h3,
+  .capabilities-page .platform-card-description {
+    min-height: 0;
+  }
+  :root body .capabilities-page .platform-card-cta {
+    min-height: 44px;
+    margin-top: 12px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    gap: 12px;
   }
 }

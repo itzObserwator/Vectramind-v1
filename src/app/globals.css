@@ -1508,6 +1508,14 @@ img {
   scrollbar-width: none;
   margin-right: -40px;
   padding-right: 40px;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.people-slider[data-dragging] {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  scroll-behavior: auto;
 }
 .people-slider::-webkit-scrollbar {
   display: none;

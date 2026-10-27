@@ -3,6 +3,7 @@
 import "@/app/inner-pages.css";
 import "@/app/page-theme.css";
 import "@/app/product-landing.css";
+import "@/app/synapse-mobile.css";
 import "@/app/capabilities-page.css";
 import "@/app/about-page.css";
 import "@/app/support-page.css";

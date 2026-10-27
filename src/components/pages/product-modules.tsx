@@ -3,6 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import type { ProductKey } from "@/content/products";
 import { Arrow, Mark, SectionLabel } from "@/components/site-primitives";
+import { SynapseCopy } from "./synapse-copy";
 export function ProductModules({
   product,
   name,
@@ -23,22 +24,58 @@ export function ProductModules({
   return (
     <section className="inner-section page-padding">
       <SectionLabel>
-        {product === "firstpass"
-          ? "A connected suite"
-          : "Your conversational ecosystem"}
+        {product === "firstpass" ? (
+          <SynapseCopy compact="Patient journey">A connected suite</SynapseCopy>
+        ) : (
+          <SynapseCopy compact="Messaging channels">
+            Your conversational ecosystem
+          </SynapseCopy>
+        )}
       </SectionLabel>
       <div className="module-layout">
         <div>
           <h2 className="display inner-section-title" data-reveal>
-            {product === "firstpass"
-              ? "One journey. Every touchpoint."
-              : "Many channels. One connection."}
+            {product === "firstpass" ? (
+              <SynapseCopy compact="Choose your module.">
+                One journey. Every touchpoint.
+              </SynapseCopy>
+            ) : (
+              <SynapseCopy compact="Choose your channel.">
+                Many channels. One connection.
+              </SynapseCopy>
+            )}
           </h2>
           <p className="section-description">
-            {product === "firstpass"
-              ? "Explore nine modules designed to work powerfully on their own and seamlessly together."
-              : "Meet your customers where they are, with channels that work as part of a shared engagement strategy."}
+            {product === "firstpass" ? (
+              <SynapseCopy compact="Explore nine connected parts of the patient journey.">
+                Explore nine modules designed to work powerfully on their own
+                and seamlessly together.
+              </SynapseCopy>
+            ) : (
+              <SynapseCopy compact="Reach people on the channels they use.">
+                Meet your customers where they are, with channels that work as
+                part of a shared engagement strategy.
+              </SynapseCopy>
+            )}
           </p>
+          <label className="synapse-channel-picker">
+            <span className="sr-only">
+              {product === "firstpass"
+                ? "Choose a Firstpass module"
+                : "Choose a Synapse channel"}
+            </span>
+            <select
+              value={moduleIndex}
+              onChange={(event) => setModuleIndex(Number(event.target.value))}
+              aria-controls="module-panel"
+            >
+              {modules.map(([channel], index) => (
+                <option key={channel} value={index}>
+                  {channel}
+                </option>
+              ))}
+            </select>
+          </label>
           <div
             className="module-buttons"
             role="tablist"

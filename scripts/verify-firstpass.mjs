@@ -68,11 +68,17 @@ try {
         () => document.documentElement.scrollWidth <= innerWidth,
       ),
     ).toBe(true);
-    const title = await page.locator("h1").boundingBox();
-    const line = await page
-      .locator("h1")
-      .evaluate((element) => parseFloat(getComputedStyle(element).lineHeight));
-    expect(title.height).toBeLessThanOrEqual(line * 2 + 2);
+    await expect
+      .poll(async () =>
+        page.locator("h1").evaluate((element) => {
+          const style = getComputedStyle(element);
+          return (
+            element.getBoundingClientRect().height <=
+            parseFloat(style.lineHeight) * 2 + 2
+          );
+        }),
+      )
+      .toBe(true);
     await page.screenshot({
       path: `${output}/firstpass-${width}.png`,
       fullPage: true,

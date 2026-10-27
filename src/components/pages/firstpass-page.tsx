@@ -3,14 +3,16 @@ import { ProductLandingHero } from "./product-landing-hero";
 import { PlatformPreview } from "@/components/experience/platform-preview";
 import { ClientStrip } from "@/components/sections/client-strip";
 import { SectionLabel } from "@/components/site-primitives";
-import { FeatureGrid, FaqList } from "./page-primitives";
+import { FaqList } from "./page-primitives";
 import { ProductModules } from "./product-modules";
+import { SynapseCopy as ResponsiveCopy } from "./synapse-copy";
+import { SynapseFeatureGroup as ResponsiveFeatureGroup } from "./synapse-feature-group";
 import { products } from "@/content/products";
 
 export function FirstpassPage() {
   const data = products.firstpass;
   return (
-    <>
+    <div className="firstpass-overview">
       <ProductLandingHero product="firstpass" />
       <ClientStrip />
       <section
@@ -26,7 +28,11 @@ export function FirstpassPage() {
             <br />
             <span className="brand-heading-accent">At every step.</span>
           </h2>
-          <p>{data.introText}</p>
+          <p>
+            <ResponsiveCopy compact="Connect the digital front door with care inside your facility.">
+              {data.introText}
+            </ResponsiveCopy>
+          </p>
         </div>
         <div
           className="inner-hero-art product-landing-workspace firstpass-workspace"
@@ -46,17 +52,27 @@ export function FirstpassPage() {
           className="product-metrics product-landing-metrics"
           aria-label="Firstpass at a glance"
         >
-          {data.metrics.map(([value, label]) => (
+          {data.metrics.map(([value, label], index) => (
             <div key={label}>
               <strong className="display">{value}</strong>
-              <span>{label}</span>
+              <span>
+                <ResponsiveCopy
+                  compact={
+                    ["Engagements / year", "Modules", "Care pillars"][index]
+                  }
+                >
+                  {label}
+                </ResponsiveCopy>
+              </span>
             </div>
           ))}
         </div>
       </section>
-      <FeatureGrid
+      <ResponsiveFeatureGroup
         label="Real-time governance"
         title="Stay aware. Respond with confidence."
+        compactTitle="See care in real time."
+        summary="Keep teams informed about patient flow and facility operations."
         items={[
           [
             "Patient status, around the clock",
@@ -80,9 +96,11 @@ export function FirstpassPage() {
         id="platform-features"
         className="product-landing-feature-section firstpass-pillars"
       >
-        <FeatureGrid
+        <ResponsiveFeatureGroup
           label="02 / Four connected pillars"
           title="A better experience. For everyone."
+          compactTitle="Better care, together."
+          summary="Support patients, care teams and providers through one connected journey."
           items={data.features}
         />
       </div>
@@ -107,9 +125,13 @@ export function FirstpassPage() {
               className="display inner-section-title"
               data-reveal
             >
-              Care, connected.
-              <br />
-              <span className="brand-heading-accent">Questions, answered.</span>
+              <ResponsiveCopy compact="Your questions, answered.">
+                Care, connected.
+                <br />
+                <span className="brand-heading-accent">
+                  Questions, answered.
+                </span>
+              </ResponsiveCopy>
             </h2>
             <p>
               Find the right starting point for your patients and your care
@@ -126,21 +148,25 @@ export function FirstpassPage() {
         <SectionLabel>Explore our platforms</SectionLabel>
         <div>
           <h2 id="firstpass-next-title" className="display" data-reveal>
-            Every conversation.
-            <br />
-            <span className="brand-heading-accent">
-              A meaningful connection.
-            </span>
+            <ResponsiveCopy compact="Conversations, connected.">
+              Every conversation.
+              <br />
+              <span className="brand-heading-accent">
+                A meaningful connection.
+              </span>
+            </ResponsiveCopy>
           </h2>
           <p>
-            Bring your customer conversations together with Synapse, our
-            omnichannel engagement platform.
+            <ResponsiveCopy compact="Explore Synapse for connected customer conversations.">
+              Bring your customer conversations together with Synapse, our
+              omnichannel engagement platform.
+            </ResponsiveCopy>
           </p>
           <Link href="/synapse" className="button hero-platform-button">
             Explore Synapse
           </Link>
         </div>
       </section>
-    </>
+    </div>
   );
 }

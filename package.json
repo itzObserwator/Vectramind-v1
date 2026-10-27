@@ -29,12 +29,18 @@
     "audit:mobile": "node scripts/audit-lighthouse.mjs",
     "audit": "node scripts/audit-lighthouse.mjs --all",
     "preview": "npm run build && node scripts/serve.mjs --port=3001",
+    "test:capabilities-page-mobile": "node scripts/verify-capabilities-page-mobile.mjs",
     "test:capabilities-mobile": "node scripts/verify-capabilities-mobile.mjs",
     "test:capabilities-scroll": "node scripts/verify-capabilities-scroll.mjs",
     "test:mobile-report": "node scripts/verify-mobile-report.mjs",
     "test:synapse": "node scripts/verify-synapse.mjs",
+    "test:synapse-mobile": "node scripts/verify-synapse-mobile.mjs",
+    "test:firstpass-mobile": "node scripts/verify-firstpass-mobile.mjs",
     "test:firstpass": "node scripts/verify-firstpass.mjs",
+    "test:people-drag": "node scripts/verify-people-drag.mjs",
+    "test:about-mobile": "node scripts/verify-about-mobile.mjs",
     "test:about": "node scripts/verify-about.mjs",
+    "test:support-mobile": "node scripts/verify-support-mobile.mjs",
     "test:support": "node scripts/verify-support.mjs"
   },
   "dependencies": {
