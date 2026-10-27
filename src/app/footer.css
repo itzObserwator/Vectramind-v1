@@ -446,3 +446,8 @@
 .reference-footer[data-ready="true"] .footer-flow-mist {
   background: url("/images/reach-mist.webp") center bottom / cover no-repeat;
 }
+@media (max-width: 900px) {
+  .reference-footer .desktop-only-link {
+    display: none;
+  }
+}

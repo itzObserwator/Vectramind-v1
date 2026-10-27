@@ -130,7 +130,11 @@ export function Footer() {
             </Link>
             <nav aria-label="Footer navigation">
               {navigation.map(([title, href]) => (
-                <Link key={href} href={href}>
+                <Link
+                  key={href}
+                  href={href}
+                  className={href === "/blog" ? "desktop-only-link" : undefined}
+                >
                   {title}
                 </Link>
               ))}
@@ -172,6 +176,26 @@ export function Footer() {
                 strokeWidth={1.6}
                 aria-hidden="true"
               />
+            </a>
+            <a
+              href="https://www.youtube.com/@VectramindSaha2024"
+              target="_blank"
+              rel="noreferrer"
+              className="footer-social-link"
+              aria-label="YouTube"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                aria-hidden="true"
+              >
+                <rect x="3" y="6" width="18" height="12" rx="4" />
+                <path d="m10 9 5 3-5 3Z" />
+              </svg>
             </a>
             <a
               href="#top"

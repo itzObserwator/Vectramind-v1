@@ -70,7 +70,7 @@ export function mountMobileCapabilities(section: HTMLElement) {
     3.08,
   );
   addIntegrationConnections(integration, stages[2]);
-  integration.timeScale(0.22).time(3.08);
+  integration.timeScale(0.18).time(3.08);
 
   const running = () => visible && !document.hidden && !disposed;
   const paint = (now: number) => {

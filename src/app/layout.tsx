@@ -11,6 +11,7 @@ import "./footer.css";
 import "./clients.css";
 import "./primary-theme.css";
 import "./typography.css";
+import "./chat.css";
 export const metadata: Metadata = {
   icons: { icon: "/images/vectramind-mark.svg" },
   title: "Vectramind — Transforming Human Experiences",

@@ -1,4 +1,13 @@
 /* Shared inner-page system, aligned with the landing page's light palette. */
+.desktop-only-page {
+  display: contents;
+}
+@media (max-width: 900px) {
+  .desktop-only-page,
+  .about-careers {
+    display: none;
+  }
+}
 :root {
   --background: #fafafa;
   --foreground: #292b30;
@@ -803,4 +812,32 @@ body:has(.inner-page) .floating-contact {
   .case-story-content {
     animation: case-story-entry 0.35s ease-out;
   }
+}
+.form-fields .enquiry-types {
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+.enquiry-types legend {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+.form-fields .enquiry-types > label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 44px;
+  gap: 10px;
+  font-size: 14px;
+}
+.form-fields .enquiry-types input {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  padding: 0;
+  accent-color: var(--primary-ink);
 }

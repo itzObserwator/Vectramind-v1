@@ -54,6 +54,28 @@ export function FirstpassPage() {
           ))}
         </div>
       </section>
+      <FeatureGrid
+        label="Real-time governance"
+        title="Stay aware. Respond with confidence."
+        items={[
+          [
+            "Patient status, around the clock",
+            "Stay informed about patient status, waiting times and transit times across the journey.",
+          ],
+          [
+            "Real-time information",
+            "Bring current operational data together so teams can make decisions with a clearer view of what is happening.",
+          ],
+          [
+            "Facility oversight",
+            "Use predictive insights to understand service demand and identify opportunities to save time and resources.",
+          ],
+          [
+            "Resource optimization",
+            "Connect patient touchpoints with data-backed insights to inform staff and facility-resource decisions.",
+          ],
+        ]}
+      />
       <div
         id="platform-features"
         className="product-landing-feature-section firstpass-pillars"

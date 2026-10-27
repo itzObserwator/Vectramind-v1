@@ -1,6 +1,7 @@
 /* Video reference, 9–15 seconds. Pinned type, rolling index, changing SVG scenes. */
 .reference-capabilities {
-  height: 420svh;
+  /* Pinned travel grows from 320svh to 480svh for a calmer chapter sequence. */
+  height: 580svh;
   background: #fafafa;
   color: #2c2c2c;
 }

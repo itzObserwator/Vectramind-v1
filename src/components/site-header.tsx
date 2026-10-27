@@ -159,13 +159,7 @@ export function Header() {
           className="mobile-nav"
           aria-label="Mobile navigation"
         >
-          {[
-            ...navigation,
-            ["Our clients", "/#clients"],
-            ["Insights", "/blog"],
-            ["Careers", "/careers"],
-            ["Contact", "/contact"],
-          ].map(([label, href]) => (
+          {navigation.map(([label, href]) => (
             <Link
               key={href}
               href={href}

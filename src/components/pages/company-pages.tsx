@@ -59,8 +59,9 @@ export function CareersPage() {
           </h2>
           <p>
             We’re an equal rights employer that encourages diversity while
-            recognizing merit and growth. Our global team is connected by a
-            shared belief in the possibilities ahead.
+            recognizing merit and growth. From Dubai to Vancouver, we recognize
+            excellence across geographies and cultures, connecting a global
+            network of storytellers, pioneers, mentors and creators.
           </p>
           <Link className="text-link" href="/about">
             Meet Vectramind
@@ -76,8 +77,10 @@ export function CareersPage() {
           <span className="brand-heading-accent">could start here.</span>
         </h2>
         <p>
-          Tell us what you love building and where you want to grow. Connect
-          with the team to ask about current opportunities.
+          Build great products, adapt and evolve, and collaborate as one. Our
+          approach to learning, recognition, growth and leadership is grounded
+          in helping people stay passionate about their work. Tell us what you
+          love building and where you want to grow.
         </p>
         <Link className="button button-primary" href="/contact?topic=careers">
           Start a careers conversation

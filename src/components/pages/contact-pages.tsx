@@ -5,6 +5,7 @@ import { Arrow, Mark, SectionLabel } from "@/components/site-primitives";
 import { Button } from "@/components/ui/button";
 import { PageHero } from "./page-primitives";
 import { offices } from "@/content/site";
+import { officeMapLinks } from "@/content/global-reach";
 
 export function RequestForm({ support = false }: { support?: boolean }) {
   const [topic, setTopic] = useState(support ? "support" : "general");
@@ -33,7 +34,7 @@ export function RequestForm({ support = false }: { support?: boolean }) {
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const body = `Name: ${data.get("name")}\nEmail: ${data.get("email")}\nOrganization: ${data.get("company") || "Not provided"}\nTopic: ${topic}\n\n${data.get("message")}`;
+    const body = `Name: ${data.get("name")}\nEmail: ${data.get("email")}\nPhone: ${data.get("phone") || "Not provided"}\nOrganization: ${data.get("company") || "Not provided"}\nEnquiry type: ${data.get("enquiryType")}\nTopic: ${topic}\nContact consent: Provided for this enquiry\n\n${data.get("message")}`;
     setDraft({
       body,
       href: `mailto:support@vectramind.com?subject=${encodeURIComponent(`Website enquiry — ${topic}`)}&body=${encodeURIComponent(body)}`,
@@ -132,6 +133,34 @@ export function RequestForm({ support = false }: { support?: boolean }) {
               />
             </label>
             <label>
+              Phone number
+              <input
+                name="phone"
+                type="tel"
+                autoComplete="tel"
+                maxLength={40}
+                placeholder="Include your country code"
+              />
+            </label>
+            <fieldset className="form-full enquiry-types">
+              <legend>Enquiry type</legend>
+              {[
+                "Sales enquiry",
+                "General query",
+                "Career / job application",
+              ].map((type) => (
+                <label key={type}>
+                  <input
+                    type="radio"
+                    name="enquiryType"
+                    value={type}
+                    defaultChecked={type === "General query"}
+                  />
+                  {type}
+                </label>
+              ))}
+            </fieldset>
+            <label>
               {support ? "I need help with" : "I’m interested in"}{" "}
               <span>*</span>
               <select
@@ -187,7 +216,8 @@ export function RequestForm({ support = false }: { support?: boolean }) {
             <input type="checkbox" required />{" "}
             <span>
               I agree to the <Link href="/privacy-policy">privacy policy</Link>{" "}
-              and to being contacted about this enquiry.
+              and to being contacted about this enquiry by email, WhatsApp, RCS
+              or SMS using the details I provide.
             </span>
           </label>
           <div className="form-submit">
@@ -256,7 +286,7 @@ export function ContactPage() {
           {offices.map((office, i) => (
             <a
               key={office}
-              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Vectramind ${office}`)}`}
+              href={officeMapLinks[office]}
               target="_blank"
               rel="noreferrer"
             >

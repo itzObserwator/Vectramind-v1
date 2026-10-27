@@ -54,7 +54,7 @@ export function addIntegrationConnections(
         scaleY: index === 4 ? 0 : 0.7,
         svgOrigin: origin,
       },
-      { scaleX: 1, scaleY: 1, duration: 0.065, ease: "power2.out" },
+      { scaleX: 1, scaleY: 1, duration: 0.085, ease: "power2.out" },
       start + 0.095,
     );
   });

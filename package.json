@@ -20,6 +20,8 @@
     "test:platform-cards": "node scripts/verify-platform-cards.mjs",
     "test:reach": "node scripts/verify-reach.mjs",
     "test:footer": "node scripts/verify-footer.mjs",
+    "test:chat": "node scripts/verify-chat.mjs",
+    "test:content": "node scripts/verify-live-content.mjs",
     "test:page-theme": "node scripts/verify-page-theme.mjs",
     "test:inner-reveals": "node scripts/verify-inner-reveals.mjs",
     "generate:hero": "node scripts/generate-hero-trails.mjs",

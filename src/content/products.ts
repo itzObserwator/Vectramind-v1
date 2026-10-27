@@ -7,10 +7,10 @@ export const products = {
       "Turn functional messaging into engaging conversations. Reach your customers across channels, build stronger relationships, and grow one conversation at a time.",
     intro: "Because there’s a relationship in every conversation.",
     introText:
-      "Synapse brings your customer communications together. From a timely appointment reminder to a two-way conversation, connect the right message with the right person, at the right moment.",
+      "Synapse turns 2.8 billion notifications a year into opportunities for relevant, two-way conversations. Bring messaging, customer context and feedback together so each interaction can strengthen the relationship — from an appointment reminder to a personalized offer.",
     metrics: [
       ["800+", "clients worldwide"],
-      ["2B+", "notifications per year"],
+      ["2.8B", "notifications per year"],
       ["30+", "partners, channels & integrations"],
     ],
     features: [
@@ -24,7 +24,7 @@ export const products = {
       ],
       [
         "A clearer view",
-        "Comprehensive dashboards and channel-level reporting keep you informed about message delivery and performance.",
+        "Review weekly and monthly messaging statistics, track individual deliveries with channel-level reports, and share analytics with your team using drag-and-drop tools.",
       ],
       [
         "Quality before every send",
@@ -36,7 +36,7 @@ export const products = {
       ],
       [
         "Control where it counts",
-        "Allocate messaging credits across departments and users. Prioritize important communications and manage applications centrally.",
+        "Allocate messaging credits across departments and users, prioritize important communications, and centrally manage every application consuming platform services.",
       ],
     ],
     modules: [
@@ -44,22 +44,42 @@ export const products = {
         "SMS & RCS",
         "Reach customers with notifications, alerts and richer mobile messaging.",
       ],
-      ["WhatsApp", "Keep conversations going in a familiar messaging channel."],
-      ["Email", "Bring email into your wider customer engagement strategy."],
-      ["Chatbots", "Support responsive, automated customer conversations."],
       [
-        "Push & web notifications",
-        "Keep customers informed across your digital touchpoints.",
+        "WhatsApp",
+        "Enable two-way conversations through a familiar customer messaging channel.",
       ],
       [
-        "Social messaging",
-        "Extend your reach through connected social messaging channels.",
+        "Email",
+        "Bring email notifications and campaigns into the same engagement platform.",
       ],
+      [
+        "Chatbots",
+        "Automate routine conversations and respond to customer enquiries.",
+      ],
+      ["Messenger", "Connect customer conversations through Messenger."],
+      [
+        "Push notifications",
+        "Deliver timely updates through connected mobile applications.",
+      ],
+      [
+        "Web notifications",
+        "Keep customers informed at browser and web touchpoints.",
+      ],
+      [
+        "Apple Messages",
+        "Include the Apple messaging channel in your conversational ecosystem.",
+      ],
+      [
+        "Instagram",
+        "Bring Instagram messaging into your customer engagement strategy.",
+      ],
+      ["Viber", "Reach customers through Viber as part of your channel mix."],
+      ["WeChat", "Extend connected messaging to customers using WeChat."],
     ],
     faqs: [
       [
         "Which channels does Synapse support?",
-        "Synapse connects channels including SMS, email, WhatsApp, RCS, push and web notifications, chatbots and social messaging. Talk to the team about the channels and integrations your business requires.",
+        "The published channel ecosystem covers SMS, RCS, email, WhatsApp, chatbots, Messenger, push notifications, web notifications, Apple Messages, Instagram, Viber and WeChat. The team can confirm channel availability and the integrations required for your deployment.",
       ],
       [
         "Can Synapse connect to our existing systems?",
@@ -76,10 +96,10 @@ export const products = {
     category: "Your unified patient experience platform",
     headline: ["Better journeys.", "Happier patients."],
     description:
-      "Connect every touchpoint of the patient experience. Bring scheduling, patient flow, communication and real-time governance into one AI-native platform.",
+      "Connect every touchpoint of the patient experience in an AI-native platform. Bring scheduling, patient flow, communications and real-time governance together to help teams improve resource use, service efficiency and the experience of care.",
     intro: "Take the dis-appointment out of appointments.",
     introText:
-      "Firstpass connects the patient journey with your facility’s operations. Real-time insights help your team optimize resources, reduce friction, and make more informed decisions about care delivery.",
+      "Firstpass connects your digital front door with the facility’s operations. Monitor patient status, waiting and transit times around the clock, see real-time data, oversee service delivery and use predictive insights to inform resource decisions. Its modules can work independently or as one connected patient journey.",
     metrics: [
       ["5M+", "patient engagements per year"],
       ["9", "connected platform modules"],
@@ -88,19 +108,19 @@ export const products = {
     features: [
       [
         "Patients",
-        "Give people a clearer picture of their journey through smart patient management and streamlined communication.",
+        "Give patients a clearer picture of their journey through smart management and streamlined communication. Better engagement supports stronger relationships, continuity and referrals.",
       ],
       [
         "Productivity",
-        "Understand appointments, check-ins, walk-ins, no-shows, wait times and department trends to identify opportunities for improvement.",
+        "Track and analyze appointments, check-ins, walk-ins, no-shows, waiting and care times, and department trends. Identify bottlenecks, time-saving opportunities and areas for operational improvement.",
       ],
       [
         "People",
-        "Give doctors, nurses and care teams visibility into which patient is being served, where and when.",
+        "Give doctors, nurses, radiologists and care teams one dashboard showing which patient is being served, where and when, including visibility across multiple patients.",
       ],
       [
         "Providers",
-        "Connect touchpoints and use data-driven insights to optimize facility resources and improve operational visibility.",
+        "Connect every patient touchpoint and examine care and service times — from a consultation to a radiology scan — to make more informed facility-resource decisions.",
       ],
     ],
     modules: [

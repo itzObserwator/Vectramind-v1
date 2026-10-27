@@ -14,7 +14,7 @@ import { CookieNotice } from "@/components/cookie-notice";
 export function SiteShell({ children }: { children: ReactNode }) {
   return (
     <MotionProvider>
-      <Dialog>
+      <Dialog modal={false}>
         <a href="#main" className="skip-link">
           Skip to content
         </a>

@@ -1,9 +1,14 @@
 import Link from "next/link";
 import { AboutHero } from "./about-hero";
 import { SectionLabel } from "@/components/site-primitives";
-import { FeatureGrid } from "./page-primitives";
+import { FeatureGrid, IntroSection } from "./page-primitives";
 import { People } from "@/components/sections/people";
-import { reachContent, reachLocations } from "@/content/global-reach";
+import { MilestoneArchive } from "@/components/sections/milestone-archive";
+import {
+  reachContent,
+  reachLocations,
+  officeMapLinks,
+} from "@/content/global-reach";
 
 const values = [
   [
@@ -58,6 +63,7 @@ export function AboutPage() {
           aria-label="Vectramind at a glance"
         >
           {[
+            ["18+", "years of company experience"],
             ["170+", "curious minds"],
             ["800+", "clients worldwide"],
             ["5", "locations, one global outlook"],
@@ -146,14 +152,20 @@ export function AboutPage() {
               </div>
             </blockquote>
             <p className="about-founder-note">
-              Our AI-driven technology fuels data-driven insights and seamless
-              integrations, empowering our customers to keep pace with change.
-              From Synapse to Firstpass, the Vectramind story has always been
-              defined by evolution.
+              For over 18 years, Vectramind has helped organizations keep pace
+              with change through AI-driven insights and connected systems. Our
+              work spans automotive, aviation, banking, insurance, retail and
+              healthcare. From Synapse to Firstpass, evolution continues to
+              shape the experiences we build.
             </p>
           </div>
         </div>
       </section>
+      <IntroSection
+        label="Culture / Curious and consistent"
+        title="Room to explore. The focus to deliver."
+        text="Work, life and play meet in a culture shaped by curiosity, consistency and an anything-is-possible outlook. We draw on over 50 years of industry expertise to develop transformative solutions, with a focus on delivering on time and within budget. Experimentation and a shared pursuit of excellence help us keep improving."
+      />
       <div className="product-landing-feature-section about-values">
         <FeatureGrid
           label="04 / The way we work"
@@ -183,7 +195,9 @@ export function AboutPage() {
           {reachLocations.map((office, index) => (
             <Link
               key={office.name}
-              href="/contact#locations"
+              href={officeMapLinks[office.name]}
+              target="_blank"
+              rel="noreferrer"
               className="about-office"
               data-reveal
             >
@@ -197,7 +211,34 @@ export function AboutPage() {
           ))}
         </div>
       </section>
+      <section className="inner-section page-padding published-partners">
+        <SectionLabel>Our global partners</SectionLabel>
+        <h2 className="display inner-section-title" data-reveal>
+          Shared expertise.
+          <br />
+          <span className="brand-heading-accent">Greater possibilities.</span>
+        </h2>
+        <p className="section-description">
+          Our partners help enable the platforms and connections our clients
+          depend on. As technology and business needs evolve, we keep building
+          on those relationships to support what comes next.
+        </p>
+        <img
+          src="/images/global-partners.webp"
+          data-reveal
+          alt="Global partner and industry ecosystem logos published by Vectramind"
+          width="802"
+          height="28"
+          loading="lazy"
+          decoding="async"
+        />
+        <p className="published-partner-names">
+          Crown Commercial Service · du · e&amp; · IBM · Meta · Microsoft ·
+          Oracle Health
+        </p>
+      </section>
       <People includeFounder={false} sectionIndex="05" />
+      <MilestoneArchive />
       <section
         className="product-landing-next about-careers page-padding"
         aria-labelledby="about-careers-title"

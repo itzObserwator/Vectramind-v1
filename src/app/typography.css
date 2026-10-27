@@ -224,14 +224,21 @@
     margin-inline: -20%;
   }
   :root body .experience-pillars {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: start;
     font-size: var(--text-small);
-    gap: 10px 20px;
+    gap: 10px;
   }
   :root body .experience-hero-foot {
-    gap: 20px;
+    gap: 16px;
   }
   :root body .experience-pillars > span {
-    gap: 8px;
+    gap: 12px;
+  }
+  :root body .experience-hero-foot > p {
+    max-width: 26ch;
+    text-wrap: balance;
   }
   :root body .product-landing-hero-caption,
   :root body .inner-hero-bottom,

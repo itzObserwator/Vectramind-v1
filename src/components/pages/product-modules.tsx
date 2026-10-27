@@ -13,6 +13,13 @@ export function ProductModules({
   modules: readonly (readonly [string, string])[];
 }) {
   const [moduleIndex, setModuleIndex] = useState(0);
+  const detail =
+    product === "firstpass"
+      ? {
+          name: modules[moduleIndex][0],
+          slug: modules[moduleIndex][0].replaceAll(" ", "-"),
+        }
+      : undefined;
   return (
     <section className="inner-section page-padding">
       <SectionLabel>
@@ -92,6 +99,11 @@ export function ProductModules({
           <Mark />
           <h3>{modules[moduleIndex][0]}</h3>
           <p>{modules[moduleIndex][1]}</p>
+          {detail && (
+            <Link href={`/firstpass/${detail.slug}`} className="text-link">
+              Explore {detail.name} <Arrow />
+            </Link>
+          )}
           <Link href={`/contact?topic=${product}`} className="text-link">
             Explore with our team
             <Arrow />

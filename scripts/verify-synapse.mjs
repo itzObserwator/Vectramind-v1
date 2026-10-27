@@ -34,7 +34,7 @@ try {
   ).toHaveCount(1);
   await page.getByRole("tab", { name: "WhatsApp", exact: true }).click();
   await expect(page.getByRole("tabpanel")).toContainText(
-    "familiar messaging channel",
+    "familiar customer messaging channel",
   );
   await page
     .getByRole("tab", { name: "WhatsApp", exact: true })
@@ -43,7 +43,7 @@ try {
     page.getByRole("tab", { name: "Email", exact: true }),
   ).toBeFocused();
   await expect(page.getByRole("tabpanel")).toContainText(
-    "email into your wider",
+    "email notifications and campaigns",
   );
   await page.getByRole("button", { name: "Next success story" }).click();
   await expect(page.locator(".case-story h3")).toContainText(

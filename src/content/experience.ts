@@ -10,7 +10,7 @@ export const experience = {
   introduction: {
     label: "Customer & patient experiences",
     title: "Are disconnected\nexperiences holding\nyou back?",
-    text: "When conversations, patient journeys and systems work in isolation, people feel the gaps. Vectramind brings them together, so every interaction can move your business forward.",
+    text: "When conversations, patient journeys and systems work in isolation, people feel the gaps. We build transformative platforms that adapt with advanced technology, bringing intelligence, innovation and connected experiences together to move your business forward.",
   },
   network: {
     title: "Many touchpoints.\nOne connected experience.",

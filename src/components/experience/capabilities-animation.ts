@@ -208,7 +208,7 @@ export function mount(
           start: "top top",
           end: "bottom bottom",
           // Keep the rolling index and stack-to-chip handoff on the same eased clock.
-          scrub: 0.7,
+          scrub: 0.9,
         },
         onUpdate() {
           // Read the rendered timeline, so copy never jumps ahead of artwork

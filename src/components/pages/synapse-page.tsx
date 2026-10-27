@@ -7,6 +7,10 @@ import { FeatureGrid, FaqList } from "./page-primitives";
 import { ProductModules } from "./product-modules";
 import { CaseStudies } from "@/components/sections/case-studies";
 import { products } from "@/content/products";
+import {
+  synapseDetailSections,
+  synapseIntegrations,
+} from "@/content/synapse-details";
 
 export function SynapsePage() {
   const data = products.synapse;
@@ -66,6 +70,43 @@ export function SynapsePage() {
           items={data.features}
         />
       </div>
+      {synapseDetailSections.map((section) => (
+        <div
+          id={section.id}
+          key={section.id}
+          className="product-landing-feature-section"
+        >
+          <FeatureGrid
+            label={section.label}
+            title={section.title}
+            items={section.items}
+          />
+        </div>
+      ))}
+      <section className="inner-section page-padding published-integrations">
+        <SectionLabel>Expand your conversational ecosystem</SectionLabel>
+        <h2 className="display inner-section-title" data-reveal>
+          Your systems.
+          <br />
+          <span className="brand-heading-accent">
+            Still part of the conversation.
+          </span>
+        </h2>
+        <p className="section-description">
+          Connect core applications through APIs, databases and healthcare
+          interfaces. Vectramind’s published integration ecosystem includes{" "}
+          {synapseIntegrations.join(", ")}.
+        </p>
+        <img
+          src="/images/integration-options.webp"
+          data-reveal
+          alt="Cerner, Cloverleaf, InterSystems, Rhapsody and TIBCO integration ecosystem"
+          width="925"
+          height="64"
+          loading="lazy"
+          decoding="async"
+        />
+      </section>
       <div className="product-landing-proof">
         <CaseStudies />
       </div>

@@ -48,6 +48,8 @@ The styles are organized into commented sections, followed by tablet, mobile, an
 
 ## Inner pages
 
+The live-site content comparison is recorded in [docs/live-content-audit.md](docs/live-content-audit.md), reviewed 27 October 2026. Firstpass now includes nine detailed static routes under `/firstpass/[module]`, with server-rendered copy in `src/content/firstpass-modules.ts`. The Synapse, capabilities, company and enquiry content covers the published live-site feature set. About includes a progressively loaded 40-photo milestone archive. Run `npm run test:content` against the production preview to verify the new routes, content navigation, archive, forms and responsive bounds.
+
 The local routes are `/synapse`, `/firstpass`, `/capabilities`, `/about`, `/careers`, `/support`, `/contact`, `/blog`, `/terms-of-use`, `/privacy-policy`, and ten article routes under `/blog/[slug]`.
 
 - Shared shell and navigation lifecycle: `src/app/template.tsx`, `src/components/site-shell.tsx`.
