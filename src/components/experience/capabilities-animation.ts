@@ -293,7 +293,36 @@ export function mount(
   );
   media.add(
     "(max-width: 900px) and (prefers-reduced-motion: no-preference)",
-    () => (root.current ? mountMobileCapabilities(root.current) : undefined),
+    () => {
+      const section = root.current;
+      if (!section) return;
+      const motion = mountMobileCapabilities(section);
+      const chapterFrame = { progress: 0 };
+      refreshChip = () => motion?.renderProgress(chapterFrame.progress);
+      const chapters = gsap.to(chapterFrame, {
+        progress: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          // Short screens first scroll through the tall frame, then begin
+          // changing chapters once the copy and controls are fully visible.
+          start: () => `top ${Math.min(0, innerHeight - 740)}px`,
+          end: "bottom bottom",
+          scrub: 0.45,
+          invalidateOnRefresh: true,
+        },
+        onUpdate: () => {
+          const chapter = motion?.renderProgress(chapterFrame.progress) ?? 0;
+          setActive((previous) => (previous === chapter ? previous : chapter));
+        },
+      });
+      return () => {
+        chapters.scrollTrigger?.kill();
+        chapters.kill();
+        motion?.dispose();
+        refreshChip = () => {};
+      };
+    },
     root,
   );
   return () => {

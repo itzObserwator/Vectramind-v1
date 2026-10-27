@@ -9,6 +9,7 @@ import { Arrow } from "@/components/site-primitives";
 import { CapabilityVisual } from "./capability-visual";
 import Link from "next/link";
 import { useNearViewport } from "@/components/use-near-viewport";
+import { CapabilityContent } from "./capability-content";
 
 const CapabilityCopy = dynamic(() => import("./capability-copy"));
 export function ExperienceCapabilities({
@@ -28,16 +29,17 @@ export function ExperienceCapabilities({
   function select(index: number) {
     const i = Math.max(0, Math.min(2, index));
     if (!root.current) return;
-    if (
-      window.matchMedia(
-        "(min-width: 901px) and (prefers-reduced-motion: no-preference)",
-      ).matches
-    )
+    const mobileStart = window.matchMedia("(max-width: 900px)").matches
+      ? Math.max(740 - innerHeight, 0)
+      : 0;
+    if (window.matchMedia("(prefers-reduced-motion: no-preference)").matches)
       window.scrollTo({
         top:
           root.current.getBoundingClientRect().top +
           scrollY +
-          (root.current.offsetHeight - innerHeight) * [0.12, 0.5, 0.87][i],
+          mobileStart +
+          (root.current.offsetHeight - innerHeight - mobileStart) *
+            [0.12, 0.5, 0.87][i],
         behavior: "smooth",
       });
     else setActive(i);
@@ -85,13 +87,7 @@ export function ExperienceCapabilities({
                 <CapabilityCopy active={active} />
               ) : (
                 <div>
-                  <p className="experience-kicker">
-                    {capabilities[active].detail}
-                  </p>
-                  <h3>{capabilities[active].title}</h3>
-                  <p className="experience-capability-text">
-                    {capabilities[active].text}
-                  </p>
+                  <CapabilityContent active={active} />
                 </div>
               )}
             </div>
@@ -115,7 +111,15 @@ export function ExperienceCapabilities({
                 <HugeiconsIcon icon={ArrowRight01Icon} size={18} />
               </button>
               <span>
-                {capabilities[active].label}
+                <span className="capability-navigation-label">
+                  {capabilities[active].label}
+                </span>
+                <span
+                  className="capability-navigation-count"
+                  aria-hidden="true"
+                >
+                  0{active + 1} / 03
+                </span>
                 <span className="sr-only">, {active + 1} of 3</span>
               </span>
             </div>

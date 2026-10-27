@@ -308,6 +308,13 @@ img {
   border-bottom: 1px solid var(--line);
   font-size: 23px;
 }
+.mobile-nav-consultation {
+  margin-top: 24px;
+}
+.mobile-nav-consultation > .button {
+  width: 100%;
+  min-height: 48px;
+}
 .hero {
   min-height: 850px;
   height: 100svh;
@@ -2034,6 +2041,7 @@ img {
     width: 175px;
   }
   .header-actions > .button {
+    display: none;
     font-size: 12px;
     gap: 15px;
     padding: 11px 16px;

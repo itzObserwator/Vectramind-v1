@@ -11,6 +11,23 @@ try {
   const first = track.locator(".capability-visual-stage-0");
   const second = track.locator(".capability-visual-stage-1");
   const third = track.locator(".capability-visual-stage-2");
+  async function scrollToChapter(index) {
+    await track.evaluate((section, chapter) => {
+      const start = Math.max(740 - innerHeight, 0);
+      scrollTo(
+        0,
+        section.getBoundingClientRect().top +
+          scrollY +
+          start +
+          (section.offsetHeight - innerHeight - start) *
+            [0.12, 0.5, 0.87][chapter],
+      );
+    }, index);
+    await expect(track.locator(".capability-visual")).toHaveAttribute(
+      "data-active",
+      String(index),
+    );
+  }
   const fin = first.locator('[data-geometry="fin"][data-index="12"]');
   const visiblePanel = first.locator('[data-panel-index="12"]');
   const signal = first.locator(".capability-signal").first();
@@ -67,28 +84,50 @@ try {
     exact: true,
   });
   await next.click();
-  await expect(track.locator("h3")).toHaveText(
-    "Human experiences, thoughtfully connected.",
+  await expect(track.locator("h3 .capability-copy-compact")).toHaveText(
+    "Designed around people.",
   );
   await art.scrollIntoViewIfNeeded();
   await expect(second).toHaveAttribute("data-flow", "running");
   await expect(first).toHaveAttribute("data-flow", "paused");
   const shelf = second.locator('[data-geometry="plate"]').first();
+  await page.waitForTimeout(1000);
   const earlyShelf = await shelf.getAttribute("d");
   await page.waitForTimeout(700);
   expect(
     await shelf.getAttribute("d"),
-    "Mobile layer-building sequence advances",
-  ).not.toBe(earlyShelf);
+    "Mobile layer building holds when scrolling stops",
+  ).toBe(earlyShelf);
+  await track.evaluate((section) => {
+    const start = Math.max(740 - innerHeight, 0);
+    scrollTo(
+      0,
+      section.getBoundingClientRect().top +
+        scrollY +
+        start +
+        (section.offsetHeight - innerHeight - start) * 0.6,
+    );
+  });
+  await expect.poll(() => shelf.getAttribute("d")).not.toBe(earlyShelf);
 
   await next.click();
-  await expect(track.locator("h3")).toHaveText(
-    "Bridge the gaps. Move forward together.",
+  await expect(track.locator("h3 .capability-copy-compact")).toHaveText(
+    "Systems, connected.",
   );
   await art.scrollIntoViewIfNeeded();
   await expect(third).toHaveAttribute("data-flow", "running");
   await expect(second).toHaveAttribute("data-flow", "paused");
   const route = third.locator('[data-connection="0"] .integration-route');
+  await track.evaluate((section) => {
+    const start = Math.max(740 - innerHeight, 0);
+    scrollTo(
+      0,
+      section.getBoundingClientRect().top +
+        scrollY +
+        start +
+        (section.offsetHeight - innerHeight - start),
+    );
+  });
   await expect
     .poll(
       () =>
@@ -125,16 +164,16 @@ try {
   await page.waitForTimeout(500);
   expect(await fin.getAttribute("d")).toBe(still);
   await next.click();
-  await expect(track.locator("h3")).toHaveText(
-    "Human experiences, thoughtfully connected.",
+  await expect(track.locator("h3 .capability-copy-compact")).toHaveText(
+    "Designed around people.",
   );
   await page.emulateMedia({ reducedMotion: "no-preference" });
-  await art.scrollIntoViewIfNeeded();
+  await scrollToChapter(1);
   await expect(second).toHaveAttribute("data-flow", "running");
 
   for (const width of [900, 768, 390, 320]) {
     await page.setViewportSize({ width, height: 844 });
-    await art.scrollIntoViewIfNeeded();
+    await scrollToChapter(1);
     await expect(second).toHaveAttribute("data-flow", "running");
     expect(
       await page.evaluate(

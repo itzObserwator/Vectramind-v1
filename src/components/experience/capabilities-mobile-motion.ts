@@ -1,9 +1,10 @@
 import gsap from "gsap";
 import { createCapabilityRenderer } from "./capability-geometry";
 import { addIntegrationConnections } from "./integration-connections";
+import { createStackChipTransition } from "./stack-chip-transition";
 
-/** Button-selected mobile chapters use the same geometry as desktop, without
- * pinning a tall scroll track. Only the visible chapter animates. */
+/** Structural animation follows the desktop's 0–4 scroll clock. Only the first
+ * chapter's ambient fins and the visible chapter's light flow run with time. */
 export function mountMobileCapabilities(section: HTMLElement) {
   const svg = section.querySelector<SVGSVGElement>(".capability-visual");
   if (!svg) return;
@@ -11,10 +12,11 @@ export function mountMobileCapabilities(section: HTMLElement) {
     svg.querySelectorAll<SVGGElement>(".capability-visual-stage"),
   );
   const render = createCapabilityRenderer(section);
+  const chipTransition = createStackChipTransition(section);
   let selected = Number(svg.dataset.active || 0);
   let visible = false;
   let phase = 0;
-  let elapsed = 0;
+  let scrollTime = 0;
   let request = 0;
   let previous = 0;
   let disposed = false;
@@ -58,41 +60,40 @@ export function mountMobileCapabilities(section: HTMLElement) {
   integration.fromTo(
     stages[2].querySelector(".integration-hub-surface"),
     { opacity: 0 },
-    { opacity: 1, duration: 0.12 },
-    3.08,
+    { opacity: 1, duration: 0.012 },
+    3.158,
   );
   integration.fromTo(
     stages[2].querySelectorAll(
-      ".integration-map-background, .integration-map-eyebrow, .integration-flow-caption, .integration-chip-content",
+      ".integration-map-background, .integration-map-eyebrow, .integration-flow-caption",
     ),
     { opacity: 0 },
+    { opacity: 1, duration: 0.18 },
+    3.16,
+  );
+  integration.fromTo(
+    stages[2].querySelector(".integration-chip-content"),
+    { opacity: 0 },
     { opacity: 1, duration: 0.15 },
-    3.08,
+    3.1,
   );
   addIntegrationConnections(integration, stages[2]);
-  integration.timeScale(0.18).time(3.08);
+  integration.time(0);
 
   const running = () => visible && !document.hidden && !disposed;
   const paint = (now: number) => {
     request = 0;
-    if (!running() || selected === 2) return;
+    if (!running() || selected !== 0) return;
     if (previous && now - previous < 1000 / 30) {
       request = requestAnimationFrame(paint);
       return;
     }
     const delta = previous ? Math.min((now - previous) / 1000, 0.05) : 0;
     previous = now;
-    if (selected === 0) {
-      phase = (phase + delta / 32) % 1;
-      render(0.45, phase, true);
-      stages[0].dataset.panelPhase = phase.toFixed(6);
-    } else {
-      elapsed = Math.min(elapsed + delta, 8);
-      // Replay the reference's illuminated squares → plates → compressed
-      // surface → upward stack, then hold its completed pose.
-      render(1 + (elapsed / 8) * 1.76, 0);
-    }
-    if (selected === 0 || elapsed < 8) request = requestAnimationFrame(paint);
+    phase = (phase + delta / 32) % 1;
+    render(Math.min(scrollTime, 2.76), phase, true);
+    stages[0].dataset.panelPhase = phase.toFixed(6);
+    request = requestAnimationFrame(paint);
   };
   const sync = () => {
     const active = running();
@@ -102,46 +103,25 @@ export function mountMobileCapabilities(section: HTMLElement) {
       flows[index].paused(!playing);
       mists[index].paused(!playing);
     });
-    if (active && selected === 2 && integration.time() < integration.duration())
-      integration.play();
-    else integration.pause();
-    if (!active || selected === 2) {
+    if (!active || selected !== 0) {
       cancelAnimationFrame(request);
       request = 0;
       previous = 0;
-    } else if (!request && (selected === 0 || elapsed < 8)) {
+    } else if (!request) {
       previous = 0;
       request = requestAnimationFrame(paint);
     }
   };
-  const choose = () => {
-    const next = Number(svg.dataset.active || 0);
-    if (next === selected) return;
-    selected = next;
-    elapsed = 0;
-    previous = 0;
-    cancelAnimationFrame(request);
-    request = 0;
-    if (selected === 0) render(0.45, phase, true);
-    else if (selected === 1) render(1, 0);
-    else {
-      render(4, 0);
-      integration.pause().time(3.08);
-    }
+  const renderProgress = (progress: number) => {
+    scrollTime = Math.max(0, Math.min(1, progress)) * 4;
+    selected = scrollTime < 1 ? 0 : scrollTime < 3 ? 1 : 2;
+    render(Math.min(scrollTime, 2.76), phase);
+    chipTransition.render(scrollTime);
+    integration.pause().time(scrollTime, true);
     sync();
+    return selected;
   };
-  if (selected === 0) render(0.45, phase, true);
-  else if (selected === 1) render(1, 0);
-  else {
-    render(4, 0);
-    integration.time(3.08);
-  }
-
-  const selection = new MutationObserver(choose);
-  selection.observe(svg, {
-    attributes: true,
-    attributeFilter: ["data-active"],
-  });
+  renderProgress(0);
   const observer = new IntersectionObserver(([entry]) => {
     visible = entry.isIntersecting;
     sync();
@@ -149,19 +129,20 @@ export function mountMobileCapabilities(section: HTMLElement) {
   observer.observe(svg);
   document.addEventListener("visibilitychange", sync);
   sync();
-  return () => {
+  const dispose = () => {
     disposed = true;
     cancelAnimationFrame(request);
     observer.disconnect();
-    selection.disconnect();
     document.removeEventListener("visibilitychange", sync);
     flows.forEach((flow) => flow.kill());
     mists.forEach((mist) => mist.kill());
     integration.kill();
+    chipTransition.render(null);
     stages.forEach((stage) => {
       delete stage.dataset.flow;
       delete stage.dataset.panelPhase;
     });
     render(null);
   };
+  return { renderProgress, dispose };
 }

@@ -98,7 +98,7 @@
   left: 50%;
   top: 46.4%;
   transform: translate(-50%, -50%);
-  width: 7%;
+  width: 8.6%;
   aspect-ratio: 1;
   display: flex;
   align-items: center;
@@ -147,12 +147,13 @@
   -webkit-tap-highlight-color: transparent;
 }
 .ecosystem-sphere {
+  container-type: inline-size;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   transform: translateY(-40%);
-  width: 52%;
+  width: 80%;
   aspect-ratio: 1;
   border-radius: 50%;
   border: 1px solid #c9c9c9;
@@ -332,7 +333,7 @@
     font-size: clamp(7px, 1.45cqw, 9px);
   }
   .ecosystem-sphere {
-    width: 66%;
+    width: 86%;
   }
   .ecosystem-node .ecosystem-sphere::after {
     width: 3px;

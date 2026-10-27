@@ -57,9 +57,19 @@ export function OurPlatforms({
                   </span>
                 ))}
               </div>
-              <h3>{platform.title}</h3>
+              <h3>
+                <span className="platform-copy-full">{platform.title}</span>
+                <span className="platform-copy-compact">
+                  {platform.mobileTitle}
+                </span>
+              </h3>
               <p className="platform-card-description">
-                {platform.description}
+                <span className="platform-copy-full">
+                  {platform.description}
+                </span>
+                <span className="platform-copy-compact">
+                  {platform.mobileDescription}
+                </span>
               </p>
               <Link href={platform.href} className="platform-card-cta">
                 Explore {platform.name} <Arrow />

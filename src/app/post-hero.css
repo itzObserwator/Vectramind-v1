@@ -56,6 +56,9 @@
 .post-hero-copy {
   padding-bottom: 25px;
 }
+.intro-copy-compact {
+  display: none;
+}
 .post-hero-eyebrow {
   font-size: 10px;
   font-weight: 500;
@@ -287,6 +290,7 @@
     padding: 9px 11px;
     gap: 8px;
     font-size: 8px;
+    max-width: calc(100% - 8px);
   }
   .post-hero-card-icon {
     width: 23px;
@@ -296,8 +300,13 @@
     width: 15px;
     height: 15px;
   }
+  .post-hero-card-message {
+    right: 0;
+    top: 14%;
+  }
   .post-hero-card-patient {
-    left: 19%;
+    left: 0;
+    top: 44%;
   }
   .post-hero-resolution {
     padding-top: 35px;
@@ -324,6 +333,13 @@
   .post-hero-copy {
     padding-bottom: 10px;
   }
+  .intro-copy-full,
+  .post-hero-graphic-caption {
+    display: none;
+  }
+  .intro-copy-compact {
+    display: inline;
+  }
   .post-hero-eyebrow {
     font-size: 9px;
     margin-bottom: 22px;
@@ -343,10 +359,10 @@
     font-size: 9px;
   }
   .post-hero-card-message {
-    right: 8%;
+    right: 0;
   }
   .post-hero-card-patient {
-    left: 17%;
+    left: 0;
   }
   .post-hero-graphic-caption {
     font-size: 8px;

@@ -287,13 +287,16 @@
   text-align: center;
   padding-top: 10px;
 }
+.reach-metric-value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
 .reach-metric .reach-metric-laurel {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 116px;
-  height: 72px;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 64px;
   color: #9499a3;
   pointer-events: none;
 }
@@ -303,11 +306,12 @@
     Inter,
     sans-serif;
   letter-spacing: -0.045em;
+  white-space: nowrap;
 }
 .reach-metric > span {
   display: block;
   max-width: 165px;
-  margin: 27px auto 0;
+  margin: 12px auto 0;
   font-size: 9px;
   line-height: 1.5;
 }
@@ -442,11 +446,14 @@
     text-align: center;
   }
   .reach-office-list {
-    display: grid;
+    display: none;
     grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 8px;
     border-top: 0;
     margin-top: 14px;
+  }
+  .reach-offices > .reach-eyebrow {
+    display: none;
   }
   .reach-office-list button:nth-child(n + 4) {
     grid-column: span 3;
@@ -509,23 +516,23 @@
   }
   .reach-metric {
     display: grid;
-    grid-template-columns: 88px minmax(0, 1fr);
+    grid-template-columns: 124px minmax(0, 1fr);
     align-items: center;
-    gap: 18px;
+    gap: 16px;
     min-height: 82px;
     padding: 14px 0;
     border-top: 1px solid #dedfe3;
   }
   .reach-metric .reach-metric-laurel {
-    top: 50%;
-    left: 44px;
-    transform: translate(-50%, -50%);
-    width: 84px;
+    flex-basis: 22px;
+    width: 22px;
     height: 56px;
   }
-  .reach-metric strong {
+  .reach-metric-value {
     grid-column: 1;
     grid-row: 1;
+  }
+  .reach-metric strong {
     font-size: 26px;
   }
   .reach-metric > span {

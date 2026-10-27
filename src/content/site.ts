@@ -3,6 +3,8 @@ export const capabilities = [
   {
     label: "Intelligence",
     title: "Smarter decisions. Greater possibilities.",
+    mobileTitle: "Smarter decisions.",
+    mobileText: "Turn complex data into clear insights and informed decisions.",
     text: "Turn complex data into clear direction. Our AI-powered platforms and proprietary algorithms reveal meaningful patterns, helping your business respond with precision.",
     detail: "Artificial intelligence",
     icon: "ai",
@@ -10,6 +12,8 @@ export const capabilities = [
   {
     label: "Experience",
     title: "Human experiences, thoughtfully connected.",
+    mobileTitle: "Designed around people.",
+    mobileText: "Build adaptable solutions around the people who use them.",
     text: "From the first message to the patient journey, we build adaptable solutions around the people who use them. Creating simpler interactions and more meaningful connections.",
     detail: "Solution design & development",
     icon: "experience",
@@ -17,6 +21,9 @@ export const capabilities = [
   {
     label: "Integration",
     title: "Bridge the gaps. Move forward together.",
+    mobileTitle: "Systems, connected.",
+    mobileText:
+      "Keep information moving between your systems, teams and applications.",
     text: "Connect your systems, people and data with seamless, bi-directional integrations. From APIs and databases to EMRs, our expertise keeps information and opportunity flowing.",
     detail: "Integration services",
     icon: "integration",

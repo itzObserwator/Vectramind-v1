@@ -57,8 +57,9 @@ export function Header() {
     document.body.setAttribute("data-lenis-prevent", "");
     document.body.setAttribute("data-navigation-open", "");
     const links = Array.from(
-      header.current?.querySelectorAll<HTMLAnchorElement>(".mobile-nav a") ||
-        [],
+      header.current?.querySelectorAll<HTMLAnchorElement | HTMLButtonElement>(
+        ".mobile-nav a, .mobile-nav button",
+      ) || [],
     );
     const targets = [menuButton.current, ...links].filter(
       (element): element is HTMLButtonElement | HTMLAnchorElement => !!element,
@@ -172,6 +173,15 @@ export function Header() {
               <Arrow />
             </Link>
           ))}
+          <div
+            className="mobile-nav-consultation"
+            onClick={() => {
+              menuButton.current?.focus({ preventScroll: true });
+              setMenu(false);
+            }}
+          >
+            <ContactButton>Consultation</ContactButton>
+          </div>
         </nav>
       )}
     </header>

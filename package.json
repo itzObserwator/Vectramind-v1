@@ -30,6 +30,7 @@
     "audit": "node scripts/audit-lighthouse.mjs --all",
     "preview": "npm run build && node scripts/serve.mjs --port=3001",
     "test:capabilities-mobile": "node scripts/verify-capabilities-mobile.mjs",
+    "test:capabilities-scroll": "node scripts/verify-capabilities-scroll.mjs",
     "test:mobile-report": "node scripts/verify-mobile-report.mjs",
     "test:synapse": "node scripts/verify-synapse.mjs",
     "test:firstpass": "node scripts/verify-firstpass.mjs",

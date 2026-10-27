@@ -170,17 +170,16 @@ try {
     expect(intro.y + intro.height).toBeLessThan(stage.y);
     if (width > 767) expect(offices.x + offices.width).toBeLessThan(map.x);
     else expect(map.y + map.height).toBeLessThan(offices.y);
-    await expect(section.getByRole("tablist")).toHaveAttribute(
-      "aria-orientation",
-      width <= 767 ? "horizontal" : "vertical",
-    );
+    if (width > 767)
+      await expect(section.getByRole("tablist")).toHaveAttribute(
+        "aria-orientation",
+        "vertical",
+      );
     if (width <= 767) {
-      const tabs = await section.getByRole("tab").all();
-      const first = await tabs[0].boundingBox();
-      const third = await tabs[2].boundingBox();
-      const fourth = await tabs[3].boundingBox();
-      expect(third.y).toBeCloseTo(first.y, 1);
-      expect(fourth.y).toBeGreaterThan(first.y + first.height);
+      await expect(section.locator(".reach-office-list")).toBeHidden();
+      await expect(
+        section.getByRole("region", { name: "Office locations" }),
+      ).toBeVisible();
       await expect(
         section.locator(".reach-office-selected-name"),
       ).toBeVisible();
@@ -249,9 +248,14 @@ try {
   await unavailable.locator("#global-reach").scrollIntoViewIfNeeded();
   await expect(unavailable.locator(".reach-globe-unavailable")).toBeVisible();
   await expect(unavailable.locator(".reach-globe-fallback")).toHaveCount(1);
-  await unavailable.getByRole("tab", { name: /Vancouver/ }).click();
+  for (let index = 0; index < 4; index++)
+    await unavailable
+      .getByRole("button", { name: "Next office", exact: true })
+      .click();
   await expect(
-    unavailable.locator("#global-reach").getByRole("tabpanel"),
+    unavailable
+      .locator("#global-reach")
+      .getByRole("region", { name: "Office locations" }),
   ).toContainText("Canada");
   expect(unavailableErrors).toEqual([]);
   await unavailable.close();

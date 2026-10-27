@@ -1,6 +1,6 @@
 "use client";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { capabilities } from "@/content/site";
+import { CapabilityContent } from "./capability-content";
 export default function CapabilityCopy({ active }: { active: number }) {
   const reduced = useReducedMotion();
   return (
@@ -12,11 +12,7 @@ export default function CapabilityCopy({ active }: { active: number }) {
         exit={{ opacity: 0, y: -12 }}
         transition={{ duration: 0.25 }}
       >
-        <p className="experience-kicker">{capabilities[active].detail}</p>
-        <h3>{capabilities[active].title}</h3>
-        <p className="experience-capability-text">
-          {capabilities[active].text}
-        </p>
+        <CapabilityContent active={active} />
       </motion.div>
     </AnimatePresence>
   );

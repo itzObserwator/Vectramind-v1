@@ -21,16 +21,18 @@ function compactOfficeLayout() {
 function serverOfficeLayout() {
   return false;
 }
-function MetricLaurel() {
+function MetricLaurel({ side }: { side: "left" | "right" }) {
   return (
-    <img
-      className="reach-metric-laurel"
-      src="/images/metric-laurel.svg"
-      alt=""
-      width="110"
+    <svg
+      className={`reach-metric-laurel reach-metric-laurel-${side}`}
+      viewBox={`${side === "left" ? 0 : 74} 0 36 70`}
+      width="36"
       height="70"
-      loading="lazy"
-    />
+      aria-hidden="true"
+      focusable="false"
+    >
+      <image href="/images/metric-laurel.svg" width="110" height="70" />
+    </svg>
   );
 }
 export function GlobalReach() {
@@ -137,8 +139,11 @@ export function GlobalReach() {
             <div
               className="reach-office-detail"
               id={`${officePrefix}-panel`}
-              role="tabpanel"
-              aria-labelledby={`${officePrefix}-${selectedOffice}`}
+              role={compactOffices ? "region" : "tabpanel"}
+              aria-label={compactOffices ? "Office locations" : undefined}
+              aria-labelledby={
+                compactOffices ? undefined : `${officePrefix}-${selectedOffice}`
+              }
               tabIndex={0}
             >
               <div aria-live="polite" aria-atomic="true">
@@ -184,8 +189,11 @@ export function GlobalReach() {
           <div className="reach-metrics">
             {[statistics[1], statistics[2], statistics[4]].map((stat) => (
               <div className="reach-metric" key={stat.value}>
-                <MetricLaurel />
-                <strong>{stat.value}</strong>
+                <div className="reach-metric-value">
+                  <MetricLaurel side="left" />
+                  <strong>{stat.value}</strong>
+                  <MetricLaurel side="right" />
+                </div>
                 <span>{stat.label}</span>
               </div>
             ))}

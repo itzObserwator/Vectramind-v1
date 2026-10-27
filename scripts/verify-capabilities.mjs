@@ -41,7 +41,9 @@ try {
   ];
   for (const chapter of [0, 1, 2, 1, 0]) {
     await scrub([0.12, 0.49, 0.86][chapter]);
-    await expect(track.locator("h3")).toHaveText(titles[chapter]);
+    await expect(track.locator("h3 .capability-copy-full")).toHaveText(
+      titles[chapter],
+    );
     await expect(
       track.locator(`.capability-visual-stage-${chapter}`),
     ).toHaveCSS("opacity", "1");
@@ -236,7 +238,7 @@ try {
     "The layer camera holds its position when scrolling stops",
   ).toBe(plateBefore);
   await scrub(0.66);
-  await expect(track.locator("h3")).toHaveText(titles[1]);
+  await expect(track.locator("h3 .capability-copy-full")).toHaveText(titles[1]);
   expect(
     await plate.getAttribute("d"),
     "The camera must turn around the layers within the held middle chapter",
@@ -381,7 +383,7 @@ try {
     await expect(body).toHaveCSS("opacity", "1");
   }
   await scrub(0.83);
-  await expect(track.locator("h3")).toHaveText(titles[2]);
+  await expect(track.locator("h3 .capability-copy-full")).toHaveText(titles[2]);
   await expect(systemScene).toHaveAttribute("data-flow", "running");
   const firstCard = systemScene.locator(".integration-system-card").first();
   const earlyWidth = (
@@ -453,11 +455,11 @@ try {
   await track
     .getByRole("button", { name: "Next capability", exact: true })
     .click();
-  await expect(track.locator("h3")).toHaveText(titles[1]);
+  await expect(track.locator("h3 .capability-copy-full")).toHaveText(titles[1]);
   await track
     .getByRole("button", { name: "Previous capability", exact: true })
     .click();
-  await expect(track.locator("h3")).toHaveText(titles[0]);
+  await expect(track.locator("h3 .capability-copy-full")).toHaveText(titles[0]);
   if (new URL(page.url()).pathname.startsWith("/capabilities")) {
     await expect(
       track.getByRole("link", { name: "Explore our expertise" }),
@@ -532,7 +534,7 @@ try {
   await track
     .getByRole("button", { name: "Next capability", exact: true })
     .click();
-  await expect(track.locator("h3")).toHaveText(titles[1]);
+  await expect(track.locator("h3 .capability-copy-full")).toHaveText(titles[1]);
   await expect(track.locator(".capability-visual-stage-1")).toHaveCSS(
     "opacity",
     "1",
@@ -549,7 +551,7 @@ try {
   await track
     .getByRole("button", { name: "Next capability", exact: true })
     .click();
-  await expect(track.locator("h3")).toHaveText(titles[2]);
+  await expect(track.locator("h3 .capability-copy-full")).toHaveText(titles[2]);
   expect(errors).toEqual([]);
   console.log(
     "Passed: three SVG chapters, fixed heading, matching visible index/artwork/copy, forward and reverse scrolling, moving fins, desktop/mobile controls, 320–2560px widths, reduced motion, no WebGL, and no browser errors.",

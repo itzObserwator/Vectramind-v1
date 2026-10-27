@@ -58,6 +58,10 @@
 .capability-description-window {
   min-height: 200px;
 }
+.capability-copy-compact,
+.capability-navigation-count {
+  display: none;
+}
 .reference-capabilities .experience-capability-copy .experience-kicker {
   font-size: 9px;
   color: #7f7f7f;
@@ -239,11 +243,18 @@
     gap: 0;
   }
   .capability-number-window {
-    font-size: 68px;
-    margin-bottom: 24px;
+    display: none;
   }
   .capability-description-window {
-    min-height: 205px;
+    min-height: 160px;
+  }
+  .capability-copy-full,
+  .capability-navigation-label {
+    display: none;
+  }
+  .capability-copy-compact,
+  .capability-navigation-count {
+    display: inline;
   }
   .reference-capabilities .experience-capability-copy h3 {
     font-size: 27px;
@@ -271,6 +282,52 @@
   }
   .capability-visual-stage {
     transition: none;
+  }
+}
+
+@media (max-width: 900px) and (prefers-reduced-motion: no-preference) {
+  .reference-capabilities {
+    height: 440svh;
+  }
+  .reference-capabilities .experience-capability-sticky {
+    position: sticky;
+    top: min(0px, calc(100svh - 740px));
+    height: max(740px, 100svh);
+    min-height: 0;
+    padding-top: 88px;
+    padding-bottom: 20px;
+  }
+  .reference-capabilities .experience-capability-scene {
+    width: 100%;
+    justify-content: center;
+    margin-top: 12px;
+  }
+  .reference-capabilities .experience-capability-art {
+    flex: 0 0 auto;
+    height: clamp(160px, 30svh, 280px);
+  }
+  .reference-capabilities .experience-capability-copy {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin-inline: auto;
+  }
+  .reference-capabilities .capability-number-window,
+  .reference-capabilities .capability-navigation-label {
+    display: none;
+  }
+  .reference-capabilities .capability-navigation-count {
+    display: inline;
+  }
+  .reference-capabilities .capability-description-window {
+    min-height: 170px;
+  }
+  .reference-capabilities .capability-navigation {
+    grid-column: 1;
+    margin-top: 8px;
+  }
+  .reference-capabilities .capability-explore {
+    flex-shrink: 0;
+    margin-top: 16px;
   }
 }
 

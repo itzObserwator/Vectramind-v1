@@ -4,6 +4,38 @@
   --text-label: 0.75rem;
   --text-small: 0.875rem;
   --text-body: 1rem;
+  --text-section-title: clamp(2rem, 3.1vw, 3rem);
+  --text-card-title: clamp(1.5rem, 1.8vw, 1.75rem);
+}
+
+/* Keep equivalent editorial headings on one scale across page templates. */
+:root
+  body
+  :is(
+    .inner-section-title,
+    .inner-intro h2,
+    .product-landing-section-heading h2,
+    .post-hero-copy h2,
+    .reference-capabilities .capability-main-title,
+    .ecosystem-heading h2,
+    .reach-copy h2,
+    .client-editorial-heading h2,
+    .people-heading h2
+  ) {
+  font-size: var(--text-section-title);
+  line-height: 1.15;
+}
+:root
+  body
+  :is(
+    .reference-capabilities .experience-capability-copy h3,
+    .reference-platforms .platform-card h3,
+    .inner-feature-grid h3,
+    .support-help-grid h3,
+    .client-principles h3
+  ) {
+  font-size: var(--text-card-title);
+  line-height: 1.25;
 }
 
 :root
@@ -19,7 +51,6 @@
     .reach-eyebrow,
     .platform-card-topline,
     .platforms-section-label,
-    .ecosystem-sphere > span,
     .support-page .faq-search > span,
     .support-page .form-heading > span,
     .about-founder-layout h2
@@ -102,6 +133,7 @@
   :is(
     .experience-hero-description,
     .post-hero-description,
+    .inner-intro p,
     .experience-capability-text,
     .ecosystem-caption p,
     .platform-card-description,
@@ -183,11 +215,17 @@
   text-align: center;
 }
 :root body .ecosystem-sphere > span {
-  /* Labels must not stretch the circular nodes as their type gets larger. */
+  /* Scale to the orb itself and wrap within its circular safe area. */
   position: absolute;
-  max-width: none;
-  white-space: nowrap;
-  line-height: 1.2;
+  width: 84%;
+  max-width: 84%;
+  font-size: min(var(--text-label), 15cqw);
+  white-space: normal;
+  text-wrap: balance;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+  line-height: 1.15;
 }
 :root body .form-note {
   /* Supersedes the old mobile-only 9px !important declaration. */

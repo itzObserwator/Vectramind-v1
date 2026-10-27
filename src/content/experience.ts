@@ -5,11 +5,15 @@ export const experience = {
     title: ["Human connections.", "Intelligent by design."],
     description:
       "We bring people, technology and possibility together. Transform customer conversations and patient journeys with Vectramind.",
+    mobileDescription: "Connect customer conversations and patient journeys.",
     pillars: ["Customer engagement", "Patient experience", "Connected systems"],
   },
   introduction: {
     label: "Customer & patient experiences",
     title: "Are disconnected\nexperiences holding\nyou back?",
+    mobileTitle: "Less friction.\nMore connection.",
+    mobileText:
+      "Bring conversations, patient journeys and systems together for a simpler experience.",
     text: "When conversations, patient journeys and systems work in isolation, people feel the gaps. We build transformative platforms that adapt with advanced technology, bringing intelligence, innovation and connected experiences together to move your business forward.",
   },
   network: {

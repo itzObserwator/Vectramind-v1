@@ -27,16 +27,35 @@ export function ExperienceIntroduction() {
     >
       <div className="post-hero-layout">
         <div className="post-hero-copy">
-          <p className="post-hero-eyebrow">{experience.introduction.label}</p>
+          <p className="post-hero-eyebrow">
+            <span className="intro-copy-full">
+              {experience.introduction.label}
+            </span>
+            <span className="intro-copy-compact">Connected experiences</span>
+          </p>
           <h2 id="post-hero-title">
-            {experience.introduction.title.split("\n").map((line) => (
-              <span className="post-hero-question-mask" key={line}>
-                <span className="post-hero-question-line">{line}</span>
-              </span>
-            ))}
+            <span className="intro-copy-full">
+              {experience.introduction.title.split("\n").map((line) => (
+                <span className="post-hero-question-mask" key={line}>
+                  <span className="post-hero-question-line">{line}</span>
+                </span>
+              ))}
+            </span>
+            <span className="intro-copy-compact">
+              {experience.introduction.mobileTitle.split("\n").map((line) => (
+                <span className="post-hero-question-mask" key={line}>
+                  <span className="post-hero-question-line">{line}</span>
+                </span>
+              ))}
+            </span>
           </h2>
           <p className="post-hero-description">
-            {experience.introduction.text}
+            <span className="intro-copy-full">
+              {experience.introduction.text}
+            </span>
+            <span className="intro-copy-compact">
+              {experience.introduction.mobileText}
+            </span>
           </p>
         </div>
         <div

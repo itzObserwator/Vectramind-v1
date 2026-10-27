@@ -31,14 +31,25 @@ export function ExperienceHero() {
           ))}
         </h1>
         <p className="experience-hero-description">
-          {experience.hero.description}
+          <span className="hero-description-full">
+            {experience.hero.description}
+          </span>
+          <span className="hero-description-compact">
+            {experience.hero.mobileDescription}
+          </span>
         </p>
         <div className="experience-hero-actions">
           <ContactButton showArrow={false}>
-            Let’s build what’s next
+            <span className="hero-cta-full">Let’s build what’s next</span>
+            <span className="hero-cta-compact">Let’s talk</span>
           </ContactButton>
-          <a href="#products" className="button hero-platform-button">
-            Explore our platforms
+          <a
+            href="#products"
+            className="button hero-platform-button"
+            aria-label="Explore our platforms"
+          >
+            <span className="hero-cta-full">Explore our platforms</span>
+            <span className="hero-cta-compact">Our platforms</span>
           </a>
         </div>
       </div>

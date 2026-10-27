@@ -27,7 +27,9 @@ export function mount(root: RefObject<HTMLElement | null>) {
       const copy = gsap
         .timeline({ paused: true })
         .fromTo(
-          section.querySelectorAll(".post-hero-question-line"),
+          Array.from(
+            section.querySelectorAll(".post-hero-question-line"),
+          ).filter((line) => line.getClientRects().length > 0),
           { yPercent: 110 },
           { yPercent: 0, duration: 0.65, stagger: 0.18, ease: "power3.out" },
           0,

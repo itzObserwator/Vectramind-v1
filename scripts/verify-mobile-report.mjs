@@ -66,7 +66,7 @@ try {
     expect(
       Math.abs((await page.evaluate(() => scrollY)) - position),
     ).toBeLessThan(2);
-    const last = menu.getByRole("link").last();
+    const last = menu.getByRole("button", { name: "Consultation", exact: true });
     await last.focus();
     await page.keyboard.press("Tab");
     await expect(
