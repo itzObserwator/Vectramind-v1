@@ -291,7 +291,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 4px;
 }
 .reach-metric .reach-metric-laurel {
   flex: 0 0 28px;
