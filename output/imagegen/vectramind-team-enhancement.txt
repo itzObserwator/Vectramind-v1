@@ -1,0 +1,10 @@
+Asset: About Us / Who we are team photograph
+Tool: Built-in image_gen (edit); Sharp for responsive WebP encoding and resizing.
+Source: User-uploaded Vectramind team panorama.
+Generated image: 2034 x 773 pixels.
+4K-width delivery: public/images/vectramind-team-3840.webp, 3840 x 1459 pixels (resampled from the enhanced output).
+Responsive variants: public/images/vectramind-team-{768,1536,2560}.webp.
+Note: AI enhancement reconstructs detail; it cannot guarantee exact recovery of faces or details absent from the source.
+
+Final prompt:
+Use case: identity-preserve. Edit target: the attached panoramic Vectramind staff group photograph. Enhance this exact photograph for an About Us website banner, at 4K width (3840 pixels wide or higher) preserving the original panoramic aspect ratio around 2.63:1. Improve optical clarity, recover gentle fine detail, reduce compression and noise, correct excessive cyan cast subtly while retaining the original bright office lighting and realistic skin tones. Preserve every person's exact identity, face, expression, clothing, pose, position, number of people, office architecture and full edge-to-edge composition. Do not invent or replace faces, beautify people, remove anyone, crop anyone, add text, logos or watermarks. Keep the photograph natural; no painterly processing, fake texture, oversharpening halos or dramatic relighting. Return the enhanced image as a local saved asset for integration into the website.

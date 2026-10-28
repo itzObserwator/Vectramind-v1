@@ -57,10 +57,12 @@ export function AboutPage() {
         <figure className="about-team-photo">
           <div className="inner-hero-art about-team-image" data-reveal>
             <img
-              src="/images/team.webp"
+              src="/images/vectramind-team-3840.webp"
+              srcSet="/images/vectramind-team-768.webp 768w, /images/vectramind-team-1536.webp 1536w, /images/vectramind-team-2560.webp 2560w, /images/vectramind-team-3840.webp 3840w"
+              sizes="(max-width: 767px) calc(100vw - 44px), (min-width: 2000px) calc(100vw - 220px), 89vw"
               alt="The Vectramind team gathered together"
-              width="1359"
-              height="512"
+              width="3840"
+              height="1459"
               loading="lazy"
               decoding="async"
             />

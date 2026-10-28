@@ -22,7 +22,7 @@
 }
 .about-page .about-team-image {
   min-height: 0;
-  aspect-ratio: 1359 / 512;
+  aspect-ratio: 3840 / 1459;
   overflow: hidden;
   border-radius: 14px;
   background: #eee;
@@ -30,12 +30,7 @@
 .about-team-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  filter: grayscale(1);
-  transition: filter 0.6s;
-}
-.about-team-photo:hover img {
-  filter: grayscale(0);
+  object-fit: contain;
 }
 .about-team-photo figcaption {
   font-size: 11px;
@@ -257,7 +252,7 @@
     padding-block: 48px;
   }
   .about-page .about-team-image {
-    aspect-ratio: 1.65;
+    aspect-ratio: 3840 / 1459;
     border-radius: 10px;
   }
   .about-team-image img {
@@ -493,7 +488,7 @@
     margin-block: 24px;
   }
   .about-page .about-team-image {
-    aspect-ratio: 1.65;
+    aspect-ratio: 3840 / 1459;
     border-radius: 10px;
   }
   .about-page .product-landing-metrics {

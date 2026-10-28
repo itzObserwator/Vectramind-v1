@@ -151,7 +151,7 @@ export function ContactDialog() {
           conversation.current.scrollTop = conversation.current.scrollHeight;
       }}
     >
-      <header className="chat-header">
+      <div className="chat-header">
         <div>
           <img
             src="/images/vectramind-logo.svg"
@@ -161,7 +161,7 @@ export function ContactDialog() {
           />
           <DialogTitle className="chat-title">Help Desk</DialogTitle>
         </div>
-      </header>
+      </div>
       <DialogDescription className="sr-only">
         Guided help for Synapse, Firstpass, integrations and contacting the
         Vectramind team.

@@ -33,9 +33,9 @@ body .button.button-primary:hover,
 }
 /* Keep hero and header actions consistent when inner-page CSS loads later. */
 body :is(.header, .experience-hero, .inner-hero) .button.button-primary {
-  background: var(--primary);
+  background: var(--primary-action);
   color: var(--primary-cta-foreground);
-  border-color: var(--primary);
+  border-color: var(--primary-action);
 }
 body :is(.header, .experience-hero, .inner-hero) .button.button-primary:hover {
   background: var(--primary-action-hover);
@@ -108,8 +108,8 @@ body :is(.label-dot, .experience-kicker > span) {
 :root body .support-answer-tabs button[aria-selected="true"],
 :root body .experience-home .platform-tabs button[aria-selected="true"] {
   color: var(--primary-cta-foreground);
-  background: var(--primary);
-  border-color: var(--primary);
+  background: var(--primary-action);
+  border-color: var(--primary-action);
 }
 body .reach-office-list button[aria-selected="true"] {
   background: var(--primary-surface);
@@ -326,7 +326,7 @@ body .post-hero-resolution {
   margin-top: 35px;
   padding: 32px 24px;
   border-radius: 16px;
-  background: var(--primary);
+  background: var(--primary-action);
   color: var(--primary-cta-foreground);
 }
 body .post-hero-resolution > p {
@@ -339,7 +339,7 @@ body .post-hero-resolution .button.button-primary:hover {
   border-color: #fff;
 }
 body :is(.product-landing-next, .talent-panel, .inner-cta) {
-  background: var(--primary);
+  background: var(--primary-action);
   color: var(--primary-cta-foreground);
 }
 :root

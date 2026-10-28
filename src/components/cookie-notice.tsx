@@ -14,7 +14,7 @@ export function CookieNotice() {
   return (
     <>
       {visible && (
-        <div className="cookie-notice">
+        <section className="cookie-notice" aria-label="Device preferences">
           <span>Your preferences stay on this device.</span>
           <button
             onClick={() => {
@@ -26,7 +26,7 @@ export function CookieNotice() {
           >
             Got it
           </button>
-        </div>
+        </section>
       )}
     </>
   );

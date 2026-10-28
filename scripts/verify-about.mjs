@@ -27,9 +27,12 @@ try {
   await expect(page.locator("#about-story-title")).toBeInViewport();
   const image = page.locator(".about-team-image img");
   await page.mouse.move(0, 0);
-  await expect(image).toHaveCSS("filter", "grayscale(1)");
+  await expect(image).toHaveCSS("filter", "none");
   await image.hover();
-  await expect(image).toHaveCSS("filter", "grayscale(0)");
+  await expect(image).toHaveCSS("filter", "none");
+  await expect(image).toHaveAttribute("width", "3840");
+  await expect(image).toHaveAttribute("height", "1459");
+  await expect(image).toHaveCSS("object-fit", "contain");
   await expect(page.locator(".about-office-grid a")).toHaveCount(5);
   await expect(page.locator(".about-office").last()).toContainText("Vancouver");
   await expect(
@@ -134,7 +137,7 @@ try {
   await expect(mobile.locator("#about-title")).toBeVisible();
   expect(errors).toEqual([]);
   console.log(
-    "Passed: story links, grayscale-to-color photography, five offices, gallery buttons/keyboard/swipe synchronization, 320–2560px layouts, reduced motion, prefetched mobile hero, loading-to-page scroll reveals and back/forward navigation. No browser errors.",
+    "Passed: story links, full-colour 4K team photography, five offices, gallery buttons/keyboard/swipe synchronization, 320–2560px layouts, reduced motion, prefetched mobile hero, loading-to-page scroll reveals and back/forward navigation. No browser errors.",
   );
 } finally {
   release?.();
