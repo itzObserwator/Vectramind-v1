@@ -38,6 +38,7 @@ export function SitePreloader() {
       if (disposed || finished) return;
       finished = true;
       setPhase("leaving");
+      window.dispatchEvent(new Event("vectramind:intro-complete"));
       later(() => setPhase("done"), reduced ? 0 : 280);
     };
     // Keep the requested five-second presentation independent of asset timing.

@@ -6,6 +6,7 @@ try {
   const errors = [];
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto(url, { waitUntil: "networkidle" });
+  await page.keyboard.press("Escape");
   const track = page.locator(".reference-capabilities");
   const art = track.locator(".experience-capability-art");
   const first = track.locator(".capability-visual-stage-0");

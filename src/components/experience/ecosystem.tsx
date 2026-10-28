@@ -4,7 +4,11 @@ import { useRef, useState, type CSSProperties } from "react";
 import Link from "next/link";
 import { Arrow, Mark } from "@/components/site-primitives";
 import { ecosystemNodes, experience } from "@/content/experience";
-import { EcosystemOrbits, orbitPosition } from "./ecosystem-orbits";
+import {
+  EcosystemOrbits,
+  MobileEcosystemOrbits,
+  orbitPosition,
+} from "./ecosystem-orbits";
 import { EcosystemAtmosphere } from "./ecosystem-atmosphere";
 import { BrandAccentText } from "@/components/brand-accent-text";
 
@@ -40,9 +44,22 @@ export function ConnectedEcosystem() {
         <header className="ecosystem-heading">
           <span className="ecosystem-eyebrow">Connected by design</span>
           <h2 id="ecosystem-title">
-            <BrandAccentText
-              text={experience.network.title.replace("\n", " ")}
-            />
+            <span className="ecosystem-copy-full">
+              <BrandAccentText
+                text={experience.network.title.replace("\n", " ")}
+              />
+            </span>
+            <span className="ecosystem-copy-compact">
+              {experience.network.mobileTitle.split("\n").map((line, index) => (
+                <span
+                  key={line}
+                  className={index ? "brand-heading-accent" : undefined}
+                >
+                  {line}
+                  {index === 0 && <br />}
+                </span>
+              ))}
+            </span>
           </h2>
         </header>
         <div
@@ -59,6 +76,7 @@ export function ConnectedEcosystem() {
           }}
         >
           <EcosystemOrbits />
+          <MobileEcosystemOrbits />
           <div
             className="ecosystem-hub"
             role="img"
@@ -68,6 +86,7 @@ export function ConnectedEcosystem() {
           </div>
           {ecosystemNodes.map((node, index) => {
             const { x, y } = orbitPosition(node.ring, node.angle);
+            const mobile = orbitPosition(node.ring, node.angle, true);
             return (
               <button
                 key={node.label}
@@ -77,6 +96,8 @@ export function ConnectedEcosystem() {
                   {
                     left: `${x / 10}%`,
                     top: `${(y / 650) * 100}%`,
+                    "--mobile-node-x": `${mobile.x / 10}%`,
+                    "--mobile-node-y": `${(mobile.y / 650) * 100}%`,
                     zIndex: Math.round(y),
                   } as CSSProperties
                 }
@@ -120,7 +141,14 @@ export function ConnectedEcosystem() {
         <div className="ecosystem-mist" aria-hidden="true" />
         <EcosystemAtmosphere />
         <footer className="ecosystem-caption">
-          <p>{experience.network.text}</p>
+          <p>
+            <span className="ecosystem-copy-full">
+              {experience.network.text}
+            </span>
+            <span className="ecosystem-copy-compact">
+              {experience.network.mobileText}
+            </span>
+          </p>
           <Link href="#products" className="text-link">
             Find your platform <Arrow />
           </Link>

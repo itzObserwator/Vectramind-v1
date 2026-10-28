@@ -31,6 +31,10 @@ try {
     await page.goto(base, { waitUntil: "domcontentloaded" });
     const loader = page.getByRole("status", { name: "Loading Vectramind" });
     await expect(loader).toBeVisible();
+    await expect(page.locator(".hero-energy")).toHaveAttribute(
+      "data-active",
+      "false",
+    );
     await expect(loader.locator("img")).toHaveAttribute(
       "src",
       "/images/vectramind-logo.svg",
@@ -83,6 +87,10 @@ try {
     await expect(loader).toBeVisible();
     release();
     await expect(loader).toHaveCount(0, { timeout: 7000 });
+    await expect(page.locator(".hero-energy")).toHaveAttribute(
+      "data-active",
+      "true",
+    );
     const timing = await page.evaluate(
       () => window.__preloaderTimes.leaving - window.__preloaderTimes.start,
     );

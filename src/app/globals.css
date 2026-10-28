@@ -225,7 +225,8 @@ img {
 }
 /* Header and photographic hero */
 .header {
-  height: 88px;
+  --navigation-header-height: 88px;
+  height: var(--navigation-header-height);
   position: absolute;
   left: 0;
   top: 0;
@@ -242,7 +243,7 @@ img {
 }
 .header-scrolled {
   position: fixed;
-  height: 76px;
+  --navigation-header-height: 76px;
   background: #f8f8f6eb;
   backdrop-filter: blur(18px);
   box-shadow: 0 1px 0 #d8d9d580;
@@ -288,6 +289,10 @@ img {
 }
 .menu-button {
   display: none;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
   border: 0;
   background: transparent;
   padding: 10px;
@@ -296,7 +301,11 @@ img {
   position: absolute;
   left: 0;
   right: 0;
-  top: 75px;
+  top: 100%;
+  max-height: calc(100svh - var(--navigation-header-height));
+  max-height: calc(100dvh - var(--navigation-header-height));
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
   background: var(--background);
   padding: 20px 25px 30px;
   border-bottom: 1px solid var(--line);
@@ -314,6 +323,9 @@ img {
 .mobile-nav-consultation > .button {
   width: 100%;
   min-height: 48px;
+}
+body[data-navigation-open] .floating-contact {
+  visibility: hidden;
 }
 .hero {
   min-height: 850px;
@@ -2305,11 +2317,11 @@ img {
   }
   .header {
     padding: 15px 20px;
-    height: 78px;
+    --navigation-header-height: 78px;
     gap: 12px;
   }
   .header-scrolled {
-    height: 70px;
+    --navigation-header-height: 70px;
   }
   .logo {
     width: 150px;

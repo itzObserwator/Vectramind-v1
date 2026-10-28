@@ -18,6 +18,9 @@ export const experience = {
   },
   network: {
     title: "Many touchpoints.\nOne connected experience.",
+    mobileTitle: "Every touchpoint.\nConnected.",
+    mobileText:
+      "Bring channels, care teams and systems together with Synapse and Firstpass.",
     text: "From the first conversation to the next appointment, connect your channels, teams and systems. Synapse and Firstpass keep the experience moving together.",
   },
 };

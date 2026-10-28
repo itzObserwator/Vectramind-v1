@@ -19,6 +19,7 @@
     "test:post-hero": "node scripts/verify-post-hero.mjs",
     "test:capabilities": "node scripts/verify-capabilities.mjs",
     "test:ecosystem": "node scripts/verify-ecosystem.mjs",
+    "test:ecosystem-scroll-mobile": "node scripts/verify-ecosystem-scroll-mobile.mjs",
     "test:platform-anchor": "node scripts/verify-platform-anchor.mjs",
     "test:platform-cards": "node scripts/verify-platform-cards.mjs",
     "test:reach": "node scripts/verify-reach.mjs",

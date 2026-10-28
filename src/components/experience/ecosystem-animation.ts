@@ -8,6 +8,7 @@ export function mount(root: RefObject<HTMLElement | null>) {
   media.add(
     {
       desktop: "(min-width: 901px)",
+      compact: "(max-width: 767px)",
       motion: "(prefers-reduced-motion: no-preference)",
     },
     (context) => {
@@ -19,7 +20,11 @@ export function mount(root: RefObject<HTMLElement | null>) {
           delete section.dataset.phase;
         };
       }
-      createEcosystemEntrance(section, !!context.conditions.desktop);
+      createEcosystemEntrance(
+        section,
+        !!context.conditions.desktop,
+        !!context.conditions.compact,
+      );
       const observer = new IntersectionObserver(([entry]) => {
         section.dataset.visible = String(entry.isIntersecting);
       });

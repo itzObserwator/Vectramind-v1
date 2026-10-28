@@ -8,12 +8,6 @@
 .desktop-nav a[aria-current="page"]:after {
   transform: scaleX(1);
 }
-.mobile-nav {
-  max-height: calc(100svh - 76px);
-  max-height: calc(100dvh - 76px);
-  overflow-y: auto;
-  overscroll-behavior-y: contain;
-}
 @media (max-width: 900px) {
   .menu-button {
     min-width: 44px;

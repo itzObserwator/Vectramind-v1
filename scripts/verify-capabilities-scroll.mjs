@@ -13,6 +13,7 @@ try {
     await page.goto(process.env.PREVIEW_URL || "http://127.0.0.1:3001", {
       waitUntil: "networkidle",
     });
+    await page.keyboard.press("Escape");
     const section = page.locator(".reference-capabilities");
     const scroll = async (progress) => {
       await section.evaluate(

@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, type ReactNode } from "react";
+import { afterSiteIntro } from "../after-site-intro";
 
 export function HeroEnergy({ children }: { children: ReactNode }) {
   const root = useRef<HTMLDivElement>(null);
@@ -8,9 +9,10 @@ export function HeroEnergy({ children }: { children: ReactNode }) {
     if (!element) return;
     const reduced = matchMedia("(prefers-reduced-motion: reduce)");
     let visible = false;
+    let introduced = false;
     const sync = () => {
       element.dataset.active = String(
-        visible && !document.hidden && !reduced.matches,
+        introduced && visible && !document.hidden && !reduced.matches,
       );
     };
     const observer = new IntersectionObserver(([entry]) => {
@@ -18,10 +20,15 @@ export function HeroEnergy({ children }: { children: ReactNode }) {
       sync();
     });
     observer.observe(element);
+    const cancel = afterSiteIntro(() => {
+      introduced = true;
+      sync();
+    });
     reduced.addEventListener("change", sync);
     document.addEventListener("visibilitychange", sync);
     return () => {
       observer.disconnect();
+      cancel();
       reduced.removeEventListener("change", sync);
       document.removeEventListener("visibilitychange", sync);
     };

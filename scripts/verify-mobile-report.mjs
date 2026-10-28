@@ -28,6 +28,7 @@ try {
       localStorage.setItem("vectramind-notice", "dismissed"),
     );
     await page.goto(base, { waitUntil: "networkidle" });
+    await page.keyboard.press("Escape");
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
@@ -53,6 +54,10 @@ try {
     await toggle.click();
     const menu = page.getByRole("navigation", { name: "Mobile navigation" });
     await expect(menu).toHaveCSS("opacity", "1");
+    await expect(page.locator(".floating-contact")).toHaveCSS(
+      "visibility",
+      "hidden",
+    );
     await expect(page.locator("body")).toHaveCSS("overflow", "hidden");
     await expect(menu.getByRole("link").first()).toBeFocused();
     expect(
@@ -77,6 +82,10 @@ try {
     await page.screenshot({ path: `${output}/menu-${width}x${height}.png` });
     await page.keyboard.press("Escape");
     await expect(menu).not.toBeVisible();
+    await expect(page.locator(".floating-contact")).toHaveCSS(
+      "visibility",
+      "visible",
+    );
     await expect(page.getByRole("button", { name: "Open menu" })).toBeFocused();
     await expect(page.locator("body")).not.toHaveCSS("overflow", "hidden");
 

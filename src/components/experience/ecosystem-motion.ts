@@ -20,8 +20,13 @@ export const ecosystemReveal = [
 export function createEcosystemEntrance(
   section: HTMLElement,
   desktop: boolean,
+  compact = false,
 ) {
   const select = gsap.utils.selector(section);
+  const scene = section.querySelector<HTMLElement>(".ecosystem-sticky")!;
+  const ringDrawing = compact
+    ? ".ecosystem-mobile-connections"
+    : ".ecosystem-connections";
   const timeline = gsap.timeline({
     defaults: { ease: "none" },
     onUpdate() {
@@ -32,20 +37,31 @@ export function createEcosystemEntrance(
     },
     scrollTrigger: {
       trigger: section,
-      start: desktop ? "top top" : "top 68%",
-      end: desktop ? "bottom bottom" : "+=750",
-      scrub: desktop ? 0.65 : undefined,
-      toggleActions: desktop ? undefined : "play none none reverse",
+      start: compact
+        ? () => `top -${Math.max(0, scene.offsetHeight - innerHeight - 80)}`
+        : desktop
+          ? "top top"
+          : "top 68%",
+      end: compact
+        ? () => `+=${Math.max(1200, Math.round(innerHeight * 1.8))}`
+        : desktop
+          ? "bottom bottom"
+          : "+=750",
+      pin: compact ? scene : undefined,
+      scrub: compact ? true : desktop ? 0.65 : undefined,
+      invalidateOnRefresh: true,
+      toggleActions: desktop || compact ? undefined : "play none none reverse",
     },
   });
   // The reference settles vertically at the beginning. It does not keep
   // zooming the entire diagram while the outer nodes build.
-  timeline.fromTo(
-    select(".ecosystem-diagram"),
-    { y: 90 },
-    { y: 0, duration: 0.17, ease: "power2.out" },
-    0,
-  );
+  if (!compact)
+    timeline.fromTo(
+      select(".ecosystem-diagram"),
+      { y: 90 },
+      { y: 0, duration: 0.17, ease: "power2.out" },
+      0,
+    );
   timeline.fromTo(
     select(".ecosystem-hub"),
     { autoAlpha: 0, filter: "blur(4px)" },
@@ -117,7 +133,7 @@ export function createEcosystemEntrance(
   [0, 1].forEach((ring) => {
     for (let arc = 0; arc < 4; arc++) {
       const start = (ring ? outerStart : innerStart)[arc];
-      const target = select(`[data-orbit="${ring}-${arc}"]`);
+      const target = select(`${ringDrawing} [data-orbit="${ring}-${arc}"]`);
       timeline.fromTo(
         target,
         { opacity: 0, strokeDashoffset: 1 },
@@ -126,14 +142,14 @@ export function createEcosystemEntrance(
       );
     }
     timeline.fromTo(
-      select(`.ecosystem-ring-${ring} .ecosystem-current`),
+      select(`${ringDrawing} .ecosystem-ring-${ring} .ecosystem-current`),
       { opacity: 0 },
       { opacity: 1, duration: 0.13 },
       ring ? 0.83 : 0.39,
     );
   });
   timeline.fromTo(
-    select(".ecosystem-bridge"),
+    select(`${ringDrawing} .ecosystem-bridge`),
     { opacity: 0, strokeDashoffset: 1 },
     { opacity: 1, strokeDashoffset: 0, duration: 0.15, stagger: 0.055 },
     0.6,

@@ -257,10 +257,6 @@
 }
 
 @media (max-width: 600px) {
-  :root body .orbital-ecosystem .ecosystem-diagram {
-    width: 140%;
-    margin-inline: -20%;
-  }
   :root body .experience-pillars {
     display: grid;
     grid-template-columns: 1fr;
