@@ -108,8 +108,8 @@ export function SitePreloader() {
           <img
             src="/images/vectramind-logo.svg"
             alt=""
-            width="260"
-            height="60"
+            width="205"
+            height="30"
             fetchPriority="high"
           />
           <p>With you in mind.</p>

@@ -9,6 +9,7 @@
     "typecheck": "tsc --noEmit",
     "test:browser": "node scripts/verify.mjs",
     "test:preloader": "node scripts/verify-preloader.mjs",
+    "test:startup": "node scripts/verify-startup.mjs",
     "test:page-transitions": "node scripts/verify-page-transitions.mjs",
     "test:pages": "node scripts/verify-pages.mjs",
     "test:process": "node scripts/verify-process.mjs",

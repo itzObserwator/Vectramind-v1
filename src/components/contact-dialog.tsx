@@ -156,8 +156,8 @@ export function ContactDialog() {
           <img
             src="/images/vectramind-logo.svg"
             alt="Vectramind"
-            width="178"
-            height="35"
+            width="205"
+            height="30"
           />
           <DialogTitle className="chat-title">Help Desk</DialogTitle>
         </div>

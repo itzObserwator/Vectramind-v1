@@ -29,9 +29,11 @@ export function ExperienceCapabilities({
   function select(index: number) {
     const i = Math.max(0, Math.min(2, index));
     if (!root.current) return;
-    const mobileStart = window.matchMedia("(max-width: 900px)").matches
-      ? Math.max(740 - innerHeight, 0)
-      : 0;
+    const mobileStart =
+      window.matchMedia("(max-width: 900px)").matches &&
+      !(innerWidth >= 500 && innerHeight <= 500)
+        ? Math.max(740 - innerHeight, 0)
+        : 0;
     if (window.matchMedia("(prefers-reduced-motion: no-preference)").matches)
       window.scrollTo({
         top:

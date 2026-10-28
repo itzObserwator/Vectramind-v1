@@ -1,7 +1,6 @@
 import { chromium, expect } from "@playwright/test";
 const browser = await chromium.launch({ channel: "chrome", headless: true });
 try {
-  const page = await browser.newPage();
   for (const [width, height] of [
     [320, 667],
     [390, 844],
@@ -9,7 +8,7 @@ try {
     [768, 1024],
     [900, 844],
   ]) {
-    await page.setViewportSize({ width, height });
+    const page = await browser.newPage({ viewport: { width, height } });
     await page.goto(process.env.PREVIEW_URL || "http://127.0.0.1:3001", {
       waitUntil: "networkidle",
     });
@@ -22,8 +21,14 @@ try {
             0,
             el.getBoundingClientRect().top +
               scrollY +
-              Math.max(740 - innerHeight, 0) +
-              (el.offsetHeight - innerHeight - Math.max(740 - innerHeight, 0)) *
+              (innerWidth >= 500 && innerHeight <= 500
+                ? 0
+                : Math.max(740 - innerHeight, 0)) +
+              (el.offsetHeight -
+                innerHeight -
+                (innerWidth >= 500 && innerHeight <= 500
+                  ? 0
+                  : Math.max(740 - innerHeight, 0))) *
                 p,
           ),
         progress,
@@ -124,15 +129,16 @@ try {
         () => document.documentElement.scrollWidth <= innerWidth,
       ),
     ).toBe(true);
-    if (width === 390)
+    if (width === 390 || width === 600)
       await page.screenshot({
-        path: "/tmp/vectramind-capabilities-mobile-scroll.png",
+        path: `/tmp/vectramind-capabilities-${width}-scroll.png`,
       });
     console.log(
       `${width}x${height}: chapters, 02/03 scrubbed builds, stationary holds, reverse scrolling, shortcuts and viewport bounds passed`,
     );
+    await page.close();
   }
-  await page.setViewportSize({ width: 390, height: 844 });
+  const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto(process.env.PREVIEW_URL || "http://127.0.0.1:3001", {
     waitUntil: "networkidle",

@@ -118,7 +118,7 @@ export function Header() {
           alt="Vectramind"
           fetchPriority="high"
           width="205"
-          height="40"
+          height="30"
         />
       </Link>
       <nav aria-label="Main navigation" className="desktop-nav">

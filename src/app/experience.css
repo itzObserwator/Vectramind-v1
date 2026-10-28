@@ -1101,8 +1101,9 @@ body:has(.experience-home) .floating-contact {
 .hero-trail-pulse { animation: hero-trail-pulse var(--hero-pulse-duration) linear infinite; animation-delay: var(--hero-pulse-delay); animation-play-state: paused; }
 .hero-energy[data-active="true"] .hero-trail-pulse { animation-play-state: running; }
 @keyframes hero-trail-pulse { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -1; } }
-.hero-title-enter { animation: hero-title-enter .65s cubic-bezier(.22,1,.36,1) both; }
-@keyframes hero-title-enter { from { transform: translateY(8px); } to { transform: translateY(0); } }
+/* The intro already covers first entry. Paint the heading in its final position;
+   route changes use the shared page transition reveal. */
+.hero-title-enter { transform: none; }
 @media (prefers-reduced-motion: reduce) { .hero-trail-pulse, .hero-title-enter { animation: none; } }
 
 /* Small interface transitions do not need the full animation runtime at entry. */

@@ -469,3 +469,85 @@
     font-size: 16px;
   }
 }
+.capability-copy-enter {
+  animation: capability-copy-enter 250ms ease-out both;
+}
+@media (min-width: 500px) and (max-width: 900px) and (max-height: 500px) and (prefers-reduced-motion: no-preference) {
+  :root body .reference-capabilities .experience-capability-sticky {
+    top: 0;
+    height: 100svh;
+    min-height: 0;
+    padding: 90px 22px 12px;
+  }
+  :root body .reference-capabilities .capability-main-title {
+    font-size: 26px;
+    line-height: 1.1;
+  }
+  .reference-capabilities .capability-main-title br {
+    display: none;
+  }
+  .reference-capabilities .capability-main-title .brand-heading-accent {
+    margin-left: 0.25em;
+  }
+  :root body .reference-capabilities .experience-capability-scene {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 24px;
+    align-items: center;
+    flex: 1;
+    min-height: 0;
+    margin: 12px 0 0;
+  }
+  :root body .reference-capabilities .experience-capability-art {
+    order: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    margin: 0;
+  }
+  :root body .reference-capabilities .experience-capability-copy {
+    order: 1;
+    max-width: none;
+    align-self: center;
+  }
+  :root body .reference-capabilities .capability-description-window {
+    min-height: 0;
+  }
+  :root
+    body
+    .reference-capabilities
+    .experience-capability-copy
+    .experience-kicker {
+    font-size: 10px;
+    margin-bottom: 6px;
+  }
+  :root body .reference-capabilities .experience-capability-copy h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  :root body .reference-capabilities .experience-capability-text {
+    font-size: 14px;
+    line-height: 1.45;
+    margin: 0;
+  }
+  :root body .reference-capabilities .capability-explore {
+    min-height: 44px;
+    font-size: 13px;
+    margin-top: 8px;
+  }
+}
+@keyframes capability-copy-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .capability-copy-enter {
+    animation: none;
+  }
+}

@@ -306,7 +306,8 @@ export function mount(
           trigger: section,
           // Short screens first scroll through the tall frame, then begin
           // changing chapters once the copy and controls are fully visible.
-          start: () => `top ${Math.min(0, innerHeight - 740)}px`,
+          start: () =>
+            `top ${innerWidth >= 500 && innerHeight <= 500 ? 0 : Math.min(0, innerHeight - 740)}px`,
           end: "bottom bottom",
           scrub: 0.45,
           invalidateOnRefresh: true,
