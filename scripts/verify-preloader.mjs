@@ -72,7 +72,7 @@ try {
       "right",
     ]);
     expect(
-      await loader.locator(".preloader-pulse").evaluateAll((paths) =>
+      await loader.locator(".preloader-rail").evaluateAll((paths) =>
         paths.every((path) => {
           const end = path.getPointAtLength(path.getTotalLength());
           return Math.abs(end.x - 400) < 0.1 && Math.abs(end.y - 160) < 0.1;

@@ -33,8 +33,24 @@
   opacity: 0.65;
 }
 .preloader-pulse {
-  stroke-dasharray: 0.075 0.925;
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 5%;
+  will-change: transform;
   animation: preloader-connect 3.2s linear infinite;
+}
+.preloader-pulse-track {
+  position: absolute;
+  inset: 0;
+  opacity: 0.65;
+  container-type: inline-size;
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  --pulse-from: -5cqw;
+  --pulse-to: 47.5cqw;
+}
+.preloader-pulse-track[data-origin="right"] {
+  --pulse-from: 100cqw;
 }
 .preloader-brand {
   position: relative;
@@ -68,17 +84,16 @@
 }
 @keyframes preloader-connect {
   from {
-    stroke-dashoffset: 1;
+    transform: translate3d(var(--pulse-from), 0, 0);
   }
   to {
-    stroke-dashoffset: 0;
+    transform: translate3d(var(--pulse-to), 0, 0);
   }
 }
 @keyframes preloader-failsafe {
   to {
     opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+    transform: translate3d(0, -100%, 0);
   }
 }
 @media (prefers-reduced-motion: reduce) {

@@ -49,6 +49,9 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <noscript>
+          <style>{".site-preloader{display:none}"}</style>
+        </noscript>
         <SitePreloader />
         <PageTransitions>{children}</PageTransitions>
       </body>

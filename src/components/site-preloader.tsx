@@ -22,6 +22,11 @@ const connections = colours.flatMap((colour, index) => {
   ];
 });
 
+function pulseMask(path: string) {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320"><path d="${path}" fill="none" stroke="white" stroke-width="2.5" vector-effect="non-scaling-stroke" stroke-linecap="round"/></svg>`;
+  return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
+}
+
 export function SitePreloader() {
   const [phase, setPhase] = useState("loading");
 
@@ -71,29 +76,34 @@ export function SitePreloader() {
           fill="none"
           aria-hidden="true"
         >
-          {connections.map(({ origin, path, colour }, index) => {
+          {connections.map(({ origin, path, colour }) => {
             return (
-              <g key={`${origin}-${colour}`} data-origin={origin}>
+              <g key={`${origin}-${colour}`}>
                 <path
+                  className="preloader-rail"
                   d={path}
                   stroke="#dce4ee"
                   strokeWidth="1"
                   vectorEffect="non-scaling-stroke"
                 />
-                <path
-                  className="preloader-pulse"
-                  d={path}
-                  stroke={colour}
-                  strokeWidth="2.5"
-                  vectorEffect="non-scaling-stroke"
-                  strokeLinecap="round"
-                  pathLength="1"
-                  style={{ animationDelay: `${index * -0.4}s` }}
-                />
               </g>
             );
           })}
         </svg>
+        {connections.map(({ origin, path, colour }, index) => (
+          <div
+            key={`${origin}-${colour}`}
+            className="preloader-pulse-track"
+            data-origin={origin}
+            aria-hidden="true"
+            style={{ maskImage: pulseMask(path) }}
+          >
+            <span
+              className="preloader-pulse"
+              style={{ background: colour, animationDelay: `${index * -0.4}s` }}
+            />
+          </div>
+        ))}
         <div className="preloader-brand">
           <img
             src="/images/vectramind-logo.svg"
