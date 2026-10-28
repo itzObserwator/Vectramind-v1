@@ -30,6 +30,8 @@ try {
     if (m.type() === "error") errors.push(m.text());
   });
   await page.goto(base, { waitUntil: "networkidle" });
+  // Measure the hero itself rather than the five-second preloader above it.
+  await page.keyboard.press("Escape");
   const trails = page.locator(".hero-energy .hero-ribbon-main");
   await expect(trails).toHaveCount(1);
   await expect(page.locator(".hero-energy canvas")).toHaveCount(0);

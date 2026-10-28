@@ -253,7 +253,7 @@
   width: 5px;
   height: 5px;
   border: 1px solid #6186bd;
-  transform: rotate(45deg);
+  border-radius: 50%;
 }
 .experience-scroll {
   display: flex;

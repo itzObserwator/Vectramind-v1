@@ -6,6 +6,8 @@ const camera = new PerspectiveCamera(44, 1, 0.1, 1000);
 camera.position.set(0, 0, 10);
 camera.updateMatrixWorld();
 const rotation = new Matrix4().makeRotationX(0.1);
+// Lighter linework without changing the curves or pulse timing.
+const thicknessScale = 0.5;
 const project = (point) => {
   const p = point.clone().applyMatrix4(rotation).project(camera);
   return [(p.x + 1) * 500, (1 - p.y) * 500];
@@ -57,7 +59,7 @@ const trails = Array.from({ length: 40 }, (_, i) => {
     project(curve.getPointAt(j / 100)),
   );
   const middle = curve.getPointAt(0.5).applyMatrix4(rotation);
-  const radius = i % 5 === 0 ? 0.017 : 0.007;
+  const radius = (i % 5 === 0 ? 0.017 : 0.007) * thicknessScale;
   const width =
     (2 * radius * 1000) /
     (2 * Math.tan((22 * Math.PI) / 180) * (10 - middle.z));
@@ -92,7 +94,7 @@ await writeFile(
 );
 await writeFile(
   new URL("../public/images/hero-ribbon-underlay.svg", import.meta.url),
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" fill="none">${Array.from({ length: 24 }, (_, i) => `<path d="M -100 ${-80 + i * 9} C 250 ${50 + i * 8}, 400 ${640 - i * 6}, 600 390 S 1000 ${120 + i * 5}, 1300 ${i * 10 - 30}" stroke="${i % 4 === 0 ? "#afafaf" : "#c6c6c6"}" stroke-opacity=".14" stroke-width="${i % 4 === 0 ? 2 : 1}"/>`).join("")}</svg>`,
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" fill="none">${Array.from({ length: 24 }, (_, i) => `<path d="M -100 ${-80 + i * 9} C 250 ${50 + i * 8}, 400 ${640 - i * 6}, 600 390 S 1000 ${120 + i * 5}, 1300 ${i * 10 - 30}" stroke="${i % 4 === 0 ? "#afafaf" : "#c6c6c6"}" stroke-opacity=".14" stroke-width="${(i % 4 === 0 ? 2 : 1) * thicknessScale}"/>`).join("")}</svg>`,
 );
 console.log(
   "Baked 40 original hero trails, static artwork and 16 mirrored pulse paths.",
