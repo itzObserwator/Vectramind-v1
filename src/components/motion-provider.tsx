@@ -1,7 +1,9 @@
 "use client";
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { mountInnerMotion } from "./inner-motion-runtime";
 export function MotionProvider({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
   useEffect(() => {
     const inner = document.querySelector<HTMLElement>(
       ".inner-page, .not-found-page",
@@ -38,6 +40,6 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
       document.removeEventListener("click", anchor);
       cleanup?.();
     };
-  }, []);
+  }, [pathname]);
   return <>{children}</>;
 }

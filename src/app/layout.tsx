@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { SitePreloader } from "@/components/site-preloader";
+import { PageTransitions } from "@/components/page-transitions";
 import "./globals.css";
 import "./experience.css";
 import "./post-hero.css";
@@ -12,6 +14,8 @@ import "./clients.css";
 import "./primary-theme.css";
 import "./typography.css";
 import "./chat.css";
+import "./page-transitions.css";
+import "./preloader.css";
 export const metadata: Metadata = {
   icons: { icon: "/images/vectramind-mark.svg" },
   title: "Vectramind — Transforming Human Experiences",
@@ -44,7 +48,10 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <SitePreloader />
+        <PageTransitions>{children}</PageTransitions>
+      </body>
     </html>
   );
 }

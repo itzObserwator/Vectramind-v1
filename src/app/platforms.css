@@ -1,10 +1,22 @@
 /* Reference 23–26s: two previews rise from slivers; tags and copy land after. */
 .reference-platforms {
   --platforms-gutter: clamp(24px, 5.5vw, 110px);
-  height: 220svh;
+  --platforms-scroll-distance: 120svh;
+  height: calc(100svh + var(--platforms-scroll-distance));
   position: relative;
   color: #3a3a3a;
   background: #fafafa;
+}
+@media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+  /* Anchor navigation skips the entrance to show both complete cards. Wheel
+     scrolling still plays the reveal across the full sticky track. Account
+     for the document's 85px scroll padding and Lenis's extra -80px offset. */
+  .experience-home .reference-platforms {
+    scroll-margin-top: calc(-0.95 * var(--platforms-scroll-distance) - 85px);
+  }
+  .lenis .experience-home .reference-platforms {
+    scroll-margin-top: calc(-0.95 * var(--platforms-scroll-distance) - 165px);
+  }
 }
 .platforms-sticky {
   position: sticky;
