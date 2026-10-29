@@ -89,7 +89,7 @@ body
     .footer-reference-legal a,
     .footer-reference-nav a,
     .desktop-nav a,
-    .mobile-nav a
+    .mobile-nav > a
   ):hover {
   color: var(--primary-ink);
 }
@@ -167,6 +167,29 @@ body :is(a, button, input, select, textarea, [tabindex]):focus-visible,
 .client-directory-caption button:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 4px;
+}
+body :is(.form-fields, .faq-search) :is(input, select, textarea):focus-visible {
+  outline: 2px solid var(--primary-ink);
+  outline-offset: 3px;
+  box-shadow: none;
+  border-color: #cdd3dc;
+}
+html[data-pointer-focus]
+  body
+  :is(.form-fields, .faq-search)
+  :is(input, select, textarea):focus {
+  outline: none;
+  box-shadow: none;
+  border-color: #cdd3dc;
+}
+:root body .form-fields select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-inline-end: 48px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='m4 6 4 4 4-4' stroke='%2362656b' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  background-size: 16px 16px;
 }
 body ::selection {
   color: var(--primary-foreground);

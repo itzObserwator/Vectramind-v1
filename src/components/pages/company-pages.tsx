@@ -12,7 +12,7 @@ export function CareersPage() {
         description="Storytellers. Pioneers. Mentors. Creators. Bring your curiosity to a team that is always finding new ways to adapt and evolve."
         image="career.webp"
         cta="Introduce yourself"
-        href="/contact?topic=careers"
+        href="/support/?topic=careers#contact-form"
       />
       <IntroSection
         label="Life at Vectramind"
@@ -82,7 +82,10 @@ export function CareersPage() {
           in helping people stay passionate about their work. Tell us what you
           love building and where you want to grow.
         </p>
-        <Link className="button button-primary" href="/contact?topic=careers">
+        <Link
+          className="button button-primary"
+          href="/support/?topic=careers#contact-form"
+        >
           Start a careers conversation
           <Arrow />
         </Link>

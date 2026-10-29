@@ -4,7 +4,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { Menu01Icon, Cancel01Icon } from "@hugeicons/core-free-icons";
-import { Arrow, ContactButton } from "@/components/site-primitives";
+import { Arrow } from "@/components/site-primitives";
+import { Button } from "@/components/ui/button";
 
 const navigation = [
   ["Synapse", "/synapse"],
@@ -33,7 +34,12 @@ export function Header() {
   const header = useRef<HTMLElement>(null);
   const menuButton = useRef<HTMLButtonElement>(null);
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 100);
+    const onScroll = () => {
+      const offset = Math.max(0, window.scrollY);
+      // A small return range prevents trackpad jitter around 100px from
+      // repeatedly shrinking and expanding the fixed header.
+      setScrolled((current) => offset > (current ? 64 : 100));
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
@@ -142,7 +148,12 @@ export function Header() {
           if ((event.target as Element).closest(".button")) setMenu(false);
         }}
       >
-        <ContactButton>Consultation</ContactButton>
+        <Button asChild>
+          <Link href="/support/#contact-form">
+            Consultation
+            <Arrow />
+          </Link>
+        </Button>
         <button
           ref={menuButton}
           className="menu-button"
@@ -180,7 +191,12 @@ export function Header() {
               setMenu(false);
             }}
           >
-            <ContactButton>Consultation</ContactButton>
+            <Button asChild>
+              <Link href="/support/#contact-form">
+                Consultation
+                <Arrow />
+              </Link>
+            </Button>
           </div>
         </nav>
       )}

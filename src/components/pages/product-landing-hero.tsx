@@ -49,7 +49,7 @@ export function ProductLandingHero({ product }: { product: ProductKey }) {
         </p>
         <div className="product-landing-actions">
           <Link
-            href={`/contact?topic=${product}`}
+            href={`/support/?topic=${product}#contact-form`}
             className="button button-primary"
           >
             {firstpass ? (

@@ -109,7 +109,7 @@
   :is(.synapse-page, .firstpass-overview) .module-panel > .brand-mark,
   :is(.synapse-page, .firstpass-overview)
     .module-panel
-    > .text-link[href^="/contact"] {
+    > .text-link[href*="#contact-form"] {
     display: none;
   }
   .firstpass-overview .module-panel > .text-link {

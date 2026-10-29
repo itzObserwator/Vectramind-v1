@@ -121,7 +121,7 @@
   display: block;
   margin-bottom: 18px;
 }
-.support-page .faq-search > span {
+.support-page .faq-search > .eyebrow {
   display: block;
   color: #62656b;
   margin-bottom: 12px;
@@ -230,7 +230,7 @@
 .support-page .form-fields label {
   font-size: 12px;
 }
-.support-page .form-fields :is(input, select, textarea) {
+.support-page .form-fields :where(input:not([type="radio"]), select, textarea) {
   min-height: 48px;
   font-size: 13px;
   border-radius: 8px;

@@ -14,7 +14,6 @@ const routes = [
   "about",
   "careers",
   "support",
-  "contact",
   "blog",
   "privacy-policy",
   "terms-of-use",
@@ -88,13 +87,13 @@ try {
   });
   await empty.scrollIntoViewIfNeeded();
   await expect(empty).toHaveAttribute("data-scroll-reveal", "complete");
-  await page.goto(`${base}/contact/`, { waitUntil: "networkidle" });
+  await page.goto(`${base}/support/#contact-form`, { waitUntil: "networkidle" });
   const field = page.getByLabel("Your name");
   await field.evaluate((e) => e.focus());
   await expect(field.locator("..")).toHaveCSS("opacity", "1");
   await page.emulateMedia({ reducedMotion: "reduce" });
   await expect(page.locator("[data-scroll-reveal]")).toHaveCount(0);
-  await expect(page.locator(".inner-hero h1")).toHaveCSS("opacity", "1");
+  await expect(page.locator(".support-page h1")).toHaveCSS("opacity", "1");
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(`${base}/about/`, { waitUntil: "networkidle" });

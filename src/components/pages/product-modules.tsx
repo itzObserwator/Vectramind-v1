@@ -141,7 +141,10 @@ export function ProductModules({
               Explore {detail.name} <Arrow />
             </Link>
           )}
-          <Link href={`/contact?topic=${product}`} className="text-link">
+          <Link
+            href={`/support/?topic=${product}#contact-form`}
+            className="text-link"
+          >
             Explore with our team
             <Arrow />
           </Link>

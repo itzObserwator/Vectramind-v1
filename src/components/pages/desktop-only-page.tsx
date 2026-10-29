@@ -7,7 +7,7 @@ export function DesktopOnlyPage({
   page,
   children,
 }: {
-  page: "contact" | "careers" | "insights";
+  page: "careers" | "insights";
   children: ReactNode;
 }) {
   const router = useRouter();
@@ -17,14 +17,7 @@ export function DesktopOnlyPage({
     const mobile = window.matchMedia("(max-width: 900px)");
     function redirect() {
       if (!mobile.matches) return;
-      const destination =
-        page === "insights"
-          ? "/"
-          : page === "careers"
-            ? "/about"
-            : window.location.hash === "#locations"
-              ? "/about#about-locations-title"
-              : `/support${window.location.search}#support-request`;
+      const destination = page === "insights" ? "/" : "/about";
       router.replace(destination);
     }
     redirect();

@@ -16,7 +16,6 @@ const routes = [
   "about",
   "careers",
   "support",
-  "contact",
   "blog",
   "terms-of-use",
   "privacy-policy",

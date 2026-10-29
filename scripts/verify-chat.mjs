@@ -9,7 +9,10 @@ try {
   const errors = [];
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto(base, { waitUntil: "networkidle" });
-  await page.getByRole("button", { name: "Consultation", exact: true }).click();
+  await page.keyboard.press("Escape");
+  await page
+    .getByRole("button", { name: "Contact Vectramind", exact: true })
+    .click();
   const chat = page.getByRole("dialog", { name: "Help Desk" });
   await expect(chat).toBeVisible();
   await expect(page.locator(".dialog-overlay")).toHaveCount(0);

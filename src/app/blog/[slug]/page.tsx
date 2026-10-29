@@ -63,7 +63,7 @@ export default async function ArticlePage({
             Explore Synapse
             <Arrow />
           </Link>
-          <Link href="/contact">
+          <Link href="/support/#contact-form">
             Talk to our team
             <Arrow />
           </Link>

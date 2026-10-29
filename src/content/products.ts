@@ -96,7 +96,7 @@ export const products = {
     category: "Your unified patient experience platform",
     headline: ["Better journeys.", "Happier patients."],
     description:
-      "Connect every touchpoint of the patient experience in an AI-native platform. Bring scheduling, patient flow, communications and real-time governance together to help teams improve resource use, service efficiency and the experience of care.",
+      "Connect scheduling, patient flow, communications and real-time governance in one AI-native platform. Help care teams work efficiently and deliver a better patient experience.",
     intro: "Take the dis-appointment out of appointments.",
     introText:
       "Firstpass connects your digital front door with the facility’s operations. Monitor patient status, waiting and transit times around the clock, see real-time data, oversee service delivery and use predictive insights to inform resource decisions. Its modules can work independently or as one connected patient journey.",

@@ -45,10 +45,10 @@ try {
   ).toHaveAttribute("href", "mailto:support@vectramind.com");
   await expect(
     footer.getByRole("link", { name: "Request a call" }),
-  ).toHaveAttribute("href", /^\/contact\/?$/);
+  ).toHaveAttribute("href", /^\/support\/?#contact-form$/);
   await expect(
     footer.getByRole("link", { name: "Explore our offices" }),
-  ).toHaveAttribute("href", /^\/contact\/?#locations$/);
+  ).toHaveAttribute("href", /^\/about\/?#about-locations-title$/);
   await expect(
     footer
       .getByRole("navigation", { name: "Footer navigation" })

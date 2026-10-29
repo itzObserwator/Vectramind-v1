@@ -33,7 +33,7 @@ try {
   await expect(page.getByRole("tab")).toHaveCount(9);
   await expect(
     page.getByRole("link", { name: "Request a Firstpass demo" }),
-  ).toHaveAttribute("href", /^\/contact\/?\?topic=firstpass$/);
+  ).toHaveAttribute("href", /^\/support\/?\?topic=firstpass#contact-form$/);
   await page
     .getByRole("link", { name: "Explore the platform", exact: true })
     .click();

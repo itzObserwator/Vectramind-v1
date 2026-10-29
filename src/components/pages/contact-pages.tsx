@@ -1,33 +1,40 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useState, type FormEvent } from "react";
-import { Arrow, Mark, SectionLabel } from "@/components/site-primitives";
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import { afterSiteIntro } from "@/components/after-site-intro";
+import { Arrow, Mark } from "@/components/site-primitives";
 import { Button } from "@/components/ui/button";
-import { PageHero } from "./page-primitives";
-import { offices } from "@/content/site";
-import { officeMapLinks } from "@/content/global-reach";
 
 export function RequestForm({ support = false }: { support?: boolean }) {
+  const root = useRef<HTMLDivElement>(null);
   const [topic, setTopic] = useState(support ? "support" : "general");
   const [draft, setDraft] = useState<{ href: string; body: string } | null>(
     null,
   );
   const [copied, setCopied] = useState(false);
   useEffect(() => {
+    if (window.location.hash !== "#contact-form") return;
+    // Initial/retired URLs can restore the page to the top during hydration.
+    // Resolve the requested form anchor once the introduction uncovers it.
+    return afterSiteIntro(() => {
+      if (window.location.hash === "#contact-form")
+        root.current?.scrollIntoView({ block: "start", behavior: "instant" });
+    });
+  }, []);
+  useEffect(() => {
     const incoming = new URLSearchParams(window.location.search).get("topic");
     if (
       incoming &&
-      (support
-        ? ["support", "synapse", "firstpass", "integration-services"]
-        : [
-            "synapse",
-            "firstpass",
-            "careers",
-            "artificial-intelligence",
-            "solution-design",
-            "integration-services",
-          ]
-      ).includes(incoming)
+      [
+        "general",
+        "support",
+        "synapse",
+        "firstpass",
+        "careers",
+        "artificial-intelligence",
+        "solution-design",
+        "integration-services",
+      ].includes(incoming)
     )
       setTopic(incoming);
   }, [support]);
@@ -41,7 +48,12 @@ export function RequestForm({ support = false }: { support?: boolean }) {
     });
   }
   return (
-    <div className="request-form-wrap">
+    <div
+      id="contact-form"
+      ref={root}
+      className="request-form-wrap"
+      tabIndex={-1}
+    >
       {draft ? (
         <div className="email-draft" role="status">
           <Mark />
@@ -168,32 +180,26 @@ export function RequestForm({ support = false }: { support?: boolean }) {
                 value={topic}
                 onChange={(e) => setTopic(e.target.value)}
               >
-                {!support && (
-                  <option value="general">
-                    A conversation with Vectramind
-                  </option>
-                )}
+                <option value="general">A conversation with Vectramind</option>
                 <option value="synapse">
                   {support ? "Synapse support" : "Synapse demo"}
                 </option>
                 <option value="firstpass">
                   {support ? "Firstpass support" : "Firstpass demo"}
                 </option>
-                {!support && (
-                  <>
-                    <option value="artificial-intelligence">
-                      Artificial intelligence
-                    </option>
-                    <option value="solution-design">
-                      Solution design & development
-                    </option>
-                  </>
-                )}
+                <>
+                  <option value="artificial-intelligence">
+                    Artificial intelligence
+                  </option>
+                  <option value="solution-design">
+                    Solution design & development
+                  </option>
+                </>
                 <option value="integration-services">
                   {support ? "Integration support" : "Integration services"}
                 </option>
                 <option value="support">Product support</option>
-                {!support && <option value="careers">Careers</option>}
+                <option value="careers">Careers</option>
               </select>
             </label>
             <label className="form-full">
@@ -232,74 +238,6 @@ export function RequestForm({ support = false }: { support?: boolean }) {
           </div>
         </form>
       )}
-    </div>
-  );
-}
-export function ContactPage() {
-  return (
-    <div className="inner-page">
-      <PageHero
-        eyebrow="Contact Vectramind"
-        title={["Let’s connect.", "Then evolve."]}
-        description="A new platform. A complex challenge. An idea that deserves a conversation. Tell us what’s next for you."
-      />
-      <section className="contact-layout page-padding">
-        <aside>
-          <span className="eyebrow">With you in mind</span>
-          <h2>Good things start with a conversation.</h2>
-          <p>
-            Explore Synapse, Firstpass or a solution built around your
-            organization.
-          </p>
-          <a className="contact-email" href="mailto:support@vectramind.com">
-            support@vectramind.com
-            <Arrow />
-          </a>
-          <div className="contact-side-links">
-            <Link href="/synapse">
-              Customer engagement
-              <Arrow />
-            </Link>
-            <Link href="/firstpass">
-              Patient experience
-              <Arrow />
-            </Link>
-            <Link href="/support">
-              Need product support?
-              <Arrow />
-            </Link>
-          </div>
-        </aside>
-        <RequestForm />
-      </section>
-      <section
-        id="locations"
-        className="inner-section page-padding inner-panel"
-      >
-        <SectionLabel>Our world</SectionLabel>
-        <h2 className="display inner-section-title" data-reveal>
-          Closer than
-          <br />
-          you think.
-        </h2>
-        <div className="locations-grid">
-          {offices.map((office, i) => (
-            <a
-              key={office}
-              href={officeMapLinks[office]}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span className="eyebrow">0{i + 1} / Vectramind</span>
-              <h3>{office}</h3>
-              <span>
-                View on map
-                <Arrow />
-              </span>
-            </a>
-          ))}
-        </div>
-      </section>
     </div>
   );
 }

@@ -28,7 +28,7 @@ try {
   await expect(page.locator(".post-hero-static-logos li")).toHaveCount(4);
   await expect(
     page.getByRole("link", { name: "Request a Synapse demo" }),
-  ).toHaveAttribute("href", /^\/contact\/?\?topic=synapse$/);
+  ).toHaveAttribute("href", /^\/support\/?\?topic=synapse#contact-form$/);
   await expect(
     page.locator(".product-landing-workspace .platform-thumbnail-synapse"),
   ).toHaveCount(1);

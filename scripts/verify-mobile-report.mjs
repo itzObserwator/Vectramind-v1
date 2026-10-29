@@ -71,7 +71,7 @@ try {
     expect(
       Math.abs((await page.evaluate(() => scrollY)) - position),
     ).toBeLessThan(2);
-    const last = menu.getByRole("button", { name: "Consultation", exact: true });
+    const last = menu.getByRole("link", { name: "Consultation", exact: true });
     await last.focus();
     await page.keyboard.press("Tab");
     await expect(
@@ -90,18 +90,19 @@ try {
     await expect(page.locator("body")).not.toHaveCSS("overflow", "hidden");
 
     await page.getByRole("button", { name: "Open menu" }).click();
-    await page
-      .getByRole("button", { name: "Consultation", exact: true })
-      .click();
-    await expect(page.getByRole("dialog")).toBeVisible();
-    await expect(menu).not.toBeVisible();
-    expect(
-      await page
-        .getByRole("dialog")
-        .evaluate((element) => element.contains(document.activeElement)),
-    ).toBe(true);
-    await page.keyboard.press("Escape");
+    await page.getByRole("link", { name: "Consultation", exact: true }).click();
+    await expect(page).toHaveURL(/\/support\/?#contact-form$/);
+    const form = page.locator("#contact-form");
+    await expect(form.locator('input[name="name"]')).toBeInViewport();
     await expect(page.getByRole("dialog")).not.toBeVisible();
+    await expect(menu).not.toBeVisible();
+    await expect
+      .poll(async () => {
+        const top = (await form.boundingBox()).y;
+        const header = await page.locator(".header").boundingBox();
+        return top >= header.y + header.height && top < height - 100;
+      })
+      .toBe(true);
     await expect(page.locator("body")).not.toHaveCSS("overflow", "hidden");
 
     await page.getByRole("button", { name: "Open menu" }).click();
@@ -124,7 +125,7 @@ try {
   }
   expect(errors).toEqual([]);
   console.log(
-    "Passed: six phone/tablet/landscape layouts, cached hero art and moving pulse elements, 44px menu control, bounded menu scrolling, background scroll lock, focus cycling, Escape, consultation dialog, resize and page-navigation cleanup. No browser errors.",
+    "Passed: six phone/tablet/landscape layouts, cached hero art and moving pulse elements, 44px menu control, bounded menu scrolling, background scroll lock, focus cycling, Escape, direct consultation form navigation, resize and page-navigation cleanup. No browser errors.",
   );
 } finally {
   await browser.close();

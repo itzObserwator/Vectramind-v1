@@ -1,5 +1,5 @@
 "use client";
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import dynamic from "next/dynamic";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { Message01Icon } from "@hugeicons/core-free-icons";
@@ -63,6 +63,22 @@ const ContactDialog = dynamic(
 // page's animations before the next page initializes its own scroll effects.
 export function SiteShell({ children }: { children: ReactNode }) {
   const [contactLoaded, setContactLoaded] = useState(false);
+  useEffect(() => {
+    // Text fields match :focus-visible even after a mouse click. Track Tab
+    // navigation so forms keep a keyboard ring without adding click outlines.
+    const keyboard = (event: KeyboardEvent) => {
+      if (event.key === "Tab")
+        document.documentElement.removeAttribute("data-pointer-focus");
+    };
+    const pointer = () =>
+      document.documentElement.setAttribute("data-pointer-focus", "");
+    document.addEventListener("keydown", keyboard, true);
+    document.addEventListener("pointerdown", pointer, true);
+    return () => {
+      document.removeEventListener("keydown", keyboard, true);
+      document.removeEventListener("pointerdown", pointer, true);
+    };
+  }, []);
   return (
     <MotionProvider>
       <Dialog

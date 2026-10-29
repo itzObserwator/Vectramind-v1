@@ -35,7 +35,7 @@ export function ProductPage({ product }: { product: ProductKey }) {
         title={data.headline}
         description={data.description}
         cta={`Request a ${data.name} demo`}
-        href={`/contact?topic=${product}`}
+        href={`/support/?topic=${product}#contact-form`}
       >
         <ProductArt product={product} />
       </PageHero>
@@ -110,7 +110,7 @@ export function ProductPage({ product }: { product: ProductKey }) {
             : "Put people first. At every step."
         }
         label={`Let’s talk ${data.name}`}
-        href={`/contact?topic=${product}`}
+        href={`/support/?topic=${product}#contact-form`}
       />
     </div>
   );

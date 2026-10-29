@@ -590,6 +590,21 @@
 .faq-search > .eyebrow {
   color: var(--muted);
 }
+.faq-search-control {
+  display: block;
+  position: relative;
+}
+.faq-search-control > svg {
+  position: absolute;
+  inset-inline-start: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #62656b;
+  pointer-events: none;
+}
+body .faq-search .faq-search-control input {
+  padding-inline-start: 48px;
+}
 .faq-search input,
 .insights-toolbar input,
 .insights-toolbar select {
@@ -969,6 +984,7 @@
 }
 .request-form-wrap {
   min-width: 0;
+  scroll-margin-top: 20px;
 }
 .request-form,
 .email-draft {

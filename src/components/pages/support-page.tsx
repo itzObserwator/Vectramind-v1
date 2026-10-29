@@ -161,9 +161,6 @@ export function SupportPage() {
                 still looking for an answer, we’re here.
               </ResponsiveCopy>
             </p>
-            <a className="text-link" href="mailto:support@vectramind.com">
-              Email our support team
-            </a>
           </div>
           <SupportAnswers />
         </div>

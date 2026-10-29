@@ -8,7 +8,6 @@ const routes = [
   "about",
   "careers",
   "support",
-  "contact",
   "blog",
   "privacy-policy",
   "terms-of-use",
@@ -49,7 +48,7 @@ try {
     await page.setViewportSize({ width, height: width < 800 ? 844 : 1000 });
     for (const route of width === 320
       ? routes
-      : ["synapse", "about", "contact", "capabilities"]) {
+      : ["synapse", "about", "support", "capabilities"]) {
       await page.goto(`${base}/${route}/`, { waitUntil: "networkidle" });
       expect(
         await page.evaluate(

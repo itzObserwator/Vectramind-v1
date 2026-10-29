@@ -15,7 +15,7 @@ export default function NotFound() {
         <Link className="button button-primary" href="/">
           Back to Vectramind ↗
         </Link>
-        <Link className="button button-outline" href="/contact">
+        <Link className="button button-outline" href="/support/#contact-form">
           Talk to our team ↗
         </Link>
       </div>

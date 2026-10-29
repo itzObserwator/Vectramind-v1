@@ -1,5 +1,7 @@
 "use client";
 import { useState } from "react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Search01Icon } from "@hugeicons/core-free-icons";
 export function FaqList({
   items,
   searchable = false,
@@ -18,12 +20,20 @@ export function FaqList({
       {searchable && (
         <label className="faq-search">
           <span className="eyebrow">Find an answer</span>
-          <input
-            type="search"
-            placeholder="Search questions, products, integrations…"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
+          <span className="faq-search-control">
+            <HugeiconsIcon
+              icon={Search01Icon}
+              size={20}
+              strokeWidth={1.6}
+              aria-hidden="true"
+            />
+            <input
+              type="search"
+              placeholder="Search questions, products, integrations…"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+          </span>
         </label>
       )}
       {showResultCount && (

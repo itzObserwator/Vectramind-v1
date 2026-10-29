@@ -838,6 +838,8 @@ body:has(.inner-page) .floating-contact {
   width: 18px;
   height: 18px;
   flex: 0 0 18px;
+  min-height: 0;
+  margin: 0;
   padding: 0;
   accent-color: var(--primary-ink);
 }

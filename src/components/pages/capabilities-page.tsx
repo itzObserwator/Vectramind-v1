@@ -73,7 +73,7 @@ export function CapabilitiesPage() {
                   </ResponsiveCopy>
                 </h3>
                 <Link
-                  href={`/contact?topic=${item.id}`}
+                  href={`/support/?topic=${item.id}#contact-form`}
                   className="button hero-platform-button"
                 >
                   <ResponsiveCopy compact="Let’s talk">

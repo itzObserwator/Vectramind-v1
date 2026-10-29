@@ -91,7 +91,10 @@ export function CaseStudies() {
               <summary>Read the case</summary>
               <p>{cases[active].text}</p>
             </details>
-            <Link href="/contact?topic=synapse" className="text-link">
+            <Link
+              href="/support/?topic=synapse#contact-form"
+              className="text-link"
+            >
               Discuss your use case
               <Arrow />
             </Link>

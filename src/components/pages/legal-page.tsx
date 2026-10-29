@@ -39,7 +39,9 @@ export function LegalPage({ type }: { type: "terms" | "privacy" }) {
               {h.text}
             </a>
           ))}
-          <Link href="/contact">Questions? Contact our team ↗</Link>
+          <Link href="/support/#contact-form">
+            Questions? Contact our team ↗
+          </Link>
         </aside>
         <div
           className="legal-document prose-document"

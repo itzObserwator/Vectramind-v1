@@ -23,7 +23,7 @@ await expect(page.locator("h1")).toHaveAttribute(
 await expect(page.locator("h1")).toContainText("Human connections.");
 await page.waitForTimeout(1500);
 await page.screenshot({ path: `${output}/desktop-hero.png` });
-await page.getByRole("button", { name: "Consultation" }).click();
+await page.getByRole("button", { name: "Contact Vectramind", exact: true }).click();
 await expect(page.getByRole("dialog")).toBeVisible();
 await expect(
   page.getByRole("link", { name: "Contact the Vectramind team" }),

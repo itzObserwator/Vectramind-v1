@@ -11,7 +11,7 @@ export function PageHero({
   description,
   children,
   cta,
-  href = "/contact",
+  href = "/support/#contact-form",
   image,
 }: {
   eyebrow: string;
@@ -170,7 +170,7 @@ export function PageCta({
   title = "Your next chapter starts here.",
   text = "Let’s bring your goals, your people and your systems into a shared direction.",
   label = "Start a conversation",
-  href = "/contact",
+  href = "/support/#contact-form",
 }: {
   title?: string;
   text?: string;

@@ -29,7 +29,7 @@ export function CapabilitiesHero() {
           </ResponsiveCopy>
         </p>
         <div className="product-landing-actions">
-          <Link href="/contact" className="button button-primary">
+          <Link href="/support/#contact-form" className="button button-primary">
             <ResponsiveCopy compact="Let’s talk">
               Let’s build what’s next
             </ResponsiveCopy>

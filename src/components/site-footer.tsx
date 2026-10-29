@@ -95,7 +95,7 @@ export function Footer() {
             </span>
             <h3>Phone</h3>
             <p>Talk through your next idea with the people who can help.</p>
-            <Link href="/contact">
+            <Link href="/support/#contact-form">
               Request a call <Arrow />
             </Link>
           </article>
@@ -113,7 +113,7 @@ export function Footer() {
               <br />
               Tanuku and Vancouver.
             </p>
-            <Link href="/contact#locations">
+            <Link href="/about/#about-locations-title">
               Explore our offices <Arrow />
             </Link>
           </article>
