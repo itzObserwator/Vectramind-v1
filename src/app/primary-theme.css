@@ -149,9 +149,6 @@ body .about-office:hover {
   background: var(--primary-surface);
   border-color: var(--primary);
 }
-body .platform-thumbnail .platform-art-line-accent {
-  stroke: var(--primary);
-}
 body .experience-home .experience-pillars > span:nth-child(n) i {
   border-color: var(--primary);
 }

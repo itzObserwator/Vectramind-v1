@@ -99,10 +99,6 @@
   stroke-width: 0.8;
   opacity: 0.5;
 }
-.platform-art-lines .platform-art-line-accent {
-  stroke: #2873b9;
-  stroke-width: 2;
-}
 .platform-art-composition {
   position: absolute;
   inset: 0;
@@ -115,9 +111,6 @@
     transform: translateX(-50%);
     container-type: size;
   }
-}
-.platform-thumbnail-firstpass .platform-art-line-accent {
-  stroke: #7463df;
 }
 .platform-art-header {
   position: absolute;

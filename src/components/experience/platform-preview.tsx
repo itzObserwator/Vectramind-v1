@@ -19,8 +19,6 @@ function PreviewLines() {
           d={`M ${-100 + index * 12} 540 C 70 ${190 + index * 13}, 650 ${590 - index * 11}, ${690 + index * 15} -40`}
         />
       ))}
-      <path className="platform-art-line-accent" d="M 7 420 Q 30 386 62 368" />
-      <path className="platform-art-line-accent" d="M 731 97 Q 742 73 750 46" />
     </svg>
   );
 }
