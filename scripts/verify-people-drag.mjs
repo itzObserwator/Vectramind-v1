@@ -14,6 +14,8 @@ try {
   for (const width of [390, 1440]) {
     await page.setViewportSize({ width, height: 1000 });
     await page.goto(`${base}/about/`, { waitUntil: "networkidle" });
+    await page.keyboard.press("Escape");
+    await expect(page.locator(".site-preloader")).toBeHidden();
     const gallery = page.getByRole("region", {
       name: "Vectramind team photos",
     });
@@ -88,6 +90,8 @@ try {
   }
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(`${base}/about/`, { waitUntil: "networkidle" });
+  await page.keyboard.press("Escape");
+  await expect(page.locator(".site-preloader")).toBeHidden();
   const gallery = page.getByRole("region", { name: "Vectramind team photos" });
   await gallery.scrollIntoViewIfNeeded();
   const bounds = await gallery.boundingBox();

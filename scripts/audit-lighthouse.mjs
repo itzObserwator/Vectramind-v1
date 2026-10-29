@@ -108,7 +108,7 @@ try {
       "--output=html",
       `--output-path=${directory}/${reportPrefix}${profile}`,
       "--only-categories=performance,accessibility,best-practices,seo",
-      "--chrome-flags=--headless --no-sandbox --disable-dev-shm-usage",
+      "--chrome-flags=--headless --no-sandbox --disable-dev-shm-usage --disable-extensions",
     ];
     if (profile === "desktop") args.push("--preset=desktop");
     await run("npm", args);
@@ -120,6 +120,27 @@ try {
     );
     for (const category of Object.values(report.categories))
       console.log(`${category.title}: ${Math.round(category.score * 100)}`);
+    for (const id of [
+      "first-contentful-paint",
+      "largest-contentful-paint",
+      "total-blocking-time",
+      "cumulative-layout-shift",
+      "image-delivery-insight",
+      "unused-javascript",
+    ]) {
+      const audit = report.audits[id];
+      console.log(
+        `${audit.title}: ${audit.displayValue || (audit.score === 1 ? "Passed" : "See report")}`,
+      );
+    }
+    for (const warning of report.runWarnings || [])
+      console.warn(`Audit warning: ${warning}`);
+    const errors = report.audits["errors-in-console"].details?.items || [];
+    console.log(`Browser console errors: ${errors.length}`);
+    for (const error of errors)
+      console.error(
+        `${error.sourceLocation?.url || "Browser"}: ${error.description}`,
+      );
     console.log(`Report: ${directory}/${reportPrefix}${profile}.report.html`);
   }
 } catch (error) {

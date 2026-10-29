@@ -20,11 +20,18 @@ export function People({
   const images = [
     {
       src: "ceo_about.webp",
+      srcSet: "ceo_about-480.webp 480w, ceo_about.webp 647w",
+      width: 647,
+      height: 754,
       label: "Dr. Murali Krishna Vakalapudi",
       caption: "Founder & CEO",
     },
     {
-      src: "milestone-01.jpg",
+      src: "milestone-01-1359.webp",
+      srcSet:
+        "milestone-01-640.webp 640w, milestone-01-960.webp 960w, milestone-01-1359.webp 1359w",
+      width: 1359,
+      height: 512,
       label: "Ideas that bring us together",
       caption: "A milestone moment for Vectramind",
       alt: "Vectramind’s founder at a meeting in Dubai",
@@ -32,11 +39,20 @@ export function People({
     },
     {
       src: "event-31.webp",
+      // This landscape photo is cropped into a tall frame. Keep its full
+      // width so object-fit: cover does not enlarge a smaller candidate.
+      srcSet: "event-31.webp 800w",
+      width: 800,
+      height: 503,
       label: "A global perspective",
       caption: "Team Vectramind",
     },
     {
       src: "career.webp",
+      srcSet:
+        "career-480.webp 480w, career-640.webp 640w, career-800.webp 800w, career.webp 1110w",
+      width: 1110,
+      height: 1620,
       label: "Curious minds. Shared purpose.",
       caption: "Life at Vectramind",
     },
@@ -208,8 +224,20 @@ export function People({
             <div className="people-image">
               <img
                 src={`/images/${item.src}`}
+                srcSet={item.srcSet
+                  .split(", ")
+                  .map((candidate) => `/images/${candidate}`)
+                  .join(", ")}
+                sizes={
+                  item.wide
+                    ? "(max-width: 600px) max(265px, calc(90vw - 36px)), min(calc(72vw - 35px), 1000px)"
+                    : "(max-width: 600px) max(265px, calc(78vw - 31px)), (max-width: 900px) max(280px, calc(43vw - 21px)), max(280px, calc(31vw - 25px))"
+                }
+                width={item.width}
+                height={item.height}
                 alt={item.alt || item.label}
                 loading="lazy"
+                decoding="async"
                 draggable={false}
               />
             </div>
